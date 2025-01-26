@@ -1,7 +1,7 @@
 # Vilv
 
 ## TODO
-- [ ] Make it deploy (Vercel)
+- [x] Make it deploy (Vercel)
 - [ ] Static pages
 - [ ] Setup database (Vercel Postgres)
 - [ ] Admin page: players
