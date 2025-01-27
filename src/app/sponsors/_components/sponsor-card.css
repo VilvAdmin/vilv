@@ -1,0 +1,34 @@
+.container {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    width: 15em;
+    height: 19em;
+    padding: 1em 1em;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sponsorcard {
+    display: block;
+    max-width: 13em;
+    max-height: 13em;
+    width: auto;
+    height: auto;
+}

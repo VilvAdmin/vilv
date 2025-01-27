@@ -8,6 +8,10 @@ export default {
       fontFamily: {
         sans: ["var(--font-geist-sans)", ...fontFamily.sans],
       },
+      colors: {
+        vilvBlue: "#32329f",
+        vilvLightBlue: "rgba(50, 50, 159, 0.15)",
+      },
     },
   },
   plugins: [],
