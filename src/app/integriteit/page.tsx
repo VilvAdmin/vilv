@@ -1,6 +1,4 @@
 export default async function Nieuws() {
-  const mgmt = [{function: "Aanspreekpunt Persoonlijke Integriteit:", name: "Wouter Van De Walle"}];
-
   return (
     <>
     <h1 className="text-vilvBlue text-xl font-semibold pb-4">Club-API</h1>
