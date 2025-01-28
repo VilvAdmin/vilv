@@ -1,4 +1,4 @@
-export default async function Nieuws() {
+export default async function Integriteit() {
   return (
     <>
     <h1 className="text-vilvBlue text-xl font-semibold pb-4">Club-API</h1>

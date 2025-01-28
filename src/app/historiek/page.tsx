@@ -1,4 +1,4 @@
-export default async function Nieuws() {
+export default async function Historiek() {
   return (
     <>
     <h1 className="text-vilvBlue text-xl font-semibold pb-4">Waar begin je het verhaal van een voetbalclub?</h1>

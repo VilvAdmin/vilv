@@ -1,6 +1,6 @@
 import { SponsorCard } from "./_components/sponsor-card";
 
-export default async function Nieuws() {
+export default async function Sponsors() {
   const sponsors = [{name: "Atlas Engineering", logo: "/Atlas_no_bg.png", href: "http://atlas-engineering.be/", description: ""}]
 
   return (
