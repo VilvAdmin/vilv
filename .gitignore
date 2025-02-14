@@ -47,3 +47,5 @@ yarn-error.log*
 
 # data
 data-input.json
+# clerk configuration (can include secrets)
+/.clerk/
