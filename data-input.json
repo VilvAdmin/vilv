@@ -1,0 +1,1578 @@
+{
+    "data": {
+        "teamCalendar": [
+            {
+                "id": "6804210",
+                "startTime": "2024-08-25T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC VILV HEVERLEE",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "307981",
+                    "name": "K.ST.DRIESLINTER",
+                    "clubId": "1565",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/03293.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 1,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 2,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "FRN_917",
+                    "name": "Recrea",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6783958",
+                "startTime": "2024-09-01T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "306486",
+                    "name": "KNV.Keerbergen",
+                    "clubId": "1642",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/03823.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 5,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 1,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Verbeure",
+                        "firstName": "Patrick",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6783963",
+                "startTime": "2024-09-08T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "309407",
+                    "name": "KFC Sparta Haacht Tildonk",
+                    "clubId": "1393",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/02564.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 2,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 2,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Van Cauwenbergh",
+                        "firstName": "Yves",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6783971",
+                "startTime": "2024-09-15T11:45:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "307131",
+                    "name": "Boutersem United A",
+                    "clubId": "2555",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/07781.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 2,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 5,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Deceuster",
+                        "firstName": "Andre",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6783980",
+                "startTime": "2024-09-29T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "306840",
+                    "name": "KFC.Werchter",
+                    "clubId": "1604",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/03557.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 1,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 1,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Verbeeck",
+                        "firstName": "Victor",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6783984",
+                "startTime": "2024-10-06T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "305951",
+                    "name": "KFC.Herent",
+                    "clubId": "1535",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/03175.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 2,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 1,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Segers",
+                        "firstName": "Johan",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6783989",
+                "startTime": "2024-10-13T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "308536",
+                    "name": "VC Torenploeg",
+                    "clubId": "7396",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/41219.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 5,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 0,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Longo",
+                        "firstName": "Joseph",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6783993",
+                "startTime": "2024-10-20T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "306380",
+                    "name": "VVS Rotselaar",
+                    "clubId": "7532",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42154.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 1,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 4,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Van Cauwenbergh",
+                        "firstName": "Yves",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784004",
+                "startTime": "2024-11-10T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "306486",
+                    "name": "KNV.Keerbergen",
+                    "clubId": "1642",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/03823.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 1,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 2,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Desguin",
+                        "firstName": "Pascal",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784007",
+                "startTime": "2024-11-17T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "309407",
+                    "name": "KFC Sparta Haacht Tildonk",
+                    "clubId": "1393",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/02564.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 0,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 2,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Segers",
+                        "firstName": "Johan",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784016",
+                "startTime": "2024-11-24T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "307131",
+                    "name": "Boutersem United A",
+                    "clubId": "2555",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/07781.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 2,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 1,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Deceuster",
+                        "firstName": "Andre",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784018",
+                "startTime": "2024-12-01T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310043",
+                    "name": "VK Wakkerzeel",
+                    "clubId": "7525",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42118.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 6,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 0,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Bouzerda",
+                        "firstName": "Abdenbi",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784025",
+                "startTime": "2024-12-08T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "306840",
+                    "name": "KFC.Werchter",
+                    "clubId": "1604",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/03557.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 1,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 2,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Segers",
+                        "firstName": "Johan",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6807634",
+                "startTime": "2025-01-05T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "309407",
+                    "name": "K.F.C. SPARTA HAACHT TILDONK",
+                    "clubId": "1393",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/02564.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC VILV HEVERLEE",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 5,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 0,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CUP_3119",
+                    "name": "Beker Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Eyben",
+                        "firstName": "Wannes",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784028",
+                "startTime": "2025-01-12T10:15:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "305951",
+                    "name": "KFC.Herent",
+                    "clubId": "1535",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/03175.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "postponed",
+                    "homeTeamGoals": null,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": null,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": "Uitgesteld",
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "postponed",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784033",
+                "startTime": "2025-01-19T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "308536",
+                    "name": "VC Torenploeg",
+                    "clubId": "7396",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/41219.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 0,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 5,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Bavin",
+                        "firstName": "Maxim",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784038",
+                "startTime": "2025-01-26T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "306380",
+                    "name": "VVS Rotselaar",
+                    "clubId": "7532",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42154.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "finished",
+                    "homeTeamGoals": 3,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": 1,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": "Van Cauwenbergh",
+                        "firstName": "Yves",
+                        "status": null,
+                        "personAssigned": true,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "finished",
+                "startDateTimeInThePassed": true,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784048",
+                "startTime": "2025-02-09T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "306486",
+                    "name": "KNV.Keerbergen",
+                    "clubId": "1642",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/03823.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "planned",
+                    "homeTeamGoals": null,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": null,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "planned",
+                "startDateTimeInThePassed": false,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784053",
+                "startTime": "2025-02-16T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "309407",
+                    "name": "KFC Sparta Haacht Tildonk",
+                    "clubId": "1393",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/02564.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "planned",
+                    "homeTeamGoals": null,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": null,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "planned",
+                "startDateTimeInThePassed": false,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784061",
+                "startTime": "2025-02-23T11:45:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "307131",
+                    "name": "Boutersem United A",
+                    "clubId": "2555",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/07781.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "planned",
+                    "homeTeamGoals": null,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": null,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "planned",
+                "startDateTimeInThePassed": false,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784064",
+                "startTime": "2025-03-09T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310043",
+                    "name": "VK Wakkerzeel",
+                    "clubId": "7525",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42118.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "planned",
+                    "homeTeamGoals": null,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": null,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "planned",
+                "startDateTimeInThePassed": false,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784070",
+                "startTime": "2025-03-16T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "306840",
+                    "name": "KFC.Werchter",
+                    "clubId": "1604",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/03557.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "planned",
+                    "homeTeamGoals": null,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": null,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "planned",
+                "startDateTimeInThePassed": false,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784074",
+                "startTime": "2025-03-23T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "305951",
+                    "name": "KFC.Herent",
+                    "clubId": "1535",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/03175.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "planned",
+                    "homeTeamGoals": null,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": null,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "planned",
+                "startDateTimeInThePassed": false,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784079",
+                "startTime": "2025-03-30T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "308536",
+                    "name": "VC Torenploeg",
+                    "clubId": "7396",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/41219.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "planned",
+                    "homeTeamGoals": null,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": null,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "planned",
+                "startDateTimeInThePassed": false,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6784083",
+                "startTime": "2025-04-06T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "306380",
+                    "name": "VVS Rotselaar",
+                    "clubId": "7532",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42154.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "planned",
+                    "homeTeamGoals": null,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": null,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "planned",
+                "startDateTimeInThePassed": false,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            },
+            {
+                "id": "6783974",
+                "startTime": "2025-04-27T09:30:00",
+                "channel": "voetbalvlaanderen",
+                "homeTeam": {
+                    "id": "310028",
+                    "name": "FC Vilv Heverlee",
+                    "clubId": "7669",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42386.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "awayTeam": {
+                    "id": "310043",
+                    "name": "VK Wakkerzeel",
+                    "clubId": "7525",
+                    "logo": "https://belgianfootball.s3.eu-central-1.amazonaws.com/s3fs-public/rbfa/img/logos/clubs/42118.jpg",
+                    "__typename": "MatchDetailTeam"
+                },
+                "outcome": {
+                    "status": "planned",
+                    "homeTeamGoals": null,
+                    "homeTeamPenaltiesScored": null,
+                    "awayTeamGoals": null,
+                    "awayTeamPenaltiesScored": null,
+                    "subscript": null,
+                    "__typename": "MatchDetailOutcome"
+                },
+                "series": {
+                    "id": "CHP_121157",
+                    "name": "1C - Recrea Mannen BAL",
+                    "__typename": "MatchSeries"
+                },
+                "officials": [
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    },
+                    {
+                        "lastName": null,
+                        "firstName": null,
+                        "status": "Nog aan te duiden",
+                        "personAssigned": false,
+                        "__typename": "MatchDetailOfficial"
+                    }
+                ],
+                "showScore": true,
+                "state": "planned",
+                "startDateTimeInThePassed": false,
+                "ageGroup": "Recrea Herren",
+                "__typename": "MatchDetail"
+            }
+        ]
+    }
+}

@@ -45,7 +45,9 @@ yarn-error.log*
 # idea files
 .idea
 
-# data
-data-input.json
+# # data
+# data-input.json
+
+
 # clerk configuration (can include secrets)
 /.clerk/
