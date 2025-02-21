@@ -19,15 +19,16 @@ export default async function Availabilities() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow>
-          <TableCell>{dummydata.data.teamCalendar[0]?.startTime.slice(0,10)}</TableCell>
-          <TableCell>{dummydata.data.teamCalendar[0]?.startTime.slice(11,16)}</TableCell>
-          <TableCell>{dummydata.data.teamCalendar[0]?.homeTeam.name}</TableCell>
-          <TableCell>{dummydata.data.teamCalendar[0]?.awayTeam.name}</TableCell>
+        {dummydata.data.teamCalendar?.map((game) => (
+        <TableRow key={game.id}>
+          <TableCell>{game.startTime.slice(0,10)}</TableCell>
+          <TableCell>{game.startTime.slice(11,16)}</TableCell>
+          <TableCell>{game.homeTeam.name}</TableCell>
+          <TableCell>{game.awayTeam.name}</TableCell>
           <TableCell>Competitie</TableCell>
           <TableCell></TableCell>
-          <TableCell>Edit</TableCell>
-        </TableRow>
+          <TableCell><button>edit</button></TableCell>
+        </TableRow>))}
       </TableBody>
     </Table>
     </>

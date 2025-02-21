@@ -3,9 +3,12 @@
 
 import { sql } from "drizzle-orm";
 import {
+  date,
   index,
   integer,
-  pgTableCreator,
+  pgEnum,
+  pgTable,
+  time,
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
@@ -16,21 +19,17 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = pgTableCreator((name) => `vilv_${name}`);
 
-export const posts = createTable(
-  "post",
-  {
-    id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
-    name: varchar("name", { length: 256 }),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
-      () => new Date()
-    ),
-  },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
-);
+export const typeEnum = pgEnum("type", ["Competitie", "Beker", "Vriendschappelijk"]);
+
+export const games = pgTable("games", {
+  id: integer("id").notNull(),
+  date: date("date").notNull(),
+  time: time("time").notNull(),
+  home_team: varchar("home_team", { length: 255 }).notNull(),
+  away_team: varchar("away_team", { length: 255 }).notNull(),
+  type: typeEnum("type").notNull().default("Competitie"),
+  score: varchar("score", { length: 10 }).default(sql`null`),
+});
+
+
