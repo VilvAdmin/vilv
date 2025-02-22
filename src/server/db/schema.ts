@@ -1,6 +1,8 @@
 // Example model schema from the Drizzle docs
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
+import exp from "constants";
+import { relations } from "drizzle-orm";
 import {
   date,
   pgEnum,
@@ -28,4 +30,22 @@ export const games = pgTable("games", {
   type: typeEnum("type").notNull().default("Competitie"),
 });
 
+export const statusEnum = pgEnum("status", ["Beschikbaar", "Niet beschikbaar", "Geblesseerd"]);
 
+export const availabilities = pgTable("availabilities", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  game_id: uuid("game_id").notNull(),
+  user_id: uuid("user_id").notNull(),
+  status: statusEnum("status").default("Beschikbaar"),
+});
+
+export const gamesRelations = relations(games, ({ many }) => ({
+	availabilities: many(availabilities),
+}));
+
+export const availabilitiesRelations = relations(availabilities, ({ one }) => ({
+	author: one(games, {
+		fields: [availabilities.game_id],
+		references: [games.id],
+	}),
+}));
