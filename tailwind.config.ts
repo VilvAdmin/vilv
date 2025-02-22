@@ -14,6 +14,8 @@ export default {
   		},
   		colors: {
   			vilvBlue: '#32329f',
+			vilvGreen: '#329f32',
+			vilvRed: '#9f3232',
   			vilvLightBlue: 'rgba(50, 50, 159, 0.15)',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

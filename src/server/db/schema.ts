@@ -25,11 +25,10 @@ export const typeEnum = pgEnum("type", ["Competitie", "Beker", "Vriendschappelij
 export const games = pgTable("games", {
   id: integer("id").notNull(),
   date: date("date").notNull(),
-  time: time("time").notNull(),
+  hour: time("hour").notNull(),
   home_team: varchar("home_team", { length: 255 }).notNull(),
   away_team: varchar("away_team", { length: 255 }).notNull(),
   type: typeEnum("type").notNull().default("Competitie"),
-  score: varchar("score", { length: 10 }).default(sql`null`),
 });
 
 
