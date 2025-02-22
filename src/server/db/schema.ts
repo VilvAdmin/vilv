@@ -35,8 +35,8 @@ export const statusEnum = pgEnum("status", ["Beschikbaar", "Niet beschikbaar", "
 export const availabilities = pgTable("availabilities", {
   id: uuid("id").defaultRandom().primaryKey(),
   game_id: uuid("game_id").notNull(),
-  user_id: uuid("user_id").notNull(),
-  status: statusEnum("status").default("Beschikbaar"),
+  user_id: varchar("user_id", { length: 255 }).notNull(),
+  status: statusEnum("status"),
 });
 
 export const gamesRelations = relations(games, ({ many }) => ({
