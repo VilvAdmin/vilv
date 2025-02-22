@@ -1,17 +1,21 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "~/components/ui/table";
 import { db } from "~/server/db";
+import { asc } from 'drizzle-orm';
 import { games } from "~/server/db/schema";
-import dummydata from 'data-input.json'
+import AddGameButton from "./addGameButton";
+//import dummydata from 'data-input.json'
 
 
 export default async function Availabilities() {
-  const allGames = await db.select().from(games);
+  const allGames = await db.query.games.findMany(
+    { orderBy: [asc(games.date)] }
+  )
 
   return (
     <>
     <div className="flex justify-between items-center pb-4">
       <h1 className="text-vilvBlue text-xl font-semibold pb-4">Inschrijven op wedstrijden</h1>
-      <button className="bg-vilvGreen text-white p-2 rounded-md">Wedstrijd toevoegen</button>
+      <AddGameButton />
     </div>
     <Table>
       <TableHeader>
@@ -29,7 +33,7 @@ export default async function Availabilities() {
         {allGames?.map((game) => (
         <TableRow key={game.id}>
           <TableCell>{game.date}</TableCell>
-          <TableCell>{game.hour}</TableCell>
+          <TableCell>{game.time.slice(0,5)}</TableCell>
           <TableCell>{game.home_team}</TableCell>
           <TableCell>{game.away_team}</TableCell>
           <TableCell>{game.type}</TableCell>

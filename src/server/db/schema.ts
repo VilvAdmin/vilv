@@ -1,15 +1,12 @@
 // Example model schema from the Drizzle docs
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
-import { sql } from "drizzle-orm";
 import {
   date,
-  index,
-  integer,
   pgEnum,
   pgTable,
   time,
-  timestamp,
+  uuid,
   varchar,
 } from "drizzle-orm/pg-core";
 
@@ -23,9 +20,9 @@ import {
 export const typeEnum = pgEnum("type", ["Competitie", "Beker", "Vriendschappelijk"]);
 
 export const games = pgTable("games", {
-  id: integer("id").notNull(),
+  id: uuid("id").defaultRandom().primaryKey(),
   date: date("date").notNull(),
-  hour: time("hour").notNull(),
+  time: time("time").notNull(),
   home_team: varchar("home_team", { length: 255 }).notNull(),
   away_team: varchar("away_team", { length: 255 }).notNull(),
   type: typeEnum("type").notNull().default("Competitie"),
