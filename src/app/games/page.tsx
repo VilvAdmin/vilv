@@ -13,10 +13,7 @@ export default async function Availabilities() {
 
   return (
     <>
-    <div className="flex justify-between items-center pb-4">
-      <h1 className="text-vilvBlue text-xl font-semibold pb-4">Inschrijven op wedstrijden</h1>
-      <AddGameButton />
-    </div>
+    <AddGameButton />
     <Table>
       <TableHeader>
         <TableRow>
