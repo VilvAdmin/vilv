@@ -1,7 +1,6 @@
 // Example model schema from the Drizzle docs
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
-import exp from "constants";
 import { relations } from "drizzle-orm";
 import {
   date,

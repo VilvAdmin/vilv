@@ -10,7 +10,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select"
 import { useForm } from "react-hook-form"
 
-type Game = {
+type GameForm = {
     date: Date;
     time: string;
     home_team: string;
@@ -19,7 +19,7 @@ type Game = {
   };
 
 export default function GameForm() {
-  const form = useForm<Game>({
+  const form = useForm<GameForm>({
     defaultValues: {
       date: new Date(),
       time: "",
@@ -29,8 +29,7 @@ export default function GameForm() {
     },
   })
 
-  const onSubmit = async (data: any) => {
-    console.log(data)
+  const onSubmit = async (data: GameForm) => {
     try {
         const res = await fetch('/api/games', {
           method: 'POST',
