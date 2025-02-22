@@ -5,14 +5,14 @@ import { games, availabilities } from '~/server/db/schema';
 
 interface RouteParams {
     params: {
-      userId: string;
+      id: string;
     };
   }
 
 export async function GET(request: Request, { params }: RouteParams) {
-    const { userId } = params;
+    const { id } = params;
 
-    if (!userId) {
+    if (!id) {
         return NextResponse.json({ error: 'Missing userId' }, { status: 400 });
     }
 
@@ -21,7 +21,7 @@ export async function GET(request: Request, { params }: RouteParams) {
         .select()
         .from(games)
         .leftJoin(availabilities, eq(games.id, availabilities.game_id))
-        .where(eq(availabilities.user_id, userId));
+        .where(eq(availabilities.user_id, id));
 
         return NextResponse.json(myGames);
     }
