@@ -3,11 +3,14 @@ import { db } from '~/server/db';
 import { eq } from 'drizzle-orm';
 import { games, availabilities } from '~/server/db/schema';
 
+interface RouteParams {
+    params: {
+      userId: string;
+    };
+  }
 
-export async function GET(request: Request, { params }: { params: { userId: string } }) {
-    const body = await request.json();
-    console.log('Received body:', body); 
-    const { userId } = body;
+export async function GET(request: Request, { params }: RouteParams) {
+    const { userId } = params;
 
     if (!userId) {
         return NextResponse.json({ error: 'Missing userId' }, { status: 400 });
