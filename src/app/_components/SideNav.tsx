@@ -21,14 +21,13 @@ export function SideNav() {
         <a href="/stats-season">Statistieken seizoen</a>
         <a href="/stats-historical">Statistieken sinds 2002</a>
         <p className="text-vilvBlue font-semibold pt-4">Leden</p>
-        <a href="/availabilities">Inschrijven</a>
+        <a href="/games">Inschrijven</a>
       </>
       }
       {isAdmin && 
       <>
         <p className="text-vilvBlue font-semibold pt-4">Admin</p>
         <a href="/players">Spelers</a>
-        <a href="/games">Wedstrijden</a>
       </>
       }
     </nav>
