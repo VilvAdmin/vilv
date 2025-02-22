@@ -21,7 +21,10 @@ export default async function Games({ params }: GameProps) {
   
     return (
       <>
+      <div className="flex justify-between items-center pb-4">
       <h1 className="text-vilvBlue text-xl font-semibold pb-4">Wedstrijddetails</h1>
+      <button className="bg-vilvGreen text-white p-2 rounded-md">Aanpassen</button>
+      </div>
       <h2 className="text-vilvBlue text-lg font-semibold pb-4">Gegevens</h2>
       <div className="grid grid-cols-[max-content_1fr] gap-2 pb-4">
         <p className="font-semibold">Datum</p><p>{thisGame?.date}</p>
