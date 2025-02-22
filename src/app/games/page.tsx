@@ -1,15 +1,21 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "~/components/ui/table";
 import { db } from "~/server/db";
-import { asc } from 'drizzle-orm';
-import { games } from "~/server/db/schema";
+import { asc, eq } from 'drizzle-orm';
+import { availabilities, games } from "~/server/db/schema";
 import AddGameButton from "./addGameButton";
+// import { useUser } from "@clerk/nextjs";
 //import dummydata from 'data-input.json'
 
 
 export default async function Games() {
+  // const { user } = useUser();
   const allGames = await db.query.games.findMany(
     { orderBy: [asc(games.date)] }
   )
+
+  // const allAvailabilities = await db.query.availabilities.findMany({
+  //   where: eq(availabilities.user_id, user?.id)
+  // })
 
   return (
     <>
@@ -23,7 +29,6 @@ export default async function Games() {
           <TableHead className="text-vilvBlue">Uitploeg</TableHead>
           <TableHead className="text-vilvBlue">Type wedstrijd</TableHead>
           <TableHead className="text-vilvBlue">Status</TableHead>
-          <TableHead className="text-vilvBlue">Bewerken</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -35,7 +40,6 @@ export default async function Games() {
           <TableCell>{game.away_team}</TableCell>
           <TableCell>{game.type}</TableCell>
           <TableCell></TableCell>
-          <TableCell><button>edit</button></TableCell>
         </TableRow>))}
       </TableBody>
     </Table>

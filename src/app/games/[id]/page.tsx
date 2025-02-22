@@ -3,8 +3,14 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~
 import { db } from "~/server/db";
 import { availabilities, games } from "~/server/db/schema";
 
+interface GameProps {
+  params: {
+    id: string;
+  }
+}
 
-export default async function Games({ params }: { params: { id: string } }) {
+
+export default async function Games({ params }: GameProps) {
     const { id } = params;
 
      const thisGame = await db.query.games.findFirst({
