@@ -1,8 +1,8 @@
 "use client";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
-import { Game } from "~/types";
+import { MyGame } from "~/types";
 
-export default async function GamesTable({ games }: { games: Game[] }) {
+export default function GamesTable( { games }: { games: MyGame[] }) {
 
     return (
       <Table>
@@ -18,13 +18,13 @@ export default async function GamesTable({ games }: { games: Game[] }) {
         </TableHeader>
         <TableBody>
           {games?.map((game) => (
-          <TableRow key={game.id} onClick={() => window.location.href = `/games/${game.id}`}>
-            <TableCell>{game.date}</TableCell>
-            <TableCell>{game.time.slice(0,5)}</TableCell>
-            <TableCell>{game.home_team}</TableCell>
-            <TableCell>{game.away_team}</TableCell>
-            <TableCell>{game.type}</TableCell>
-            <TableCell></TableCell>
+          <TableRow key={game.games.id} onClick={() => window.location.href = `/games/${game.games.id}`}>
+            <TableCell>{game.games.date}</TableCell>
+            <TableCell>{game.games.time.slice(0,5)}</TableCell>
+            <TableCell>{game.games.home_team}</TableCell>
+            <TableCell>{game.games.away_team}</TableCell>
+            <TableCell>{game.games.type}</TableCell>
+            <TableCell>{game.status}</TableCell>
           </TableRow>))}
         </TableBody>
       </Table>

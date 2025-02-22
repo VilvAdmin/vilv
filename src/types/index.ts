@@ -1,10 +1,15 @@
-export interface Game {
+  export interface Game {
     id: string;
     date: string;
     time: string;
     home_team: string;
     away_team: string;
     type: "Competitie" | "Beker" | "Vriendschappelijk";
+  }
+
+  export interface MyGame {
+    games: Game;
+    status: "Beschikbaar" | "Niet beschikbaar" | "Geblesseerd" | null;
   }
   
   export interface Availability {

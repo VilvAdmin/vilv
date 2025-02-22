@@ -19,6 +19,7 @@ export async function GET() {
   return NextResponse.json(allGames);
 }
 
+
 export async function POST(req: Request) {
   try {
     const body: unknown = await req.json();
