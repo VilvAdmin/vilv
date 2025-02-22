@@ -6,7 +6,7 @@ import AddGameButton from "./addGameButton";
 //import dummydata from 'data-input.json'
 
 
-export default async function Availabilities() {
+export default async function Games() {
   const allGames = await db.query.games.findMany(
     { orderBy: [asc(games.date)] }
   )
