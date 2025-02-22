@@ -4,13 +4,12 @@ import { db } from "~/server/db";
 import { availabilities, games } from "~/server/db/schema";
 
 interface GameProps {
-  params: {
-    id: string;
-  }
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 
-export default async function Games({ params }: GameProps) {
+export default async function Games({ params, searchParams }: GameProps) {
     const { id } = params;
 
      const thisGame = await db.query.games.findFirst({
@@ -33,7 +32,7 @@ export default async function Games({ params }: GameProps) {
         <p className="font-semibold">Type wedstrijd</p><p>{thisGame?.type}</p>
       </div>
       <h2 className="text-vilvBlue text-lg font-semibold pb-4">Selectie</h2>
-      {availabilitiesGame.length === 0 ? <p>Er zijn nog geen spelers ingeschreven voor deze wedstrijd</p> : 
+      {availabilitiesGame.length === 0 ? (<p>Er zijn nog geen spelers ingeschreven voor deze wedstrijd</p>) : (
       <Table>
       <TableHeader>
         <TableRow>
@@ -48,7 +47,7 @@ export default async function Games({ params }: GameProps) {
           <TableCell>{player.status}</TableCell>
         </TableRow>))}
       </TableBody>
-      </Table>}
+      </Table>)}
       </>
     );
   }
