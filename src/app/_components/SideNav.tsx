@@ -1,6 +1,7 @@
 "use client";
 
 import { useUser } from "@clerk/nextjs";
+import Link from "next/link";
 
 export function SideNav() {
   const { user } = useUser();
@@ -11,23 +12,23 @@ export function SideNav() {
   return (
     <nav className="flex items-end flex-col w-1/5 p-4 text-lg border-r border-vilvBlue">
       <p className="text-vilvBlue font-semibold">De Club</p>
-      <a href="/nieuws">Nieuws</a>
-      <a href="/integriteit">Club-API</a>
-      <a href="/locatie">Locatie</a>
-      <a href="/historiek">Historiek</a>
-      <a href="/sponsors">Sponsors</a>
+      <Link href="/nieuws">Nieuws</Link>
+      <Link href="/integriteit">Club-API</Link>
+      <Link href="/locatie">Locatie</Link>
+      <Link href="/historiek">Historiek</Link>
+      <Link href="/sponsors">Sponsors</Link>
       {!!user && <>
         <p className="text-vilvBlue font-semibold pt-4">Sportief</p>
-        <a href="/stats-season">Statistieken seizoen</a>
-        <a href="/stats-historical">Statistieken sinds 2002</a>
+        <Link href="/stats-season">Statistieken seizoen</Link>
+        <Link href="/stats-historical">Statistieken sinds 2002</Link>
         <p className="text-vilvBlue font-semibold pt-4">Leden</p>
-        <a href="/games">Inschrijven</a>
+        <Link href="/games">Inschrijven</Link>
       </>
       }
       {isAdmin && 
       <>
         <p className="text-vilvBlue font-semibold pt-4">Admin</p>
-        <a href="/players">Spelers</a>
+        <Link href="/players">Spelers</Link>
       </>
       }
     </nav>
