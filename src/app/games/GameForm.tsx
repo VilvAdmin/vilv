@@ -29,6 +29,16 @@ export default function GameForm() {
     },
   })
 
+  interface ApiError {
+    error: string;
+    status: number;
+  }
+  
+  interface ApiResponse {
+    message: string;
+    game: GameForm;
+  }
+
   const onSubmit = async (data: GameForm) => {
     try {
         const res = await fetch('/api/games', {
@@ -37,9 +47,9 @@ export default function GameForm() {
           body: JSON.stringify(data),
         });
   
-        const responseData = await res.json();
+        const responseData = await res.json() as ApiResponse | ApiError;
   
-        if (!res.ok) throw new Error(responseData.error || 'Failed to add game');
+        if (!res.ok) throw new Error('error' in responseData ? responseData.error : 'Failed to add game');
   
         form.reset();
       } catch (err: any) {
