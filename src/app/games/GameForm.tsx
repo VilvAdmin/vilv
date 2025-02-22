@@ -52,8 +52,8 @@ export default function GameForm() {
         if (!res.ok) throw new Error('error' in responseData ? responseData.error : 'Failed to add game');
   
         form.reset();
-      } catch (err: any) {
-        console.error('Failed to add game', err);
+      } catch (error: unknown) {
+        console.error('Failed to add game:', error);
       }
   }
 

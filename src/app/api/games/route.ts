@@ -21,7 +21,7 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    const body: unknown = await req.json();
     const result = gameSchema.safeParse(body);
 
     if (!result.success) {
@@ -30,7 +30,7 @@ export async function POST(req: Request) {
             { status: 400 }
         );
     }
-    
+
     const { date, time, home_team, away_team, type } = result.data;
 
     const newGame = await db.insert(games).values({ date, time, home_team, away_team, type }).returning();
