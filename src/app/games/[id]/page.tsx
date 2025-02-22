@@ -4,13 +4,12 @@ import { db } from "~/server/db";
 import { availabilities, games } from "~/server/db/schema";
 
 interface GameProps {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ id: string }>;
 }
 
 
-export default async function Games({ params, searchParams }: GameProps) {
-    const { id } = params;
+export default async function Games({ params }: GameProps) {
+    const { id } = await params;
 
      const thisGame = await db.query.games.findFirst({
         where: eq(games.id, id)
