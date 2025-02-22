@@ -1,6 +1,6 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { db } from "@/server/db";
-import { games } from "@/server/db/schema";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "~/components/ui/table";
+import { db } from "~/server/db";
+import { games } from "~/server/db/schema";
 import dummydata from 'data-input.json'
 
 
