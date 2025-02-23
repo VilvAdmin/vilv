@@ -1,6 +1,7 @@
 "use client";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
 import { MyGame } from "~/types";
+import StatusSelect from "./StatusSelect";
 
 export default function GamesTable( { games }: { games: MyGame[] }) {
 
@@ -24,7 +25,7 @@ export default function GamesTable( { games }: { games: MyGame[] }) {
             <TableCell>{game.games.home_team}</TableCell>
             <TableCell>{game.games.away_team}</TableCell>
             <TableCell>{game.games.type}</TableCell>
-            <TableCell>{game.status}</TableCell>
+            <TableCell><StatusSelect status={game.status} game_id={game.games.id}/></TableCell>
           </TableRow>))}
         </TableBody>
       </Table>
