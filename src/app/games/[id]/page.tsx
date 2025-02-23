@@ -2,6 +2,7 @@ import { eq } from "drizzle-orm";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
 import { db } from "~/server/db";
 import { availabilities, games } from "~/server/db/schema";
+import EditGameButton from "./editGameButton";
 
 interface GameProps {
   params: Promise<{ id: string }>;
@@ -21,14 +22,11 @@ export default async function Games({ params }: GameProps) {
   
     return (
       <>
-      <div className="flex justify-between items-center pb-4">
-      <h1 className="text-vilvBlue text-xl font-semibold pb-4">Wedstrijddetails</h1>
-      <button className="bg-vilvGreen text-white p-2 rounded-md">Aanpassen</button>
-      </div>
+      <EditGameButton />
       <h2 className="text-vilvBlue text-lg font-semibold pb-4">Gegevens</h2>
       <div className="grid grid-cols-[max-content_1fr] gap-2 pb-4">
         <p className="font-semibold">Datum</p><p>{thisGame?.date}</p>
-        <p className="font-semibold">Uur</p><p>{thisGame?.time}</p>
+        <p className="font-semibold">Uur</p><p>{thisGame?.time.slice(0,5)}</p>
         <p className="font-semibold">Thuisploeg</p><p>{thisGame?.home_team}</p>
         <p className="font-semibold">Uitploeg</p><p>{thisGame?.away_team}</p>
         <p className="font-semibold">Type wedstrijd</p><p>{thisGame?.type}</p>
