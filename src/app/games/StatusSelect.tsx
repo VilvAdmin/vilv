@@ -21,7 +21,8 @@ export default function StatusSelect( { game_id, status }: { game_id: string, st
           body: JSON.stringify({
               game_id: game_id,
               user_id: user?.id,
-              status: value
+              status: value,
+              player_name: user?.fullName ?? user?.username ?? user?.id
           }),
       });
     }
@@ -35,10 +36,12 @@ export default function StatusSelect( { game_id, status }: { game_id: string, st
         body: JSON.stringify({
             game_id: game_id,
             user_id: user?.id,
-            status: value
+            status: value,
+            player_name: user?.fullName ?? user?.username ?? user?.id
         }),
       });
-  }}
+    }
+  }
 
   return (
     <Select value={selectedStatus} onValueChange={(value) => handleStatusChange(value)}>

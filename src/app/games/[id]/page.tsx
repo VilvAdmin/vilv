@@ -16,7 +16,7 @@ export default async function Games({ params }: GameProps) {
         where: eq(games.id, id)
      })
 
-     const availabilitiesGame: { id: string; status: "Beschikbaar" | "Niet beschikbaar" | "Geblesseerd" | null; game_id: string; user_id: string; }[] = await db.query.availabilities.findMany({
+     const availabilitiesGame: { id: string; status: "Beschikbaar" | "Niet beschikbaar" | "Geblesseerd" | null; game_id: string; player_name: string; }[] = await db.query.availabilities.findMany({
         where: eq(availabilities.game_id, id)
      }) || [];
   
@@ -43,7 +43,7 @@ export default async function Games({ params }: GameProps) {
       <TableBody>
         {availabilitiesGame?.map((player) => (
         <TableRow key={player.id}>
-          <TableCell>{player.user_id}</TableCell>
+          <TableCell>{player.player_name}</TableCell>
           <TableCell>{player.status}</TableCell>
         </TableRow>))}
       </TableBody>

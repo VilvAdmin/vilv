@@ -36,6 +36,7 @@ export const availabilities = pgTable("availabilities", {
   game_id: uuid("game_id").notNull(),
   user_id: varchar("user_id", { length: 255 }).notNull(),
   status: statusEnum("status"),
+  player_name: varchar("player_name", { length: 255 }).notNull(),
 });
 
 export const gamesRelations = relations(games, ({ many }) => ({

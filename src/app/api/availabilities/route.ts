@@ -8,7 +8,8 @@ import { and, eq } from 'drizzle-orm';
 const availabilitiesSchema = z.object({
   game_id: z.string(),
   user_id: z.string(),
-  status: z.enum(['Beschikbaar', 'Niet beschikbaar', 'Geblesseerd'])
+  status: z.enum(['Beschikbaar', 'Niet beschikbaar', 'Geblesseerd']),
+  player_name: z.string().min(1)
 });
 
 type AvailabilitiesInput = z.infer<typeof availabilitiesSchema>;
@@ -27,11 +28,11 @@ export async function POST(req: Request) {
         );
     }
 
-    const { game_id, user_id, status } = result.data;
+    const { game_id, user_id, status, player_name } = result.data;
 
-    const newAvailability = await db.insert(availabilities).values({ game_id, user_id, status }).returning();
+    const newAvailability = await db.insert(availabilities).values({ game_id, user_id, status, player_name }).returning();
 
-    return NextResponse.json({ status: 201 });
+    return NextResponse.json(newAvailability, { status: 201 });
   } catch (error) {
     console.error('Error adding game:', error);
     return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
@@ -62,7 +63,6 @@ export async function PATCH(req: Request) {
                 )
             )
             .returning();
-  
   
       return NextResponse.json({ status: 201 });
     } catch (error) {
