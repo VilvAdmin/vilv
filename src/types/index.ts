@@ -23,3 +23,10 @@
     params: T;
     searchParams: Record<string, string | string[] | undefined>;
   }
+
+  export interface Player {
+    id: string;
+    fullName: string;
+    primaryEmailAddress: string;
+    roles: string;
+  }

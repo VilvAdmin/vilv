@@ -4,7 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
 
 export function SideNav() {
-  const { user } = useUser();
+  const { user, isSignedIn } = useUser();
 
   const userRoles = user?.publicMetadata?.roles as string[] | undefined;
   const isAdmin = userRoles?.includes("admin");
@@ -18,7 +18,7 @@ export function SideNav() {
       <Link href="/locatie">Locatie</Link>
       <Link href="/historiek">Historiek</Link>
       <Link href="/sponsors">Sponsors</Link>
-      {!!user && <>
+      {isSignedIn && <>
         <p className="text-vilvBlue font-semibold pt-4">Sportief</p>
         <Link href="/stats-season">Statistieken seizoen</Link>
         <Link href="/stats-historical">Statistieken sinds 2002</Link>
