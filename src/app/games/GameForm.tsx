@@ -11,21 +11,25 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~
 import { useForm } from "react-hook-form"
 
 type GameForm = {
-    date: Date;
-    time: string;
-    home_team: string;
-    away_team: string;
-    type: 'Competitie' | 'Beker' | 'Vriendschappelijk';
-  };
+  date: Date;
+  time: string;
+  home_team: string;
+  away_team: string;
+  type: 'Competitie' | 'Beker' | 'Vriendschappelijk';
+};
 
-export default function GameForm() {
+interface GameFormProps {
+  game?: GameForm;
+}
+
+export default function GameForm(game?: GameFormProps) {
   const form = useForm<GameForm>({
     defaultValues: {
-      date: new Date(),
-      time: "",
-      home_team: "",
-      away_team: "",
-      type: "Competitie",
+      date: game?.game?.date ?? new Date(),
+      time: game?.game?.time ?? "",
+      home_team: game?.game?.home_team ?? "",
+      away_team: game?.game?.away_team ?? "",
+      type: game?.game?.type ?? "Competitie",
     },
   })
 
