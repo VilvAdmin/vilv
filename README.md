@@ -7,9 +7,10 @@
 - [ ] Logo issue in game details page
 - [ ] Add player + player overview
 - [ ] Edit API / mgmt for admin
+- [ ] Add from RFBA
 - [ ] Optimize images
 - [ ] Mobile resolutions
-- [ ] Add from RFBA
+- [ ] Refactor out Clerk (?)
 - [ ] Calendar export
 - [ ] Player details page (?)
 - [ ] Analytics (?)
