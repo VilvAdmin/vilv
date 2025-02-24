@@ -8,9 +8,9 @@
 - [ ] Add player + player overview
 - [ ] Edit API / mgmt for admin
 - [ ] Add from RFBA
-- [ ] Optimize images
-- [ ] Mobile resolutions
-- [ ] Refactor out Clerk (?)
 - [ ] Calendar export
+- [ ] Mobile resolutions
+- [ ] Optimize images
+- [ ] Refactor out Clerk (?)
 - [ ] Player details page (?)
 - [ ] Analytics (?)
