@@ -1,11 +1,11 @@
 # Vilv
 
 ## TODO
-- [x] Make it deploy (Vercel)
-- [x] Static pages
-- [ ] Setup database (Vercel Postgres)
-- [ ] Admin page: players
-- [ ] Admin page: games
-- [ ] Player page: availability
+- [ ] Logo issue in game details page
+- [ ] Add player + player overview
 - [ ] Optimize images
+- [ ] Mobile resolutions
+- [ ] Add from RFBA
+- [ ] Calendar export
+- [ ] Player details page (?)
 - [ ] Analytics (?)
