@@ -6,6 +6,7 @@
 - [ ] Sidenav reloads too much
 - [ ] Logo issue in game details page
 - [ ] Add player + player overview
+- [ ] Edit API / mgmt for admin
 - [ ] Optimize images
 - [ ] Mobile resolutions
 - [ ] Add from RFBA
