@@ -4,22 +4,30 @@ import { db } from "~/server/db";
 import { availabilities, games } from "~/server/db/schema";
 import EditGameButton from "./editGameButton";
 import { Game } from "~/types";
+import { v4 as uuidv4, validate as isUuid } from 'uuid';
 
 interface GameProps {
   params: Promise<{ id: string }>;
 }
 
-
 export default async function Games({ params }: GameProps) {
   const { id } = await params;
+  if (!isUuid(id)) {
+    return (
+      <div>
+        <h1>Invalid Game ID</h1>
+        <p>The provided game ID is not valid.</p>
+      </div>
+    );
+  }
 
-    const thisGame: Game | undefined = await db.query.games.findFirst({
-      where: eq(games.id, id)
-    })
+  const thisGame: Game | undefined = await db.query.games.findFirst({
+    where: eq(games.id, id)
+  })
 
-    const availabilitiesGame: { id: string; status: "Beschikbaar" | "Niet beschikbaar" | "Geblesseerd" | null; game_id: string; player_name: string; }[] = await db.query.availabilities.findMany({
-      where: eq(availabilities.game_id, id)
-    }) || [];
+  const availabilitiesGame: { id: string; status: "Beschikbaar" | "Niet beschikbaar" | "Geblesseerd" | null; game_id: string; player_name: string; }[] = await db.query.availabilities.findMany({
+    where: eq(availabilities.game_id, id)
+  }) || [];
 
   return (
     <>

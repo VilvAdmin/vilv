@@ -1,10 +1,10 @@
 # Vilv
 
 ## TODO
-- [ ] Reload for status change issue
-- [ ] Edit game functionality
+- [x] Reload for status change issue
+- [x] Edit game functionality
 - [ ] Sidenav reloads too much
-- [ ] Logo issue in game details page
+- [x] Logo issue in game details page
 - [ ] Add player + player overview
 - [ ] Edit API / mgmt for admin
 - [ ] Add from RFBA
