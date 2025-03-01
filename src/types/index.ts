@@ -30,3 +30,51 @@
     primaryEmailAddress: string;
     roles: string;
   }
+
+  export type GameImport = {
+    id: string,
+    startTime: string,
+    channel: string,
+    homeTeam: {
+      id: string,
+      name: string,
+      clubId: string,
+      logo: string,
+      __typename: string,
+    },
+    awayTeam: {
+      id: string,
+      name: string,
+      clubId: string,
+      logo: string,
+      __typename: string,
+    },
+    outcome: {
+        status: string,
+        homeTeamGoals: number,
+        homeTeamPenaltiesScored: number | null,
+        awayTeamGoals: number,
+        awayTeamPenaltiesScored: number | null,
+        subscript: null,
+        __typename: string
+    },
+    series: {
+        id: string,
+        name: string,
+        __typename: string
+    },
+    officials: [
+      {
+        lastName: string | null,
+        firstName: string | null,
+        status: string,
+        personAssigned: boolean,
+        __typename: string,
+      }
+    ],
+    showScore: boolean,
+    state: string,
+    startDateTimeInThePassed: boolean,
+    ageGroup: string,
+    __typename: string,
+}

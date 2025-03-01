@@ -1,18 +1,13 @@
-"use client";
+import { GameImport } from "~/types";
+import GamesImportForm from "./GamesImportForm";
+import { fetchTeamCalendar } from "~/lib/fetchTeamCalendar";
 
-import GamesImportTable from "./GamesImportTable";
-import ImportGameButton from "./importGameButton";
-
-export default function AddBulk() {
+export default async function AddBulk() {
+  const vilvId = "310028"
+  const data: GameImport[] = await fetchTeamCalendar(vilvId);
   
-  const handleClick = () => {
-    console.log('clicked');
+  if (!data) {
+    return <h1>Geen wedstrijden gevonden</h1>
   }
-
-  return (
-    <>
-    <ImportGameButton handleClick={handleClick}/>
-    <GamesImportTable />
-    </>
-  );
+  return <GamesImportForm data={data} />;
 }

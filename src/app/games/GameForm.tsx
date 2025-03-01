@@ -10,7 +10,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select"
 import { useForm } from "react-hook-form"
 
-type GameForm = {
+export type GameForm = {
   date: Date;
   time: string;
   home_team: string;
@@ -48,7 +48,7 @@ export default function GameForm(game?: GameFormProps) {
         const res = await fetch('/api/games', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
+          body: JSON.stringify([data]),
         });
   
         const responseData = await res.json() as ApiResponse | ApiError;

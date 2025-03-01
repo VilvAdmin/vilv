@@ -12,6 +12,8 @@ const gameSchema = z.object({
   type: z.enum(['Competitie', 'Beker', 'Vriendschappelijk'])
 });
 
+const gamesSchema = z.array(gameSchema);
+
 type GameInput = z.infer<typeof gameSchema>;
 
 export async function GET() {
@@ -23,7 +25,7 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body: unknown = await req.json();
-    const result = gameSchema.safeParse(body);
+    const result = gamesSchema.safeParse(body);
 
     if (!result.success) {
         return NextResponse.json(
@@ -32,9 +34,7 @@ export async function POST(req: Request) {
         );
     }
 
-    const { date, time, home_team, away_team, type } = result.data;
-
-    const newGame = await db.insert(games).values({ date, time, home_team, away_team, type }).returning();
+    const newGame = await db.insert(games).values(result.data).returning();
 
     return NextResponse.json(newGame[0], { status: 201 });
   } catch (error) {
