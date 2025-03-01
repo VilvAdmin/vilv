@@ -3,7 +3,7 @@ import { useUser } from "@clerk/nextjs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "~/components/ui/dialog";
 import GameForm from "../GameForm";
 import { Game } from "~/types";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface EditGameButtonProps {
   game: Game;
@@ -11,6 +11,7 @@ interface EditGameButtonProps {
 
 export default function EditGameButton({ game }: EditGameButtonProps) {
   const { user } = useUser();
+  const router = useRouter();
   
   const userRoles = user?.publicMetadata?.roles as string[] | undefined;
   const isAdmin = userRoles?.includes("admin");
@@ -20,7 +21,12 @@ export default function EditGameButton({ game }: EditGameButtonProps) {
       const res = await fetch(`/api/games/${game.id}`, {
         method: 'DELETE',
       }); 
-      redirect('/games');
+      
+      if (res.ok) {
+        router.push('/games');
+      } else {
+        console.error('Failed to delete game:', res.statusText);
+      }
       
     } catch (error: unknown) {
       console.error('Failed to delete game:', error);

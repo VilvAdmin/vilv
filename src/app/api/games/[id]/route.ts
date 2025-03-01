@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 import { db } from '~/server/db';
-import { games } from '~/server/db/schema';
+import { availabilities, games } from '~/server/db/schema';
 
 export async function DELETE(req: Request) {
     const url = new URL(req.url);
@@ -13,6 +13,8 @@ export async function DELETE(req: Request) {
             { status: 400 }
         );
     }
+
+    const deleteAvailabilities = await db.delete(availabilities).where(eq(availabilities.game_id, id));
     const deleteGame = await db.delete(games).where(eq(games.id, id));
 
     return NextResponse.json({ status: 204 });

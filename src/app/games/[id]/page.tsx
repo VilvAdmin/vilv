@@ -39,7 +39,8 @@ export default async function Games({ params }: GameProps) {
 
   return (
     <>
-    {thisGame ? <EditGameButton game={thisGame} />: null}
+    {thisGame ? (<>
+    <EditGameButton game={thisGame} />
     <h2 className="text-vilvBlue text-lg font-semibold pb-4">Gegevens</h2>
     <div className="grid grid-cols-[max-content_1fr] gap-2 pb-4">
       <p className="font-semibold">Datum</p><p>{thisGame?.date}</p>
@@ -65,6 +66,12 @@ export default async function Games({ params }: GameProps) {
       </TableRow>))}
     </TableBody>
     </Table>)}
+    </>
+    ) : (
+    <div>
+    <h1>Invalid Game ID</h1>
+    <p>The provided game ID is not valid.</p>
+    </div>)}
     </>
   );
 }
