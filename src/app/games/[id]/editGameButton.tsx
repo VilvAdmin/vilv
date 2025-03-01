@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import GameForm from "../GameForm";
 import { Game } from "~/types";
 import { useRouter } from "next/navigation";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 interface EditGameButtonProps {
   game: Game;
@@ -39,7 +40,23 @@ export default function EditGameButton({ game }: EditGameButtonProps) {
 
       {isAdmin &&
       <div className="flex space-x-4">
-        <button className="bg-vilvRed text-white p-2 rounded-md" onClick={deleteGame}>Verwijderen</button>
+        <Dialog>
+          <DialogTrigger asChild>
+          <button className="bg-vilvRed text-white p-2 rounded-md">Verwijderen</button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="text-vilvBlue">Wedstrijd Verwijderen</DialogTitle>
+            </DialogHeader>
+            <p>Weet je zeker dat je deze wedstrijd wil verwijderen? We kunnen dit niet ongedaan maken.</p>
+            <div className="flex space-x-4 justify-end">
+              <button className="bg-vilvRed text-white p-2 rounded-md" onClick={deleteGame}>Verwijder</button>
+              <DialogClose asChild>
+              <button className="bg-vilvGreen text-white p-2 rounded-md">Annuleer</button>
+              </DialogClose>
+            </div>
+          </DialogContent>
+        </Dialog>
         <Dialog>
           <DialogTrigger asChild>
           <button className="bg-vilvGreen text-white p-2 rounded-md">Aanpassen</button>
