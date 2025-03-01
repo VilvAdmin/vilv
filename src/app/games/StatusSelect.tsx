@@ -41,7 +41,7 @@ export default function StatusSelect( { game_id, status }: { game_id: string, st
 
   return (
     <Select value={selectedStatus} onValueChange={(value) => handleStatusChange(value)} disabled={isLoading}>
-      <SelectTrigger className="w-full min-w-fit">
+      <SelectTrigger className="w-full min-w-40">
         <SelectValue>{selectedStatus}</SelectValue>
       </SelectTrigger>
       <SelectContent>
