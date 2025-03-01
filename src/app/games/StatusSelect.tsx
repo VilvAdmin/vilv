@@ -9,28 +9,39 @@ export default function StatusSelect( { game_id, status }: { game_id: string, st
   const { user } = useUser();
   const statusValues = Object.values(statusEnum.enumValues);
   const [selectedStatus, setSelectedStatus] = useState(status ?? "");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleStatusChange = async (value: string) => {
-    setSelectedStatus(value);
+    setIsLoading(true);
 
-    const method = status === null ? 'POST' : 'PATCH';
-    const response = await fetch('/api/availabilities', {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        game_id,
-        user_id: user?.id,
-        status: value,
-        player_name: user?.fullName ?? user?.username ?? user?.id
-      }),
-    });
+    try {
+      const method = selectedStatus === "" ? 'POST' : 'PATCH';
+      const response = await fetch('/api/availabilities', {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          game_id,
+          user_id: user?.id,
+          status: value,
+          player_name: user?.fullName ?? user?.username ?? user?.id
+        }),
+      });
+    }
+    catch (error) {
+      console.error('Error updating availability:', error);
+      setSelectedStatus(status ?? "");
+    }
+    finally {
+      setSelectedStatus(value);
+      setIsLoading(false);
+    }
   }
 
   return (
-    <Select value={selectedStatus} onValueChange={(value) => handleStatusChange(value)}>
-      <SelectTrigger className="w-full">
+    <Select value={selectedStatus} onValueChange={(value) => handleStatusChange(value)} disabled={isLoading}>
+      <SelectTrigger className="w-full min-w-fit">
         <SelectValue>{selectedStatus}</SelectValue>
       </SelectTrigger>
       <SelectContent>

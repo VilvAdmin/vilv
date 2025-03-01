@@ -2,8 +2,10 @@
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
 import { MyGame } from "~/types";
 import StatusSelect from "./StatusSelect";
+import { useRouter } from "next/navigation";
 
 export default function GamesTable( { games }: { games: MyGame[] }) {
+    const router = useRouter();
 
     return (
       <Table>
@@ -19,7 +21,7 @@ export default function GamesTable( { games }: { games: MyGame[] }) {
         </TableHeader>
         <TableBody>
           {games?.map((game) => (
-          <TableRow key={game.games.id} onClick={() => window.location.href = `/games/${game.games.id}`}>
+          <TableRow key={game.games.id} onClick={() =>  router.push(`/games/${game.games.id}`)}>
             <TableCell>{game.games.date}</TableCell>
             <TableCell>{game.games.time.slice(0,5)}</TableCell>
             <TableCell>{game.games.home_team}</TableCell>
