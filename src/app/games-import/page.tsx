@@ -1,3 +1,5 @@
+"use client";
+
 import GamesImportTable from "./GamesImportTable";
 import ImportGameButton from "./importGameButton";
 

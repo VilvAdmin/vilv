@@ -1,7 +1,5 @@
-
-import { Input } from "~/components/ui/input";
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
-import TypeSelect from "./TypeSelect";
+import { Table, TableHeader, TableRow, TableHead, TableBody } from "~/components/ui/table";
+import GameImportRow from "./GameImportRow";
 
 const fetchTeamCalendar = async (vilvId: string) => {
   const response = await fetch('https://datalake-prod2018.rbfa.be/graphql', {
@@ -93,13 +91,16 @@ export default async function GamesImportTable() {
         </TableHeader>
         <TableBody>
           {data?.map((game: GameImport) => (
-          <TableRow key={game.id} >
-            <TableCell>{game.startTime.slice(0,10)}</TableCell>
-            <TableCell>{game.startTime.slice(11,16)}</TableCell>
-            <TableCell><Input defaultValue={game.homeTeam.name} /></TableCell>
-            <TableCell><Input defaultValue={game.awayTeam.name} /></TableCell>
-            <TableCell><TypeSelect status={game.series.name.includes("Beker") ? "Beker" : "Competitie"} /></TableCell>
-          </TableRow>))}
+            <GameImportRow 
+              key={game.id} 
+              id={game.id} 
+              date={game.startTime.slice(0,10)}
+              time={game.startTime.slice(11,16)}
+              homeTeam={game.homeTeam.name}
+              awayTeam={game.awayTeam.name}
+              type={game.series.name.includes("Beker") ? "Beker" : game.series.name == "Recrea" ? "Vriendschappelijk" : "Competitie"}
+            />
+          ))}
         </TableBody>
       </Table>
     );
