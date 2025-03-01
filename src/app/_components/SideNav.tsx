@@ -26,12 +26,12 @@ export function SideNav() {
         <Link href="/games">Inschrijven</Link>
       </>
       }
-      {isAdmin && 
+      {/* {isAdmin && 
       <>
         <p className="text-vilvBlue font-semibold pt-4">Admin</p>
         <Link href="/players">Spelers</Link>
       </>
-      }
+      } */}
     </nav>
   )
 }
