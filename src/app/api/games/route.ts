@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { db } from '~/server/db';
 import { games } from '~/server/db/schema';
 import { z } from 'zod';
+import { auth, clerkClient } from '@clerk/nextjs/server';
 
 // Define a schema for request validation
 const gameSchema = z.object({
@@ -23,6 +24,28 @@ export async function GET() {
 
 
 export async function POST(req: Request) {
+  const { userId } = await auth();
+
+  // Check if user is authenticated
+  if (!userId) {
+      return NextResponse.json(
+          { error: 'Unauthorized', details: 'You must be logged in' },
+          { status: 401 }
+      );
+  }
+
+  // Get user's roles from Clerk
+  const client = await clerkClient();
+  const user = await client.users.getUser(userId);
+  const isAdmin = (user.publicMetadata as { roles: string[] }).roles.includes('admin');
+
+  // Check if user is admin
+  if (!isAdmin) {
+      return NextResponse.json(
+          { error: 'Forbidden', details: 'Admin access required' },
+          { status: 403 }
+      );
+  }
   try {
     const body: unknown = await req.json();
     const result = gamesSchema.safeParse(body);

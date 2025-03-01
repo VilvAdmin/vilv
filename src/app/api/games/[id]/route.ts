@@ -1,9 +1,33 @@
-import { eq } from 'drizzle-orm';
+import { auth, clerkClient } from '@clerk/nextjs/server';
+import { eq, is } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 import { db } from '~/server/db';
 import { availabilities, games } from '~/server/db/schema';
 
 export async function DELETE(req: Request) {
+    const { userId } = await auth();
+
+    // Check if user is authenticated
+    if (!userId) {
+        return NextResponse.json(
+            { error: 'Unauthorized', details: 'You must be logged in' },
+            { status: 401 }
+        );
+    }
+
+    // Get user's roles from Clerk
+    const client = await clerkClient();
+    const user = await client.users.getUser(userId);
+    const isAdmin = (user.publicMetadata as { roles: string[] }).roles.includes('admin');
+
+    // Check if user is admin
+    if (!isAdmin) {
+        return NextResponse.json(
+            { error: 'Forbidden', details: 'Admin access required' },
+            { status: 403 }
+        );
+    }
+
     const url = new URL(req.url);
     const id = url.pathname.split('/').pop();
   try {

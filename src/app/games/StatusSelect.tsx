@@ -23,7 +23,6 @@ export default function StatusSelect( { game_id, status }: { game_id: string, st
         },
         body: JSON.stringify({
           game_id,
-          user_id: user?.id,
           status: value,
           player_name: user?.fullName ?? user?.username ?? user?.id
         }),

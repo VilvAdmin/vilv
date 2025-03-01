@@ -3,6 +3,7 @@ import { db } from '~/server/db';
 import { availabilities } from '~/server/db/schema';
 import { z } from 'zod';
 import { and, eq } from 'drizzle-orm';
+import { auth } from '@clerk/nextjs/server';
 
 // Define a schema for request validation
 const availabilitiesSchema = z.object({
@@ -17,6 +18,16 @@ type AvailabilitiesInput = z.infer<typeof availabilitiesSchema>;
 
 
 export async function POST(req: Request) {
+  const { userId } = await auth();
+
+  // Check if user is authenticated
+  if (!userId) {
+      return NextResponse.json(
+          { error: 'Unauthorized', details: 'You must be logged in' },
+          { status: 401 }
+      );
+  }
+
   try {
     const body: unknown = await req.json();
     const result = availabilitiesSchema.safeParse(body);
@@ -28,9 +39,9 @@ export async function POST(req: Request) {
         );
     }
 
-    const { game_id, user_id, status, player_name } = result.data;
+    const { game_id, status, player_name } = result.data;
 
-    const newAvailability = await db.insert(availabilities).values({ game_id, user_id, status, player_name }).returning();
+    const newAvailability = await db.insert(availabilities).values({ game_id, user_id: userId, status, player_name }).returning();
 
     return NextResponse.json(newAvailability, { status: 201 });
   } catch (error) {
@@ -40,6 +51,15 @@ export async function POST(req: Request) {
 }
 
 export async function PATCH(req: Request) {
+  const { userId } = await auth();
+
+  // Check if user is authenticated
+  if (!userId) {
+      return NextResponse.json(
+          { error: 'Unauthorized', details: 'You must be logged in' },
+          { status: 401 }
+      );
+  }
     try {
       const body: unknown = await req.json();
       const result = availabilitiesSchema.safeParse(body);
@@ -51,7 +71,7 @@ export async function PATCH(req: Request) {
           );
       }
   
-      const { game_id, user_id, status } = result.data;
+      const { game_id, status } = result.data;
 
       const updatedAvailability = await db
             .update(availabilities)
@@ -59,7 +79,7 @@ export async function PATCH(req: Request) {
             .where(
                 and(
                     eq(availabilities.game_id, game_id),
-                    eq(availabilities.user_id, user_id)
+                    eq(availabilities.user_id, userId)
                 )
             )
             .returning();
