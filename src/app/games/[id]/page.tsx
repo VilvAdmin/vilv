@@ -5,6 +5,8 @@ import { availabilities, games } from "~/server/db/schema";
 import EditGameButton from "./editGameButton";
 import { Game } from "~/types";
 import { v4 as uuidv4, validate as isUuid } from 'uuid';
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 interface GameProps {
   params: Promise<{ id: string }>;
@@ -12,6 +14,12 @@ interface GameProps {
 
 export default async function Games({ params }: GameProps) {
   const { id } = await params;
+  const { userId } = await auth()
+
+  if (!userId) {
+    redirect('/');
+  }
+  
   if (!isUuid(id)) {
     return (
       <div>
