@@ -8,7 +8,6 @@ import { auth } from '@clerk/nextjs/server';
 // Define a schema for request validation
 const availabilitiesSchema = z.object({
   game_id: z.string(),
-  user_id: z.string(),
   status: z.enum(['Beschikbaar', 'Niet beschikbaar', 'Geblesseerd']),
   player_name: z.string().min(1)
 });
@@ -31,6 +30,7 @@ export async function POST(req: Request) {
   try {
     const body: unknown = await req.json();
     const result = availabilitiesSchema.safeParse(body);
+
 
     if (!result.success) {
         return NextResponse.json(
