@@ -2,7 +2,7 @@ import { db } from "~/server/db";
 import { asc, eq, and } from 'drizzle-orm';
 import { availabilities, games } from "~/server/db/schema";
 import { auth } from '@clerk/nextjs/server'
-import AddGameButton from "./addGameButton";
+import GamesHeader from "./GamesHeader";
 import GamesTable from "./GamesTable";
 import { redirect } from "next/navigation";
 //import dummydata from 'data-input.json'
@@ -21,7 +21,7 @@ export default async function Games() {
   return (
     <>
     
-    <AddGameButton />
+    <GamesHeader games={allGames} />
     <GamesTable games={allGames} />
     </>
   );

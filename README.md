@@ -6,7 +6,7 @@
 - [x] Sidenav reloads when opening game details
 - [x] Logo issue in game details page
 - [x] Add from RFBA
-- [ ] Calendar export
+- [x] Calendar export
 - [ ] Mobile resolutions
 - [ ] Edit API / mgmt for admin
 - [ ] Add player + player overview

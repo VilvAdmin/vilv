@@ -4,7 +4,7 @@ import { MyGame } from "~/types";
 import StatusSelect from "./StatusSelect";
 import { useRouter } from "next/navigation";
 
-export default function GamesTable( { games }: { games: MyGame[] }) {
+export default function GamesTable({ games }: { games: MyGame[] }) {
     const router = useRouter();
 
     return (
