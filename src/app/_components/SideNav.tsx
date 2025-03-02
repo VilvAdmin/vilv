@@ -2,6 +2,7 @@
 
 import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "~/components/ui/navigation-menu";
 
 export function SideNav() {
   const { user, isSignedIn } = useUser();
@@ -33,5 +34,57 @@ export function SideNav() {
       </>
       } */}
     </nav>
+  )
+}
+
+
+export function SideNavMobile() {
+  const { user, isSignedIn } = useUser();
+
+  const userRoles = user?.publicMetadata?.roles as string[] | undefined;
+  const isAdmin = userRoles?.includes("admin");
+
+  return (
+      <NavigationMenu>
+      <NavigationMenuList className="flex flex-row flex-wrap w-screen justify-center">
+        <NavigationMenuItem className="text-xl relative">
+          <NavigationMenuTrigger>De Club</NavigationMenuTrigger>
+          <NavigationMenuContent className="flex flex-col p-2 space-y-4">
+              <Link href="/nieuws">Nieuws</Link>
+              <Link href="/bestuur">Bestuur</Link>
+              <Link href="/integriteit">Club-API</Link>
+              <Link href="/locatie">Locatie</Link>
+              <Link href="/historiek">Historiek</Link>
+              <Link href="/sponsors">Sponsors</Link>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Sportief</NavigationMenuTrigger>
+          <NavigationMenuContent className="flex flex-col p-2 space-y-4">
+            <Link href="/stats-season" className="text-right">Statistieken seizoen</Link>
+            <Link href="/stats-historical" className="text-right">Statistieken sinds 2002</Link>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        {isSignedIn && <>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Leden</NavigationMenuTrigger>
+          <NavigationMenuContent className="flex flex-col p-2 space-y-4">
+            <Link href="/games" className="text-right">Inschrijven</Link>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        </>}
+
+        {/* {idAdmin && <>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Admin</NavigationMenuTrigger>
+          <NavigationMenuContent className="flex flex-col p-2 space-y-4">
+            <Link href="/players" className="text-right">Spelers</Link>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        </>} */}
+      </NavigationMenuList>
+    </NavigationMenu>
   )
 }

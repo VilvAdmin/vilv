@@ -15,7 +15,7 @@ export default function GamesTable({ games }: { games: MyGame[] }) {
             <TableHead className="text-vilvBlue">Uur</TableHead>
             <TableHead className="text-vilvBlue">Thuisploeg</TableHead>
             <TableHead className="text-vilvBlue">Uitploeg</TableHead>
-            <TableHead className="text-vilvBlue">Type wedstrijd</TableHead>
+            <TableHead className="text-vilvBlue hidden md:table-cell">Type wedstrijd</TableHead>
             <TableHead className="text-vilvBlue">Status</TableHead>
           </TableRow>
         </TableHeader>
@@ -26,7 +26,7 @@ export default function GamesTable({ games }: { games: MyGame[] }) {
             <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>{game.games.time.slice(0,5)}</TableCell>
             <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>{game.games.home_team}</TableCell>
             <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>{game.games.away_team}</TableCell>
-            <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>{game.games.type}</TableCell>
+            <TableCell className="hidden md:table-cell " onClick={() => router.push(`/games/${game.games.id}`)}>{game.games.type}</TableCell>
             <TableCell><StatusSelect status={game.status} game_id={game.games.id}/></TableCell>
           </TableRow>))}
         </TableBody>
