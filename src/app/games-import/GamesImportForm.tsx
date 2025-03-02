@@ -30,11 +30,6 @@ export default function GamesImportForm({ data }: { data: GameImport[] }) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(games),
         });
-  
-        const responseData = await res.json();
-  
-        if (!res.ok) throw new Error('error' in responseData ? responseData.error : 'Failed to add game');
-  
         form.reset();
       } catch (error: unknown) {
         console.error('Failed to add game:', error);

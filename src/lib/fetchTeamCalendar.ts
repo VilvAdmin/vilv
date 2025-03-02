@@ -1,3 +1,5 @@
+import { GameImport } from "~/types";
+
 export const fetchTeamCalendar = async (vilvId: string) => {
     try {
         const response = await fetch('https://datalake-prod2018.rbfa.be/graphql', {
@@ -28,7 +30,7 @@ export const fetchTeamCalendar = async (vilvId: string) => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
+        const data = await response.json() as {data: {teamCalendar: GameImport[]}};
         
         if (!data?.data?.teamCalendar) {
             throw new Error('No calendar data found');

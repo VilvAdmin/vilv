@@ -20,8 +20,8 @@ export function SideNav() {
       <Link href="/sponsors">Sponsors</Link>
       {isSignedIn && <>
         <p className="text-vilvBlue font-semibold pt-4">Sportief</p>
-        <Link href="/stats-season">Statistieken seizoen</Link>
-        <Link href="/stats-historical">Statistieken sinds 2002</Link>
+        <Link href="/stats-season" className="text-right">Statistieken seizoen</Link>
+        <Link href="/stats-historical" className="text-right">Statistieken sinds 2002</Link>
         <p className="text-vilvBlue font-semibold pt-4">Leden</p>
         <Link href="/games">Inschrijven</Link>
       </>
