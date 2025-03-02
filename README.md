@@ -7,7 +7,8 @@
 - [x] Logo issue in game details page
 - [x] Add from RFBA
 - [x] Calendar export
-- [ ] Mobile resolutions
+- [x] Mobile resolutions
+- [ ] Calendar export on mobile
 - [ ] Edit API / mgmt for admin
 - [ ] Add player + player overview
 - [ ] Optimize images

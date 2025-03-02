@@ -36,7 +36,6 @@ export default function GamesHeader({ games }: { games: MyGame[] }) {
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
       }
-      
       document.body.appendChild(link);
       
       // Trigger click and cleanup
@@ -47,7 +46,6 @@ export default function GamesHeader({ games }: { games: MyGame[] }) {
       }, 0);
     } catch (error) {
       console.error('Error exporting calendar:', error);
-      // You might want to show a user-friendly error message here
     }
   };
 
