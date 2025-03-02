@@ -27,7 +27,7 @@ export default function RootLayout({
             {children}
             </main>
           </div>
-          <div className="flex lg:hidden flex-col flex-1">
+          <div className="flex lg:hidden flex-col">
             <SideNavMobile />
             <main className="w-full p-4 flex-1 flex-col">
             {children}

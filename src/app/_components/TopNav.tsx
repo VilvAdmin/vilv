@@ -11,7 +11,7 @@ export function TopNav() {
         <img src="/Vilv_no_bg.png" alt="Logo Vilv" className="hidden md:block object-contain"/>
         <img src="/VilvLogo.png" alt="Logo Vilv" className="block md:hidden object-contain"/>
         <div id="stats-container">
-          <iframe src="https://www.vvdwprojects.be/vilv/data/stats-external-global.php" width="250" height="85" title="History" style={{border: "none"}}>
+          <iframe src="https://www.vvdwprojects.be/vilv/data/stats-external-global.php" className="relative -left-4" width="220 md:250" height="85" title="History" style={{border: "none"}}>
           </iframe>
         </div>
         <div>

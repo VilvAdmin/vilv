@@ -47,7 +47,7 @@ export function SideNavMobile() {
   return (
       <NavigationMenu>
       <NavigationMenuList className="flex flex-row flex-wrap w-screen justify-center">
-        <NavigationMenuItem className="text-xl relative">
+        <NavigationMenuItem className="relative">
           <NavigationMenuTrigger>De Club</NavigationMenuTrigger>
           <NavigationMenuContent className="flex flex-col p-2 space-y-4">
               <Link href="/nieuws">Nieuws</Link>
@@ -59,6 +59,7 @@ export function SideNavMobile() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
+        {isSignedIn && <>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Sportief</NavigationMenuTrigger>
           <NavigationMenuContent className="flex flex-col p-2 space-y-4">
@@ -67,7 +68,6 @@ export function SideNavMobile() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {isSignedIn && <>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Leden</NavigationMenuTrigger>
           <NavigationMenuContent className="flex flex-col p-2 space-y-4">
