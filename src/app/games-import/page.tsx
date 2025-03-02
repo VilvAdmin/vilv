@@ -3,7 +3,7 @@ import GamesImportForm from "./GamesImportForm";
 import { fetchTeamCalendar } from "~/lib/fetchTeamCalendar";
 
 export default async function AddBulk() {
-  const vilvId: string = "310028"
+  const vilvId = "310028"
   const data: GameImport[] = await fetchTeamCalendar(vilvId);
   
   if (!data) {
