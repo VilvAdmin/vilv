@@ -10,7 +10,7 @@ export function SideNav() {
   const isAdmin = userRoles?.includes("admin");
   
   return (
-    <nav className="flex items-end flex-col w-1/5 p-4 text-lg border-r border-vilvBlue">
+    <nav className="flex items-end flex-col w-1/5 p-4 text-lg border-r border-vilvBlue h-full">
       <p className="text-vilvBlue font-semibold">De Club</p>
       <Link href="/nieuws">Nieuws</Link>
       <Link href="/bestuur">Bestuur</Link>

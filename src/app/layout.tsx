@@ -19,13 +19,13 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
-        <body>
+        <body className="flex flex-col h-screen">
           <TopNav />
-          <div className="flex">
+          <div className="flex flex-1">
             <SideNav />
-            <div className="w-4/5 p-4 flex flex-col">
+            <main className="w-4/5 p-4 flex-1 flex-col">
             {children}
-            </div>
+            </main>
           </div>
         </body>
       </html>

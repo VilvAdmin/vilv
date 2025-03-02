@@ -21,12 +21,12 @@ export default function GamesTable( { games }: { games: MyGame[] }) {
         </TableHeader>
         <TableBody>
           {games?.map((game) => (
-          <TableRow key={game.games.id} onClick={() =>  router.push(`/games/${game.games.id}`)}>
-            <TableCell>{game.games.date}</TableCell>
-            <TableCell>{game.games.time.slice(0,5)}</TableCell>
-            <TableCell>{game.games.home_team}</TableCell>
-            <TableCell>{game.games.away_team}</TableCell>
-            <TableCell>{game.games.type}</TableCell>
+          <TableRow key={game.games.id}>
+            <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>{game.games.date}</TableCell>
+            <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>{game.games.time.slice(0,5)}</TableCell>
+            <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>{game.games.home_team}</TableCell>
+            <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>{game.games.away_team}</TableCell>
+            <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>{game.games.type}</TableCell>
             <TableCell><StatusSelect status={game.status} game_id={game.games.id}/></TableCell>
           </TableRow>))}
         </TableBody>
