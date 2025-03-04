@@ -7,7 +7,7 @@ import {
 
 export function TopNav() {
     return (
-      <nav className="flex items-center justify-between w-full text-center p-1 md:p-2 lg:p-4 text-xl font-semibold lg:px-16 border-b border-vilvBlue">
+      <nav className="flex items-center justify-between w-full text-center py-1 px-4 md:py-2 lg:py-4 text-xl font-semibold lg:px-16 border-b border-vilvBlue">
         <img src="/Vilv_no_bg.png" alt="Logo Vilv" className="hidden md:block object-contain"/>
         <img src="/VilvLogo.png" alt="Logo Vilv" className="block md:hidden object-contain"/>
         <div id="stats-container">

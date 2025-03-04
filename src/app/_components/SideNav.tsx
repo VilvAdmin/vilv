@@ -46,16 +46,16 @@ export function SideNavMobile() {
 
   return (
       <NavigationMenu>
-      <NavigationMenuList className="flex flex-row flex-wrap w-screen justify-center">
-        <NavigationMenuItem className="relative">
+      <NavigationMenuList className="flex flex-row flex-wrap justify-center w-screen">
+        <NavigationMenuItem>
           <NavigationMenuTrigger>De Club</NavigationMenuTrigger>
           <NavigationMenuContent className="flex flex-col p-2 space-y-4">
-              <Link href="/nieuws">Nieuws</Link>
-              <Link href="/bestuur">Bestuur</Link>
-              <Link href="/integriteit">Club-API</Link>
-              <Link href="/locatie">Locatie</Link>
-              <Link href="/historiek">Historiek</Link>
-              <Link href="/sponsors">Sponsors</Link>
+            <Link href="/nieuws">Nieuws</Link>
+            <Link href="/bestuur">Bestuur</Link>
+            <Link href="/integriteit">Club-API</Link>
+            <Link href="/locatie">Locatie</Link>
+            <Link href="/historiek">Historiek</Link>
+            <Link href="/sponsors">Sponsors</Link>
           </NavigationMenuContent>
         </NavigationMenuItem>
 
@@ -71,7 +71,7 @@ export function SideNavMobile() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Leden</NavigationMenuTrigger>
           <NavigationMenuContent className="flex flex-col p-2 space-y-4">
-            <Link href="/games" className="text-right">Inschrijven</Link>
+            <Link href="/games">Inschrijven</Link>
           </NavigationMenuContent>
         </NavigationMenuItem>
         </>}
