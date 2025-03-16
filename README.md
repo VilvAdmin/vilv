@@ -11,9 +11,10 @@
 - [x] Calendar export on mobile
 - [x] Add player + player overview
 - [x] Player edit
+- [x] Show players without status in game details
 - [ ] Player uniqueness validation
 - [ ] Seasonality
-- [x] Players without status
+- [ ] Refresh data after dialogs close
 - [ ] Reminder mails
 - [ ] Player delete - needs to be thought out -> statistics etc
 - [ ] Edit API / mgmt for admin

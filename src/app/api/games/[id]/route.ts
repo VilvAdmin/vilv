@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server';
 import { db } from '~/server/db';
 import { availabilities, games } from '~/server/db/schema';
 import { gameSchema } from '../route';
+import { Game } from '~/types';
 
 export async function DELETE(req: Request) {
     const { userId } = await auth();
@@ -84,8 +85,14 @@ export async function PATCH(req: Request) {
             );
         }
     const body = await req.json();
+    if (!Array.isArray(body) || body.length === 0 || typeof body[0] !== 'object') {
+        return NextResponse.json(
+            { error: 'Invalid input', details: 'Request body must be a non-empty array of objects' },
+            { status: 400 }
+        );
+    }
     const result = gameSchema.safeParse(body[0]);
-
+    
     if (!result.success) {
         return NextResponse.json(
             { error: 'Invalid input', details: result.error.errors },
