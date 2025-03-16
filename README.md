@@ -15,7 +15,7 @@
 - [x] Player uniqueness validation
 - [ ] Seasonality
 - [ ] Refresh data after dialogs close
-- [ ] Reminder mails
+- [ ] Reminder mails (https://resend.com/ ?)
 - [ ] Player delete - needs to be thought out -> statistics etc
 - [ ] Edit API / mgmt for admin
 - [ ] Optimize images
