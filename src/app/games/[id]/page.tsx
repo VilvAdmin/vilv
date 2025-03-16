@@ -2,11 +2,14 @@ import { eq } from "drizzle-orm";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
 import { db } from "~/server/db";
 import { availabilities, games } from "~/server/db/schema";
-import EditGameButton from "./editGameButton";
+import GameHeader from "./GameHeader";
 import { Game } from "~/types";
-import { v4 as uuidv4, validate as isUuid } from 'uuid';
+import { validate as isUuid } from 'uuid';
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import UnconfirmedTable from "./UnconfirmedTable";
+import fetchTeam from "~/lib/fetchTeam";
+import { only } from "node:test";
 
 interface GameProps {
   params: Promise<{ id: string }>;
@@ -33,14 +36,17 @@ export default async function Games({ params }: GameProps) {
     where: eq(games.id, id)
   })
 
-  const availabilitiesGame: { id: string; status: "Beschikbaar" | "Niet beschikbaar" | "Geblesseerd" | null; game_id: string; player_name: string; }[] = await db.query.availabilities.findMany({
+  const availabilitiesGame: { id: string; status: "Beschikbaar" | "Niet beschikbaar" | "Geblesseerd" | null; game_id: string; user_id: string, player_name: string; }[] = await db.query.availabilities.findMany({
     where: eq(availabilities.game_id, id)
   }) || [];
+
+  const team = await fetchTeam({ onlyActive: true });
+  const unconfirmedPlayers = team.filter(player => !availabilitiesGame.some(availability => availability.user_id === player.id));
 
   return (
     <>
     {thisGame ? (<>
-    <EditGameButton game={thisGame} />
+    <GameHeader game={thisGame} />
     <h2 className="text-vilvBlue text-lg font-semibold pb-4">Gegevens</h2>
     <div className="grid grid-cols-[max-content_1fr] gap-2 pb-4">
       <p className="font-semibold">Datum</p><p>{thisGame?.date}</p>
@@ -51,7 +57,7 @@ export default async function Games({ params }: GameProps) {
     </div>
     <h2 className="text-vilvBlue text-lg font-semibold pb-4">Selectie</h2>
     {availabilitiesGame.length === 0 ? (<p>Er zijn nog geen spelers ingeschreven voor deze wedstrijd</p>) : (
-    <Table>
+    <Table className="mb-4">
     <TableHeader>
       <TableRow>
         <TableHead className="text-vilvBlue">Speler</TableHead>
@@ -66,6 +72,7 @@ export default async function Games({ params }: GameProps) {
       </TableRow>))}
     </TableBody>
     </Table>)}
+    <UnconfirmedTable players={unconfirmedPlayers} />
     </>
     ) : (
     <div>

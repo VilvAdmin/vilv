@@ -7,11 +7,11 @@ import { useRouter } from "next/navigation";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { useState } from "react";
 
-interface EditGameButtonProps {
+interface GameHeaderProps {
   game: Game;
 }
 
-export default function EditGameButton({ game }: EditGameButtonProps) {
+export default function GameHeader({ game }: GameHeaderProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const { user } = useUser();
   const router = useRouter();
