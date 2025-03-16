@@ -66,8 +66,7 @@ export default function GamesHeader({ games }: { games: MyGame[] }) {
           <DialogHeader>
             <DialogTitle className="text-vilvBlue">Wedstrijd toevoegen</DialogTitle>
           </DialogHeader>
-          <GameForm onSuccess={() => {
-            setDialogOpen(false)}} />
+          <GameForm onSuccess={() => setDialogOpen(false)} method="POST" />
         </DialogContent>
       </Dialog>
       }
