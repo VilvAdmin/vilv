@@ -4,9 +4,8 @@ import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select";
 
-export default function ActiveSelect( { active }: { active: boolean }) {
+export default function ActiveSelect( { active, user_id }: { active: boolean, user_id: string }) {
   const { user } = useUser();
-  const activeValues = [true, false];
   const [selectedActive, setSelectedActive] = useState(active);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,7 +20,7 @@ export default function ActiveSelect( { active }: { active: boolean }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: user?.id,
+          userId: user_id,
           active: newActive,
         }),
       });

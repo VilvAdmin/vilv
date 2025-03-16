@@ -22,7 +22,7 @@ export default function PlayersTable({ players }: { players: Player[] }) {
           <TableCell>{player.fullName}</TableCell>
           <TableCell>{player.primaryEmailAddress}</TableCell>
           <TableCell>{player.roles}</TableCell>
-          <TableCell><ActiveSelect active={player.active}/></TableCell>
+          <TableCell><ActiveSelect active={player.active} user_id={player.id}/></TableCell>
         </TableRow>))}
       </TableBody>
     </Table>

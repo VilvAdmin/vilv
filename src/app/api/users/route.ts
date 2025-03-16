@@ -67,3 +67,57 @@ export async function POST(req: Request) {
         return Response.json({ error: 'Error creating user' }, { status: 500 });
     }
   }
+
+
+const userUpdateActiveSchema = z.object({
+    userId: z.string(),
+    active: z.boolean(),
+  });
+
+export async function PATCH(req: Request) {
+    const { userId } = await auth();
+
+    // Check if user is authenticated
+    if (!userId) {
+        return NextResponse.json(
+            { error: 'Unauthorized', details: 'You must be logged in' },
+            { status: 401 }
+        );
+    }
+
+    // Get user's roles from Clerk
+    const clerk = await clerkClient();
+    const user = await clerk.users.getUser(userId);
+    const isAdmin = (user.publicMetadata as { roles: string[] }).roles.includes('admin');
+
+    // Check if user is admin
+    if (!isAdmin) {
+        return NextResponse.json(
+            { error: 'Forbidden', details: 'Admin access required' },
+            { status: 403 }
+        );
+    }
+
+    try {
+        const body: unknown = await req.json();
+        const result = userUpdateActiveSchema.safeParse(body);
+
+        if (!result.success) {
+            return NextResponse.json(
+                { error: 'Invalid input', details: result.error.errors },
+                { status: 400 }
+            );
+        }
+
+        const user = clerk.users.updateUserMetadata(result.data.userId, {
+            publicMetadata: {
+                active: result.data.active,
+            }
+        })
+
+        return Response.json({ message: 'User created', user })
+    } catch (error) {
+        console.error('Error adding user:', error);
+        return Response.json({ error: 'Error creating user' }, { status: 500 });
+    }
+  }
