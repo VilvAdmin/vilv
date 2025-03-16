@@ -7,7 +7,7 @@ const userSchema = z.object({
   firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
   lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
   emailAddress: z.string().email("Ongeldig emailadres"),
-  username: z.string().min(3, "Gebruikersnaam moet minstens 3 karakters bevatten"),
+  username: z.string().min(4, "Gebruikersnaam moet minstens 4 karakters bevatten").max(64, "Gebruikersnaam moet maximum 64 karakters bevatten"),
   password: z.string().min(8, "Wachtwoord moet minstens 8 karakters bevatten"),
   publicMetadata: z.object({
     roles: z.array(z.string()).optional(),
@@ -48,6 +48,30 @@ export async function POST(req: Request) {
         if (!result.success) {
             return NextResponse.json(
                 { error: 'Invalid input', details: result.error.errors },
+                { status: 400 }
+            );
+        }
+
+        // Check for existing username
+        const existingUsername = await clerk.users.getUserList({
+            username: [result.data.username],
+        });
+
+        if (existingUsername.data.length > 0) {
+            return NextResponse.json(
+                { error: 'Username already exists' },
+                { status: 400 }
+            );
+        }
+
+        // Check for existing email
+        const existingEmail = await clerk.users.getUserList({
+            emailAddress: [result.data.emailAddress],
+        });
+
+        if (existingEmail.data.length > 0) {
+            return NextResponse.json(
+                { error: 'Email address already exists' },
                 { status: 400 }
             );
         }

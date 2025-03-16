@@ -3,6 +3,7 @@ import { Button } from "~/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "~/components/ui/form"
 import { Input } from "~/components/ui/input"
 import { useForm } from "react-hook-form"
+import { ToastContainer, toast } from 'react-toastify';
 import { z } from "zod"
 
 const userSchema = z.object({
@@ -44,6 +45,7 @@ export default function PlayerForm({ onSuccess }: { onSuccess: () => void }) {
   }
 
   const onSubmit = async (data: PlayerForm) => {
+    const addPlayerError = (message: string) => toast("Error: " + message, { type: "error" });
     try {
         const res = await fetch('/api/users', {
           method: 'POST',
@@ -58,7 +60,8 @@ export default function PlayerForm({ onSuccess }: { onSuccess: () => void }) {
         onSuccess();
         form.reset();
       } catch (error: unknown) {
-        console.error('Failed to add game:', error);
+        addPlayerError(error instanceof Error ? error.message : "Failed to add player");
+        console.error('Failed to add player:', error);
       }
   }
 
@@ -141,6 +144,7 @@ export default function PlayerForm({ onSuccess }: { onSuccess: () => void }) {
           </Button>
         </form>
       </Form>
+      <ToastContainer />
     </div>
   )
 }

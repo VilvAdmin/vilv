@@ -12,7 +12,7 @@
 - [x] Add player + player overview
 - [x] Player edit
 - [x] Show players without status in game details
-- [ ] Player uniqueness validation
+- [x] Player uniqueness validation
 - [ ] Seasonality
 - [ ] Refresh data after dialogs close
 - [ ] Reminder mails
