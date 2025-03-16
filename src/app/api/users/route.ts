@@ -58,6 +58,7 @@ export async function POST(req: Request) {
             username: result.data.username,
             password: result.data.password,
             emailAddress: [result.data.emailAddress],
+            publicMetadata: result.data.publicMetadata,
         })
 
         return Response.json({ message: 'User created', user })

@@ -17,7 +17,6 @@ export default function PlayersTable({ players }: { players: Player[] }) {
       </TableHeader>
       <TableBody>
         {players?.map((player) => (
-          console.log(player),
         <TableRow key={player.id}>
           <TableCell>{player.fullName}</TableCell>
           <TableCell>{player.primaryEmailAddress}</TableCell>
