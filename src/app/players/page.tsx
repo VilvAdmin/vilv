@@ -1,5 +1,5 @@
 import { auth, clerkClient } from '@clerk/nextjs/server'
-import AddPlayerButton from './addPlayerButton';
+import PlayersHeader from './PlayersHeader';
 import { redirect } from 'next/navigation';
 import PlayersTable from './PlayersTable';
 import { Player } from '~/types';
@@ -25,8 +25,7 @@ export default async function Players() {
 
     return (
       <>
-      <p></p>
-      <AddPlayerButton />
+      <PlayersHeader />
       <PlayersTable players={players} />
       </>
     );

@@ -7,8 +7,9 @@ import {
   DialogTrigger,
 } from "~/components/ui/dialog"
 import { useUser } from "@clerk/nextjs";
+import PlayerForm from "./PlayerForm";
 
-export default function AddPlayerButton() {
+export default function PlayersHeader() {
   const { user } = useUser();
   
   const userRoles = user?.publicMetadata?.roles as string[] | undefined;
@@ -27,7 +28,7 @@ export default function AddPlayerButton() {
           <DialogHeader>
             <DialogTitle className="text-vilvBlue">Speler toevoegen</DialogTitle>
           </DialogHeader>
-          <p>Hello</p>
+          <PlayerForm />
         </DialogContent>
       </Dialog>
       }
