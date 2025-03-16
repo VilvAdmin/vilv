@@ -4,7 +4,7 @@ import { User } from "@clerk/nextjs/server";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
 import { Player } from "~/types";
 
-export default async function PlayersTable(players: Player[]) {
+export default function PlayersTable({ players }: { players: Player[] }) {
 
 
   return (

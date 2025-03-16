@@ -12,20 +12,26 @@ export default async function Players() {
     redirect('/');
   }
 
-  // const { data } = await (await clerkClient()).users.getUserList({limit: 1000});
-  
-  // const players: Player[] = data.map(user => ({
-  //   id: user.id,
-  //   fullName: user.fullName || "N/A",
-  //   primaryEmailAddress: user.primaryEmailAddress?.emailAddress || "N/A",
-  //   roles: user.publicMetadata.roles as string
-  // }));
+  try {
+    const clerk = await clerkClient();
+    const { data } = await clerk.users.getUserList({limit: 1000});
+    
+    const players: Player[] = data.map(user => ({
+      id: user.id,
+      fullName: user.fullName || "N/A",
+      primaryEmailAddress: user.primaryEmailAddress?.emailAddress || "N/A",
+      roles: user.publicMetadata.roles as string
+    }));
 
-  return (
-    <>
-    <p></p>
-    <AddPlayerButton />
-    {/* <PlayersTable {...players} /> */}
-    </>
-  );
+    return (
+      <>
+      <p></p>
+      <AddPlayerButton />
+      <PlayersTable players={players} />
+      </>
+    );
+  } catch (error) {
+    console.error('Error fetching players:', error);
+    return <p>Failed to load players</p>;
+  }
 }

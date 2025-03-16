@@ -27,12 +27,12 @@ export function SideNav() {
         <Link href="/games">Inschrijven</Link>
       </>
       }
-      {/* {isAdmin && 
+      {isAdmin && 
       <>
         <p className="text-vilvBlue font-semibold pt-4">Admin</p>
         <Link href="/players">Spelers</Link>
       </>
-      } */}
+      }
     </nav>
   )
 }
@@ -76,14 +76,14 @@ export function SideNavMobile() {
         </NavigationMenuItem>
         </>}
 
-        {/* {idAdmin && <>
+        {isAdmin && <>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Admin</NavigationMenuTrigger>
           <NavigationMenuContent className="flex flex-col p-2 space-y-4">
             <Link href="/players" className="text-right">Spelers</Link>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        </>} */}
+        </>}
       </NavigationMenuList>
     </NavigationMenu>
   )
