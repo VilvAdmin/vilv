@@ -1,6 +1,5 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { only } from "node:test";
 import { Player } from "~/types";
 
 export default async function fetchTeam(options?: { onlyActive: boolean }) {

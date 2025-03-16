@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 import { db } from '~/server/db';
 import { availabilities, games } from '~/server/db/schema';
 import { gameSchema } from '../route';
-import type { Game } from '~/types';
 
 export async function DELETE(req: Request) {
     const { userId } = await auth();
@@ -84,7 +83,7 @@ export async function PATCH(req: Request) {
                 { status: 400 }
             );
         }
-    const body: Game[] = await req.json();
+    const body = await req.json();
     const result = gameSchema.safeParse(body[0]);
 
     if (!result.success) {
