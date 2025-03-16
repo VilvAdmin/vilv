@@ -2,7 +2,7 @@
 
 import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "~/components/ui/navigation-menu";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "~/components/ui/navigation-menu";
 
 export function SideNav() {
   const { user, isSignedIn } = useUser();

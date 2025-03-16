@@ -18,10 +18,10 @@ export default async function Players() {
     
     const players: Player[] = data.map(user => ({
       id: user.id,
-      fullName: user.fullName || "N/A",
-      primaryEmailAddress: user.primaryEmailAddress?.emailAddress || "N/A",
+      fullName: user.fullName ?? "N/A",
+      primaryEmailAddress: user.primaryEmailAddress?.emailAddress ?? "N/A",
       roles: user.publicMetadata.roles as string,
-      active: !!user.publicMetadata.active as boolean
+      active: !!user.publicMetadata.active
     }));
 
     return (

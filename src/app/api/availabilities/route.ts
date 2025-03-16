@@ -12,10 +12,6 @@ const availabilitiesSchema = z.object({
   player_name: z.string().min(1)
 });
 
-type AvailabilitiesInput = z.infer<typeof availabilitiesSchema>;
-
-
-
 export async function POST(req: Request) {
   const { userId } = await auth();
 

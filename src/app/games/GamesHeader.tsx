@@ -8,7 +8,7 @@ import {
 } from "~/components/ui/dialog"
 import GameForm from "./GameForm"
 import { useUser } from "@clerk/nextjs";
-import { MyGame } from "~/types";
+import type { MyGame } from "~/types";
 import { generateICS } from "~/lib/utils";
 import { useState } from "react";
 

@@ -2,7 +2,7 @@
 import { useUser } from "@clerk/nextjs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "~/components/ui/dialog";
 import GameForm from "../GameForm";
-import { Game } from "~/types";
+import type { Game } from "~/types";
 import { useRouter } from "next/navigation";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { useState } from "react";

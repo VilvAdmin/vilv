@@ -1,4 +1,4 @@
-import { GameImport } from "~/types";
+import type { GameImport } from "~/types";
 import GamesImportForm from "./GamesImportForm";
 import { fetchTeamCalendar } from "~/lib/fetchTeamCalendar";
 

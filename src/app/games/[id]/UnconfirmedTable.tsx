@@ -1,11 +1,8 @@
 "use client";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
-import { useRouter } from "next/navigation";
-import { Player } from "~/types";
+import type { Player } from "~/types";
 
 export default function UnconfirmedTable({ players }: { players: Player[] }) {
-    const router = useRouter();
-
     return (
         <>
         {players.length === 0 ? (<></>) : (<>

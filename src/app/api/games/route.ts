@@ -15,8 +15,6 @@ export const gameSchema = z.object({
 
 const gamesSchema = z.array(gameSchema);
 
-type GameInput = z.infer<typeof gameSchema>;
-
 export async function GET() {
   const allGames = await db.select().from(games);
   return NextResponse.json(allGames);

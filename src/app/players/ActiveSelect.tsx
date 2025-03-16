@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select";
 
 export default function ActiveSelect( { active, user_id }: { active: boolean, user_id: string }) {
-  const { user } = useUser();
   const [selectedActive, setSelectedActive] = useState(active);
   const [isLoading, setIsLoading] = useState(false);
 

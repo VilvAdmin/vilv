@@ -1,6 +1,6 @@
 "use client";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
-import { Player } from "~/types";
+import type { Player } from "~/types";
 import ActiveSelect from "./ActiveSelect";
 
 export default function PlayersTable({ players }: { players: Player[] }) {

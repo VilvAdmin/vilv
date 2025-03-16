@@ -1,6 +1,6 @@
 "use client";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
-import { MyGame } from "~/types";
+import type { MyGame } from "~/types";
 import StatusSelect from "./StatusSelect";
 import { useRouter } from "next/navigation";
 

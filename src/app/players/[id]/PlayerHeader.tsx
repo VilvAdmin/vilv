@@ -1,7 +1,7 @@
 // "use client";
 // import { useUser } from "@clerk/nextjs";
 // import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "~/components/ui/dialog";
-import { Player } from "~/types";
+import type { Player } from "~/types";
 // import { useRouter } from "next/navigation";
 // import { DialogClose } from "@radix-ui/react-dialog";
 

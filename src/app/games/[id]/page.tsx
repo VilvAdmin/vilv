@@ -3,13 +3,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~
 import { db } from "~/server/db";
 import { availabilities, games } from "~/server/db/schema";
 import GameHeader from "./GameHeader";
-import { Game } from "~/types";
+import type { Game } from "~/types";
 import { validate as isUuid } from 'uuid';
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import UnconfirmedTable from "./UnconfirmedTable";
 import fetchTeam from "~/lib/fetchTeam";
-import { only } from "node:test";
 
 interface GameProps {
   params: Promise<{ id: string }>;

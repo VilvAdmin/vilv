@@ -1,10 +1,10 @@
 import { auth, clerkClient } from '@clerk/nextjs/server';
-import { eq, is } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 import { db } from '~/server/db';
 import { availabilities, games } from '~/server/db/schema';
 import { gameSchema } from '../route';
-import { Game } from '~/types';
+import type { Game } from '~/types';
 
 export async function DELETE(req: Request) {
     const { userId } = await auth();

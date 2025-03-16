@@ -3,7 +3,7 @@
 import { Input } from "~/components/ui/input";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
 import TypeSelect from "./TypeSelect";
-import { Game, GameImport } from "~/types";
+import type { Game, GameImport } from "~/types";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
 
