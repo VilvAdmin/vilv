@@ -21,9 +21,11 @@ export type GameForm = {
 interface GameFormProps {
   game?: GameForm;
   onSuccess: () => void;
+  method: 'POST' | 'PATCH';
+  game_id?: string;
 }
 
-export default function GameForm({ game, onSuccess }: GameFormProps) {
+export default function GameForm({ game, onSuccess, method, game_id }: GameFormProps) {
   const form = useForm<GameForm>({
     defaultValues: {
       date: game?.date ?? new Date(),
@@ -45,9 +47,12 @@ export default function GameForm({ game, onSuccess }: GameFormProps) {
   }
 
   const onSubmit = async (data: GameForm) => {
+    const endpoint = method === 'POST' 
+      ? '/api/games'
+      : `/api/games/${game_id}`;
     try {
-        const res = await fetch('/api/games', {
-          method: 'POST',
+        const res = await fetch(endpoint, {
+          method,
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify([data]),
         });

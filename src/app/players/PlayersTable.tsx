@@ -1,6 +1,7 @@
 "use client";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
 import { Player } from "~/types";
+import ActiveSelect from "./ActiveSelect";
 
 export default function PlayersTable({ players }: { players: Player[] }) {
 
@@ -21,7 +22,7 @@ export default function PlayersTable({ players }: { players: Player[] }) {
           <TableCell>{player.fullName}</TableCell>
           <TableCell>{player.primaryEmailAddress}</TableCell>
           <TableCell>{player.roles}</TableCell>
-          <TableCell>{player.active? "actief" : "inactief"}</TableCell>
+          <TableCell><ActiveSelect active={player.active}/></TableCell>
         </TableRow>))}
       </TableBody>
     </Table>

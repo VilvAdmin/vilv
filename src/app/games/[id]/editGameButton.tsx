@@ -5,12 +5,14 @@ import GameForm from "../GameForm";
 import { Game } from "~/types";
 import { useRouter } from "next/navigation";
 import { DialogClose } from "@radix-ui/react-dialog";
+import { useState } from "react";
 
 interface EditGameButtonProps {
   game: Game;
 }
 
 export default function EditGameButton({ game }: EditGameButtonProps) {
+  const [dialogOpen, setDialogOpen] = useState(false);
   const { user } = useUser();
   const router = useRouter();
   
@@ -57,7 +59,7 @@ export default function EditGameButton({ game }: EditGameButtonProps) {
             </div>
           </DialogContent>
         </Dialog>
-        <Dialog>
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
           <button className="bg-vilvGreen text-white p-2 rounded-md">Aanpassen</button>
           </DialogTrigger>
@@ -65,7 +67,8 @@ export default function EditGameButton({ game }: EditGameButtonProps) {
             <DialogHeader>
               <DialogTitle className="text-vilvBlue">Wedstrijd aanpassen</DialogTitle>
             </DialogHeader>
-            <GameForm game={{ ...game, date: new Date(game.date) }} />
+            <GameForm game={{ ...game, date: new Date(game.date) }} onSuccess={() => {
+            setDialogOpen(false)}} method="PATCH" game_id={game.id}/>
           </DialogContent>
         </Dialog>
       </div>}

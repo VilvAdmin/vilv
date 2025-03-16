@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { auth, clerkClient } from '@clerk/nextjs/server';
 
 // Define a schema for request validation
-const gameSchema = z.object({
+export const gameSchema = z.object({
   date: z.string(),
   time: z.string(),
   home_team: z.string().min(1),
