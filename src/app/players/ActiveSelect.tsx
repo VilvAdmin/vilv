@@ -37,7 +37,7 @@ export default function ActiveSelect( { active, user_id }: { active: boolean, us
 
   return (
     <Select value={selectedActive.toString()} onValueChange={handleActiveChange} disabled={isLoading}>
-      <SelectTrigger className="w-full min-w-16">
+      <SelectTrigger className="w-full min-w-16 max-w-32">
         <SelectValue>{selectedActive ? "Actief" : "Inactief"}</SelectValue>
       </SelectTrigger>
       <SelectContent>
