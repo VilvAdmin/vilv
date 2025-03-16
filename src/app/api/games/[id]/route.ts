@@ -84,7 +84,7 @@ export async function PATCH(req: Request) {
                 { status: 400 }
             );
         }
-    const body = await req.json();
+    const body: unknown = await req.json();
     if (!Array.isArray(body) || body.length === 0 || typeof body[0] !== 'object') {
         return NextResponse.json(
             { error: 'Invalid input', details: 'Request body must be a non-empty array of objects' },
