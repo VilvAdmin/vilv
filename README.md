@@ -10,11 +10,12 @@
 - [x] Mobile resolutions
 - [x] Calendar export on mobile
 - [x] Add player + player overview
-- [ ] Player edit
+- [x] Player edit
 - [ ] Player uniqueness validation
 - [ ] Seasonality
-- [ ] Players without status
+- [x] Players without status
 - [ ] Reminder mails
+- [ ] Player delete - needs to be thought out -> statistics etc
 - [ ] Edit API / mgmt for admin
 - [ ] Optimize images
 - [ ] Refactor out Clerk (?)
