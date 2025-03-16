@@ -10,8 +10,10 @@ import GameForm from "./GameForm"
 import { useUser } from "@clerk/nextjs";
 import { MyGame } from "~/types";
 import { generateICS } from "~/lib/utils";
+import { useState } from "react";
 
 export default function GamesHeader({ games }: { games: MyGame[] }) {
+  const [dialogOpen, setDialogOpen] = useState(false);
   const { user } = useUser();
   
   const userRoles = user?.publicMetadata?.roles as string[] | undefined;
@@ -56,7 +58,7 @@ export default function GamesHeader({ games }: { games: MyGame[] }) {
       <div className="flex space-x-4">
       <button onClick={handleExport} className="bg-vilvBlue text-white p-2 rounded-md">Export</button>
       {isAdmin &&
-      <Dialog>
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogTrigger asChild>
           <button className="bg-vilvGreen text-white p-2 rounded-md">Wedstrijd toevoegen</button>
         </DialogTrigger>
@@ -64,7 +66,8 @@ export default function GamesHeader({ games }: { games: MyGame[] }) {
           <DialogHeader>
             <DialogTitle className="text-vilvBlue">Wedstrijd toevoegen</DialogTitle>
           </DialogHeader>
-          <GameForm />
+          <GameForm onSuccess={() => {
+            setDialogOpen(false)}} />
         </DialogContent>
       </Dialog>
       }

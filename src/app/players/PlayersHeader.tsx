@@ -8,8 +8,10 @@ import {
 } from "~/components/ui/dialog"
 import { useUser } from "@clerk/nextjs";
 import PlayerForm from "./PlayerForm";
+import { useState } from "react";
 
 export default function PlayersHeader() {
+  const [dialogOpen, setDialogOpen] = useState(false);
   const { user } = useUser();
   
   const userRoles = user?.publicMetadata?.roles as string[] | undefined;
@@ -20,7 +22,7 @@ export default function PlayersHeader() {
       <h1 className="text-vilvBlue text-xl font-semibold pb-4">Spelers</h1>
 
       {isAdmin &&
-      <Dialog>
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogTrigger asChild>
           <button className="bg-vilvGreen text-white p-2 rounded-md">Speler toevoegen</button>
         </DialogTrigger>
@@ -28,7 +30,8 @@ export default function PlayersHeader() {
           <DialogHeader>
             <DialogTitle className="text-vilvBlue">Speler toevoegen</DialogTitle>
           </DialogHeader>
-          <PlayerForm />
+          <PlayerForm onSuccess={() => {
+            setDialogOpen(false)}}/>
         </DialogContent>
       </Dialog>
       }

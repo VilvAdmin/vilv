@@ -20,16 +20,17 @@ export type GameForm = {
 
 interface GameFormProps {
   game?: GameForm;
+  onSuccess: () => void;
 }
 
-export default function GameForm(game?: GameFormProps) {
+export default function GameForm({ game, onSuccess }: GameFormProps) {
   const form = useForm<GameForm>({
     defaultValues: {
-      date: game?.game?.date ?? new Date(),
-      time: game?.game?.time ?? "",
-      home_team: game?.game?.home_team ?? "",
-      away_team: game?.game?.away_team ?? "",
-      type: game?.game?.type ?? "Competitie",
+      date: game?.date ?? new Date(),
+      time: game?.time ?? "",
+      home_team: game?.home_team ?? "",
+      away_team: game?.away_team ?? "",
+      type: game?.type ?? "Competitie",
     },
   })
 
@@ -54,7 +55,8 @@ export default function GameForm(game?: GameFormProps) {
         const responseData = await res.json() as ApiResponse | ApiError;
   
         if (!res.ok) throw new Error('error' in responseData ? responseData.error : 'Failed to add game');
-  
+        
+        onSuccess();
         form.reset();
       } catch (error: unknown) {
         console.error('Failed to add game:', error);

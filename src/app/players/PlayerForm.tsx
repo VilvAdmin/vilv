@@ -19,7 +19,7 @@ const userSchema = z.object({
 
 type PlayerForm = z.infer<typeof userSchema>;
 
-export default function PlayerForm() {
+export default function PlayerForm({ onSuccess }: { onSuccess: () => void }) {
   const form = useForm<PlayerForm>({
     defaultValues: {
       firstName: "Nieuwe",
@@ -54,7 +54,8 @@ export default function PlayerForm() {
         const responseData = await res.json() as ApiResponse | ApiError;
   
         if (!res.ok) throw new Error('error' in responseData ? responseData.error : 'Failed to add player');
-  
+        
+        onSuccess();
         form.reset();
       } catch (error: unknown) {
         console.error('Failed to add game:', error);
