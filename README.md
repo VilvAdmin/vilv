@@ -9,7 +9,9 @@
 - [x] Calendar export
 - [x] Mobile resolutions
 - [x] Calendar export on mobile
-- [ ] Add player + player overview
+- [x] Add player + player overview
+- [ ] Player edit
+- [ ] Player uniqueness validation
 - [ ] Seasonality
 - [ ] Players without status
 - [ ] Reminder mails

@@ -20,7 +20,8 @@ export default async function Players() {
       id: user.id,
       fullName: user.fullName || "N/A",
       primaryEmailAddress: user.primaryEmailAddress?.emailAddress || "N/A",
-      roles: user.publicMetadata.roles as string
+      roles: user.publicMetadata.roles as string,
+      active: !!user.publicMetadata.active as boolean
     }));
 
     return (

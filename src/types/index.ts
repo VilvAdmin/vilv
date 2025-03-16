@@ -29,6 +29,7 @@
     fullName: string;
     primaryEmailAddress: string;
     roles: string;
+    active: boolean;
   }
 
   export type GameImport = {
