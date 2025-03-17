@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select";
 import { statusEnum } from "~/server/db/schema";
 
-export default function StatusSelect( { game_id, status }: { game_id: string, status: (string | null) }) {
+export default function StatusSelect({ game_id, status }: { game_id: string, status: (string | null) }) {
   const { user } = useUser();
   const statusValues = Object.values(statusEnum.enumValues);
   const [selectedStatus, setSelectedStatus] = useState(status ?? "");
@@ -52,4 +52,4 @@ export default function StatusSelect( { game_id, status }: { game_id: string, st
       </SelectContent>
     </Select>
   );
-  }
+}

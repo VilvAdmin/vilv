@@ -30,8 +30,8 @@ export const fetchTeamCalendar = async (vilvId: string) => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json() as {data: {teamCalendar: GameImport[]}};
-        
+        const data = await response.json() as { data: { teamCalendar: GameImport[] } };
+
         if (!data?.data?.teamCalendar) {
             throw new Error('No calendar data found');
         }

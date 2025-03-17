@@ -7,15 +7,15 @@ import { Player } from '~/types';
 
 export default async function Players() {
   const { userId } = await auth()
-  
+
   if (!userId) {
     redirect('/');
   }
 
   try {
     const clerk = await clerkClient();
-    const { data } = await clerk.users.getUserList({limit: 1000});
-    
+    const { data } = await clerk.users.getUserList({ limit: 1000 });
+
     const players: Player[] = data.map(user => ({
       id: user.id,
       fullName: user.fullName ?? "N/A",
@@ -26,8 +26,8 @@ export default async function Players() {
 
     return (
       <>
-      <PlayersHeader />
-      <PlayersTable players={players} />
+        <PlayersHeader />
+        <PlayersTable players={players} />
       </>
     );
   } catch (error) {

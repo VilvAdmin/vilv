@@ -7,16 +7,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import { z } from "zod"
 
 const userSchema = z.object({
-    firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
-    lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
-    emailAddress: z.string().email("Ongeldig emailadres"),
-    username: z.string().min(3, "Gebruikersnaam moet minstens 3 karakters bevatten"),
-    password: z.string().min(8, "Wachtwoord moet minstens 8 karakters bevatten"),
-    publicMetadata: z.object({
-      roles: z.array(z.string()).optional(),
-      active: z.boolean().optional().default(true),
-    }),
-  });
+  firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
+  lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
+  emailAddress: z.string().email("Ongeldig emailadres"),
+  username: z.string().min(3, "Gebruikersnaam moet minstens 3 karakters bevatten"),
+  password: z.string().min(8, "Wachtwoord moet minstens 8 karakters bevatten"),
+  publicMetadata: z.object({
+    roles: z.array(z.string()).optional(),
+    active: z.boolean().optional().default(true),
+  }),
+});
 
 type PlayerForm = z.infer<typeof userSchema>;
 
@@ -38,7 +38,7 @@ export default function PlayerForm({ onSuccess }: { onSuccess: () => void }) {
     error: string;
     status: number;
   }
-  
+
   interface ApiResponse {
     message: string;
     player: PlayerForm;
@@ -47,22 +47,22 @@ export default function PlayerForm({ onSuccess }: { onSuccess: () => void }) {
   const onSubmit = async (data: PlayerForm) => {
     const addPlayerError = (message: string) => toast("Error: " + message, { type: "error" });
     try {
-        const res = await fetch('/api/users', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
-  
-        const responseData = await res.json() as ApiResponse | ApiError;
-  
-        if (!res.ok) throw new Error('error' in responseData ? responseData.error : 'Failed to add player');
-        
-        onSuccess();
-        form.reset();
-      } catch (error: unknown) {
-        addPlayerError(error instanceof Error ? error.message : "Failed to add player");
-        console.error('Failed to add player:', error);
-      }
+      const res = await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const responseData = await res.json() as ApiResponse | ApiError;
+
+      if (!res.ok) throw new Error('error' in responseData ? responseData.error : 'Failed to add player');
+
+      onSuccess();
+      form.reset();
+    } catch (error: unknown) {
+      addPlayerError(error instanceof Error ? error.message : "Failed to add player");
+      console.error('Failed to add player:', error);
+    }
   }
 
   return (

@@ -26,10 +26,10 @@ export async function POST(req: Request) {
 
   // Check if user is authenticated
   if (!userId) {
-      return NextResponse.json(
-          { error: 'Unauthorized', details: 'You must be logged in' },
-          { status: 401 }
-      );
+    return NextResponse.json(
+      { error: 'Unauthorized', details: 'You must be logged in' },
+      { status: 401 }
+    );
   }
 
   // Get user's roles from Clerk
@@ -39,20 +39,20 @@ export async function POST(req: Request) {
 
   // Check if user is admin
   if (!isAdmin) {
-      return NextResponse.json(
-          { error: 'Forbidden', details: 'Admin access required' },
-          { status: 403 }
-      );
+    return NextResponse.json(
+      { error: 'Forbidden', details: 'Admin access required' },
+      { status: 403 }
+    );
   }
   try {
     const body: unknown = await req.json();
     const result = gamesSchema.safeParse(body);
 
     if (!result.success) {
-        return NextResponse.json(
-            { error: 'Invalid input', details: result.error.errors },
-            { status: 400 }
-        );
+      return NextResponse.json(
+        { error: 'Invalid input', details: result.error.errors },
+        { status: 400 }
+      );
     }
 
     const newGame = await db.insert(games).values(result.data).returning();

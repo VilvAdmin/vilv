@@ -9,7 +9,7 @@ export function SideNav() {
 
   const userRoles = user?.publicMetadata?.roles as string[] | undefined;
   const isAdmin = userRoles?.includes("admin");
-  
+
   return (
     <nav className="flex items-end flex-col w-1/5 p-4 text-lg border-r border-vilvBlue h-full">
       <p className="text-vilvBlue font-semibold">De Club</p>
@@ -27,11 +27,11 @@ export function SideNav() {
         <Link href="/games">Inschrijven</Link>
       </>
       }
-      {isAdmin && 
-      <>
-        <p className="text-vilvBlue font-semibold pt-4">Admin</p>
-        <Link href="/players">Spelers</Link>
-      </>
+      {isAdmin &&
+        <>
+          <p className="text-vilvBlue font-semibold pt-4">Admin</p>
+          <Link href="/players">Spelers</Link>
+        </>
       }
     </nav>
   )
@@ -45,7 +45,7 @@ export function SideNavMobile() {
   const isAdmin = userRoles?.includes("admin");
 
   return (
-      <NavigationMenu>
+    <NavigationMenu>
       <NavigationMenuList className="flex flex-row flex-wrap justify-center w-screen">
         <NavigationMenuItem>
           <NavigationMenuTrigger>De Club</NavigationMenuTrigger>
@@ -60,29 +60,29 @@ export function SideNavMobile() {
         </NavigationMenuItem>
 
         {isSignedIn && <>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Sportief</NavigationMenuTrigger>
-          <NavigationMenuContent className="flex flex-col p-2 space-y-4">
-            <Link href="/stats-season" className="text-right">Statistieken seizoen</Link>
-            <Link href="/stats-historical" className="text-right">Statistieken sinds 2002</Link>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>Sportief</NavigationMenuTrigger>
+            <NavigationMenuContent className="flex flex-col p-2 space-y-4">
+              <Link href="/stats-season" className="text-right">Statistieken seizoen</Link>
+              <Link href="/stats-historical" className="text-right">Statistieken sinds 2002</Link>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
 
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Leden</NavigationMenuTrigger>
-          <NavigationMenuContent className="flex flex-col p-2 space-y-4">
-            <Link href="/games">Inschrijven</Link>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>Leden</NavigationMenuTrigger>
+            <NavigationMenuContent className="flex flex-col p-2 space-y-4">
+              <Link href="/games">Inschrijven</Link>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
         </>}
 
         {isAdmin && <>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Admin</NavigationMenuTrigger>
-          <NavigationMenuContent className="flex flex-col p-2 space-y-4">
-            <Link href="/players" className="text-right">Spelers</Link>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>Admin</NavigationMenuTrigger>
+            <NavigationMenuContent className="flex flex-col p-2 space-y-4">
+              <Link href="/players" className="text-right">Spelers</Link>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
         </>}
       </NavigationMenuList>
     </NavigationMenu>

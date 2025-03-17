@@ -24,13 +24,13 @@ export default function RootLayout({
           <div className="hidden lg:flex flex-1">
             <SideNav />
             <main className="w-4/5 p-4 flex-1 flex-col">
-            {children}
+              {children}
             </main>
           </div>
           <div className="flex lg:hidden flex-col">
             <SideNavMobile />
             <main className="w-full p-4 flex-1 flex-col">
-            {children}
+              {children}
             </main>
           </div>
         </body>

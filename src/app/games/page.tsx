@@ -11,18 +11,18 @@ import { redirect } from "next/navigation";
 
 export default async function Games() {
   const { userId } = await auth()
-  
+
   if (!userId) {
     redirect('/');
   }
 
-  const allGames = await db.select({games, status: availabilities.status}).from(games).leftJoin(availabilities, and(eq(games.id, availabilities.game_id), eq(availabilities.user_id, userId))).orderBy(asc(games.date));
+  const allGames = await db.select({ games, status: availabilities.status }).from(games).leftJoin(availabilities, and(eq(games.id, availabilities.game_id), eq(availabilities.user_id, userId))).orderBy(asc(games.date));
 
   return (
     <>
-    
-    <GamesHeader games={allGames} />
-    <GamesTable games={allGames} />
+
+      <GamesHeader games={allGames} />
+      <GamesTable games={allGames} />
     </>
   );
 }

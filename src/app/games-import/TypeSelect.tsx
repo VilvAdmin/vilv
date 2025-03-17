@@ -26,4 +26,4 @@ export default function TypeSelect({ status, onChange }: { status: string, onCha
       </SelectContent>
     </Select>
   );
-  }
+}

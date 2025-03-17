@@ -4,15 +4,15 @@ import { z } from "zod";
 
 // Define a schema for request validation
 const userSchema = z.object({
-  firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
-  lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
-  emailAddress: z.string().email("Ongeldig emailadres"),
-  username: z.string().min(4, "Gebruikersnaam moet minstens 4 karakters bevatten").max(64, "Gebruikersnaam moet maximum 64 karakters bevatten"),
-  password: z.string().min(8, "Wachtwoord moet minstens 8 karakters bevatten"),
-  publicMetadata: z.object({
-    roles: z.array(z.string()).optional(),
-    active: z.boolean().optional().default(true),
-  }),
+    firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
+    lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
+    emailAddress: z.string().email("Ongeldig emailadres"),
+    username: z.string().min(4, "Gebruikersnaam moet minstens 4 karakters bevatten").max(64, "Gebruikersnaam moet maximum 64 karakters bevatten"),
+    password: z.string().min(8, "Wachtwoord moet minstens 8 karakters bevatten"),
+    publicMetadata: z.object({
+        roles: z.array(z.string()).optional(),
+        active: z.boolean().optional().default(true),
+    }),
 });
 
 export type User = z.infer<typeof userSchema>;
@@ -90,13 +90,13 @@ export async function POST(req: Request) {
         console.error('Error adding user:', error);
         return Response.json({ error: 'Error creating user' }, { status: 500 });
     }
-  }
+}
 
 
 const userUpdateActiveSchema = z.object({
     userId: z.string(),
     active: z.boolean(),
-  });
+});
 
 export async function PATCH(req: Request) {
     const { userId } = await auth();
@@ -144,4 +144,4 @@ export async function PATCH(req: Request) {
         console.error('Error adding user:', error);
         return Response.json({ error: 'Error creating user' }, { status: 500 });
     }
-  }
+}

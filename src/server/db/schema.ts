@@ -40,12 +40,12 @@ export const availabilities = pgTable("availabilities", {
 });
 
 export const gamesRelations = relations(games, ({ many }) => ({
-	availabilities: many(availabilities),
+  availabilities: many(availabilities),
 }));
 
 export const availabilitiesRelations = relations(availabilities, ({ one }) => ({
-	author: one(games, {
-		fields: [availabilities.game_id],
-		references: [games.id],
-	}),
+  author: one(games, {
+    fields: [availabilities.game_id],
+    references: [games.id],
+  }),
 }));

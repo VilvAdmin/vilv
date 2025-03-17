@@ -32,22 +32,22 @@ export async function DELETE(req: Request) {
 
     const url = new URL(req.url);
     const id = url.pathname.split('/').pop();
-  try {
-    if (!id) {
-        return NextResponse.json(
-            { error: 'Invalid input', details: 'No id provided' },
-            { status: 400 }
-        );
+    try {
+        if (!id) {
+            return NextResponse.json(
+                { error: 'Invalid input', details: 'No id provided' },
+                { status: 400 }
+            );
+        }
+
+        const deleteAvailabilities = await db.delete(availabilities).where(eq(availabilities.game_id, id));
+        const deleteGame = await db.delete(games).where(eq(games.id, id));
+
+        return NextResponse.json({ status: 204 });
+    } catch (error) {
+        console.error('Error adding game:', error);
+        return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
     }
-
-    const deleteAvailabilities = await db.delete(availabilities).where(eq(availabilities.game_id, id));
-    const deleteGame = await db.delete(games).where(eq(games.id, id));
-
-    return NextResponse.json({ status: 204 });
-  } catch (error) {
-    console.error('Error adding game:', error);
-    return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
-  }
 }
 
 
@@ -84,29 +84,29 @@ export async function PATCH(req: Request) {
                 { status: 400 }
             );
         }
-    const body: unknown = await req.json();
-    if (!Array.isArray(body) || body.length === 0 || typeof body[0] !== 'object') {
-        return NextResponse.json(
-            { error: 'Invalid input', details: 'Request body must be a non-empty array of objects' },
-            { status: 400 }
-        );
-    }
-    const result = gameSchema.safeParse(body[0]);
-    
-    if (!result.success) {
-        return NextResponse.json(
-            { error: 'Invalid input', details: result.error.errors },
-            { status: 400 }
-        );
-    }
-    const updatedGame = await db
+        const body: unknown = await req.json();
+        if (!Array.isArray(body) || body.length === 0 || typeof body[0] !== 'object') {
+            return NextResponse.json(
+                { error: 'Invalid input', details: 'Request body must be a non-empty array of objects' },
+                { status: 400 }
+            );
+        }
+        const result = gameSchema.safeParse(body[0]);
+
+        if (!result.success) {
+            return NextResponse.json(
+                { error: 'Invalid input', details: result.error.errors },
+                { status: 400 }
+            );
+        }
+        const updatedGame = await db
             .update(games)
             .set(result.data)
             .where(eq(games.id, id));
 
-    return NextResponse.json({ status: 204 });
-  } catch (error) {
-    console.error('Error adding game:', error);
-    return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
-  }
+        return NextResponse.json({ status: 204 });
+    } catch (error) {
+        console.error('Error adding game:', error);
+        return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
+    }
 }

@@ -17,10 +17,10 @@ export async function POST(req: Request) {
 
   // Check if user is authenticated
   if (!userId) {
-      return NextResponse.json(
-          { error: 'Unauthorized', details: 'You must be logged in' },
-          { status: 401 }
-      );
+    return NextResponse.json(
+      { error: 'Unauthorized', details: 'You must be logged in' },
+      { status: 401 }
+    );
   }
 
   try {
@@ -29,10 +29,10 @@ export async function POST(req: Request) {
 
 
     if (!result.success) {
-        return NextResponse.json(
-            { error: 'Invalid input', details: result.error.errors },
-            { status: 400 }
-        );
+      return NextResponse.json(
+        { error: 'Invalid input', details: result.error.errors },
+        { status: 400 }
+      );
     }
 
     const { game_id, status, player_name } = result.data;
@@ -51,39 +51,38 @@ export async function PATCH(req: Request) {
 
   // Check if user is authenticated
   if (!userId) {
-      return NextResponse.json(
-          { error: 'Unauthorized', details: 'You must be logged in' },
-          { status: 401 }
-      );
+    return NextResponse.json(
+      { error: 'Unauthorized', details: 'You must be logged in' },
+      { status: 401 }
+    );
   }
-    try {
-      const body: unknown = await req.json();
-      const result = availabilitiesSchema.safeParse(body);
-  
-      if (!result.success) {
-          return NextResponse.json(
-              { error: 'Invalid input', details: result.error.errors },
-              { status: 400 }
-          );
-      }
-  
-      const { game_id, status } = result.data;
+  try {
+    const body: unknown = await req.json();
+    const result = availabilitiesSchema.safeParse(body);
 
-      const updatedAvailability = await db
-            .update(availabilities)
-            .set({ status })
-            .where(
-                and(
-                    eq(availabilities.game_id, game_id),
-                    eq(availabilities.user_id, userId)
-                )
-            )
-            .returning();
-  
-      return NextResponse.json({ status: 201 });
-    } catch (error) {
-      console.error('Error adding game:', error);
-      return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
+    if (!result.success) {
+      return NextResponse.json(
+        { error: 'Invalid input', details: result.error.errors },
+        { status: 400 }
+      );
     }
+
+    const { game_id, status } = result.data;
+
+    const updatedAvailability = await db
+      .update(availabilities)
+      .set({ status })
+      .where(
+        and(
+          eq(availabilities.game_id, game_id),
+          eq(availabilities.user_id, userId)
+        )
+      )
+      .returning();
+
+    return NextResponse.json({ status: 201 });
+  } catch (error) {
+    console.error('Error adding game:', error);
+    return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
   }
-  
+}

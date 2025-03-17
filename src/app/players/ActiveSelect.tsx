@@ -4,7 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select";
 
-export default function ActiveSelect( { active, user_id }: { active: boolean, user_id: string }) {
+export default function ActiveSelect({ active, user_id }: { active: boolean, user_id: string }) {
   const [selectedActive, setSelectedActive] = useState(active);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -41,10 +41,10 @@ export default function ActiveSelect( { active, user_id }: { active: boolean, us
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-            <SelectItem value="true">Actief</SelectItem>
-            <SelectItem value="false">Inactief</SelectItem>
+          <SelectItem value="true">Actief</SelectItem>
+          <SelectItem value="false">Inactief</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
   );
-  }
+}

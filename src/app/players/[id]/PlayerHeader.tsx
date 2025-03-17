@@ -10,28 +10,28 @@ interface PlayerHeaderProps {
 }
 
 export default function PlayerHeader({ player }: PlayerHeaderProps) {
-//   const { user } = useUser();
-//   const router = useRouter();
-  
-//   const userRoles = user?.publicMetadata?.roles as string[] | undefined;
-//   const isAdmin = userRoles?.includes("admin");
+  //   const { user } = useUser();
+  //   const router = useRouter();
 
-//   const deleteGame = async () => {
-//     try {
-//       const res = await fetch(`/api/users/${player.id}`, {
-//         method: 'DELETE',
-//       }); 
-      
-//       if (res.ok) {
-//         router.push('/players');
-//       } else {
-//         console.error('Failed to delete game:', res.statusText);
-//       }
-      
-//     } catch (error: unknown) {
-//       console.error('Failed to delete game:', error);
-//     }
-//   }
+  //   const userRoles = user?.publicMetadata?.roles as string[] | undefined;
+  //   const isAdmin = userRoles?.includes("admin");
+
+  //   const deleteGame = async () => {
+  //     try {
+  //       const res = await fetch(`/api/users/${player.id}`, {
+  //         method: 'DELETE',
+  //       }); 
+
+  //       if (res.ok) {
+  //         router.push('/players');
+  //       } else {
+  //         console.error('Failed to delete game:', res.statusText);
+  //       }
+
+  //     } catch (error: unknown) {
+  //       console.error('Failed to delete game:', error);
+  //     }
+  //   }
 
   return (
     <div className="flex justify-between items-center">
@@ -56,7 +56,7 @@ export default function PlayerHeader({ player }: PlayerHeaderProps) {
             </div>
           </DialogContent>
         </Dialog> */}
-        {/* <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+      {/* <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
           <button className="bg-vilvGreen text-white p-2 rounded-md">Aanpassen</button>
           </DialogTrigger>

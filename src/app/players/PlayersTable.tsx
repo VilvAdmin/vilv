@@ -18,13 +18,13 @@ export default function PlayersTable({ players }: { players: Player[] }) {
       </TableHeader>
       <TableBody>
         {players?.map((player) => (
-        <TableRow key={player.id}>
-          <TableCell>{player.fullName}</TableCell>
-          <TableCell>{player.primaryEmailAddress}</TableCell>
-          <TableCell>{player.roles}</TableCell>
-          <TableCell><ActiveSelect active={player.active} user_id={player.id}/></TableCell>
-        </TableRow>))}
+          <TableRow key={player.id}>
+            <TableCell>{player.fullName}</TableCell>
+            <TableCell>{player.primaryEmailAddress}</TableCell>
+            <TableCell>{player.roles}</TableCell>
+            <TableCell><ActiveSelect active={player.active} user_id={player.id} /></TableCell>
+          </TableRow>))}
       </TableBody>
     </Table>
   );
-  }
+}
