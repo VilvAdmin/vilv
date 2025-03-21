@@ -36,6 +36,11 @@ export default function GameHeader({ game }: GameHeaderProps) {
     }
   }
 
+  const handleSuccess = () => {
+    setDialogOpen(false);
+    router.refresh();
+  }
+
   return (
     <div className="flex justify-between items-center">
       <h1 className="text-vilvBlue text-xl font-semibold pb-4">Wedstrijddetails</h1>
@@ -67,9 +72,7 @@ export default function GameHeader({ game }: GameHeaderProps) {
               <DialogHeader>
                 <DialogTitle className="text-vilvBlue">Wedstrijd aanpassen</DialogTitle>
               </DialogHeader>
-              <GameForm game={{ ...game, date: new Date(game.date) }} onSuccess={() => {
-                setDialogOpen(false)
-              }} method="PATCH" game_id={game.id} />
+              <GameForm game={{ ...game, date: new Date(game.date) }} onSuccess={handleSuccess} method="PATCH" game_id={game.id} />
             </DialogContent>
           </Dialog>
         </div>}

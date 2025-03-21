@@ -14,7 +14,7 @@
 - [x] Show players without status in game details
 - [x] Player uniqueness validation
 - [x] Seasonality
-- [ ] Refresh data after dialogs close
+- [x] Refresh data after dialogs close
 - [ ] Reminder mails (https://resend.com/ ?)
 - [ ] Player delete - needs to be thought out -> statistics etc
 - [ ] Edit API / mgmt for admin

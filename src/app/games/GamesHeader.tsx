@@ -11,11 +11,12 @@ import { useUser } from "@clerk/nextjs";
 import type { MyGame } from "~/types";
 import { generateICS } from "~/lib/utils";
 import { useState } from "react";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "~/components/ui/select";
+import { useRouter } from "next/navigation";
 
 export default function GamesHeader({ games }: { games: MyGame[] }) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const { user } = useUser();
+  const router = useRouter();
 
   const userRoles = user?.publicMetadata?.roles as string[] | undefined;
   const isAdmin = userRoles?.includes("admin");
@@ -52,6 +53,11 @@ export default function GamesHeader({ games }: { games: MyGame[] }) {
     }
   };
 
+  const handleSuccess = () => {
+    setDialogOpen(false);
+    router.refresh();
+  }
+
   return (
     <>
       <div className="flex justify-between items-center pb-4">
@@ -68,7 +74,7 @@ export default function GamesHeader({ games }: { games: MyGame[] }) {
                 <DialogHeader>
                   <DialogTitle className="text-vilvBlue">Wedstrijd toevoegen</DialogTitle>
                 </DialogHeader>
-                <GameForm onSuccess={() => setDialogOpen(false)} method="POST" />
+                <GameForm onSuccess={handleSuccess} method="POST" />
               </DialogContent>
             </Dialog>
           }

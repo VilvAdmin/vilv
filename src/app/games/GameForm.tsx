@@ -9,6 +9,7 @@ import { Input } from "~/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select"
 import { useForm } from "react-hook-form"
+import { useState } from "react"
 
 export type GameForm = {
   date: Date;
@@ -27,6 +28,7 @@ interface GameFormProps {
 }
 
 export default function GameForm({ game, onSuccess, method, game_id }: GameFormProps) {
+  const [dateOpen, setDateOpen] = useState(false);
   const date = new Date();
   const form = useForm<GameForm>({
     defaultValues: {
@@ -95,7 +97,7 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
             render={({ field }) => (
               <FormItem className="flex flex-col">
                 <FormLabel>Datum</FormLabel>
-                <Popover>
+                <Popover open={dateOpen} onOpenChange={setDateOpen}>
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
@@ -111,7 +113,7 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
                     <Calendar
                       mode="single"
                       selected={field.value}
-                      onSelect={field.onChange}
+                      onSelect={(date) => { field.onChange(date); setDateOpen(false) }}
                       disabled={(date) => date < new Date("1900-01-01")}
                       initialFocus
                     />
