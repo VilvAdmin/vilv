@@ -14,9 +14,15 @@ export default async function Player({ params }: PlayerProps) {
   if (!userId) {
     redirect('/');
   }
+  const clerk = await clerkClient();
+  const user = await clerk.users.getUser(userId);
+  const isAdmin = (user.publicMetadata?.roles as string[])?.includes('admin');
+
+  if (!isAdmin) {
+    redirect('/');
+  }
 
   try {
-    const clerk = await clerkClient();
     const thisPlayer = await clerk.users.getUser(id);
 
     return (

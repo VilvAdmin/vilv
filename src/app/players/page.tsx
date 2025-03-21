@@ -12,8 +12,15 @@ export default async function Players() {
     redirect('/');
   }
 
+  const clerk = await clerkClient();
+  const user = await clerk.users.getUser(userId);
+  const isAdmin = (user.publicMetadata?.roles as string[])?.includes('admin');
+
+  if (!isAdmin) {
+    redirect('/');
+  }
+
   try {
-    const clerk = await clerkClient();
     const { data } = await clerk.users.getUserList({ limit: 1000 });
 
     const players: Player[] = data.map(user => ({
