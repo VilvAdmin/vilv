@@ -8,13 +8,15 @@ import { useForm } from "react-hook-form";
 import { format } from "date-fns";
 
 export default function GamesImportForm({ data }: { data: GameImport[] }) {
-  const defaultGames: { date: string; time: string; home_team: string; away_team: string; type: "Beker" | "Vriendschappelijk" | "Competitie" }[] = data.map(game => ({
+  const date = new Date();
+  const defaultGames: { date: string; time: string; home_team: string; away_team: string; type: "Beker" | "Vriendschappelijk" | "Competitie"; season: string }[] = data.map(game => ({
     date: format(new Date(game.startTime), 'yyyy-MM-dd'),
     time: game.startTime.slice(11, 16),
     home_team: game.homeTeam.name,
     away_team: game.awayTeam.name,
     type: game.series.name.includes("Beker") ? "Beker" :
-      game.series.name === "Recrea" ? "Vriendschappelijk" : "Competitie"
+      game.series.name === "Recrea" ? "Vriendschappelijk" : "Competitie",
+    season: date.getMonth() < 5 ? `${date.getFullYear() - 1}-${date.getFullYear()}` : `${date.getFullYear()}-${date.getFullYear() + 1}`
   }));
 
   const form = useForm<{ games: Game[] }>({
@@ -51,6 +53,7 @@ export default function GamesImportForm({ data }: { data: GameImport[] }) {
               <TableHead className="text-vilvBlue">Thuisploeg</TableHead>
               <TableHead className="text-vilvBlue">Uitploeg</TableHead>
               <TableHead className="text-vilvBlue">Type wedstrijd</TableHead>
+              <TableHead className="text-vilvBlue">Seizoen</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -87,6 +90,12 @@ export default function GamesImportForm({ data }: { data: GameImport[] }) {
                     status={form.watch(`games.${index}.type`)}
                     onChange={(value: "Beker" | "Vriendschappelijk" | "Competitie") =>
                       form.setValue(`games.${index}.type` as const, value)}
+                  />
+                </TableCell>
+                <TableCell className="w-[8rem]">
+                  <Input
+                    {...form.register(`games.${index}.season`)}
+                    defaultValue={game.season}
                   />
                 </TableCell>
               </TableRow>
