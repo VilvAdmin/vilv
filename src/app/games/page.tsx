@@ -20,7 +20,6 @@ export default async function Games() {
 
   return (
     <>
-
       <GamesHeader games={allGames} />
       <GamesTable games={allGames} />
     </>

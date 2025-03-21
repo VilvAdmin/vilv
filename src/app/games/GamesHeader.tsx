@@ -11,6 +11,7 @@ import { useUser } from "@clerk/nextjs";
 import type { MyGame } from "~/types";
 import { generateICS } from "~/lib/utils";
 import { useState } from "react";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "~/components/ui/select";
 
 export default function GamesHeader({ games }: { games: MyGame[] }) {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -52,25 +53,27 @@ export default function GamesHeader({ games }: { games: MyGame[] }) {
   };
 
   return (
-    <div className="flex justify-between items-center pb-4">
-      <h1 className="text-vilvBlue text-xl font-semibold pb-4">Inschrijven op wedstrijden</h1>
+    <>
+      <div className="flex justify-between items-center pb-4">
+        <h1 className="text-vilvBlue text-xl font-semibold pb-4">Inschrijven op wedstrijden</h1>
 
-      <div className="flex space-x-4">
-        <button onClick={handleExport} className="bg-vilvBlue text-white p-2 rounded-md">Export</button>
-        {isAdmin &&
-          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-            <DialogTrigger asChild>
-              <button className="bg-vilvGreen text-white p-2 rounded-md">Wedstrijd toevoegen</button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
-              <DialogHeader>
-                <DialogTitle className="text-vilvBlue">Wedstrijd toevoegen</DialogTitle>
-              </DialogHeader>
-              <GameForm onSuccess={() => setDialogOpen(false)} method="POST" />
-            </DialogContent>
-          </Dialog>
-        }
+        <div className="flex space-x-4">
+          <button onClick={handleExport} className="bg-vilvBlue text-white p-2 rounded-md">Export</button>
+          {isAdmin &&
+            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+              <DialogTrigger asChild>
+                <button className="bg-vilvGreen text-white p-2 rounded-md">Wedstrijd toevoegen</button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="text-vilvBlue">Wedstrijd toevoegen</DialogTitle>
+                </DialogHeader>
+                <GameForm onSuccess={() => setDialogOpen(false)} method="POST" />
+              </DialogContent>
+            </Dialog>
+          }
+        </div>
       </div>
-    </div>
+    </>
   )
 }

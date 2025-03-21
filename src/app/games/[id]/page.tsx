@@ -21,7 +21,7 @@ export default async function Games({ params }: GameProps) {
   if (!userId) {
     redirect('/');
   }
-  
+
   if (!isUuid(id)) {
     return (
       <div>
@@ -44,40 +44,40 @@ export default async function Games({ params }: GameProps) {
 
   return (
     <>
-    {thisGame ? (<>
-    <GameHeader game={thisGame} />
-    <h2 className="text-vilvBlue text-lg font-semibold pb-4">Gegevens</h2>
-    <div className="grid grid-cols-[max-content_1fr] gap-2 pb-4">
-      <p className="font-semibold">Datum</p><p>{thisGame?.date}</p>
-      <p className="font-semibold">Uur</p><p>{thisGame?.time.slice(0,5)}</p>
-      <p className="font-semibold">Thuisploeg</p><p>{thisGame?.home_team}</p>
-      <p className="font-semibold">Uitploeg</p><p>{thisGame?.away_team}</p>
-      <p className="font-semibold">Type wedstrijd</p><p>{thisGame?.type}</p>
-    </div>
-    <h2 className="text-vilvBlue text-lg font-semibold pb-4">Selectie</h2>
-    {availabilitiesGame.length === 0 ? (<p>Er zijn nog geen spelers ingeschreven voor deze wedstrijd</p>) : (
-    <Table className="mb-4">
-    <TableHeader>
-      <TableRow>
-        <TableHead className="text-vilvBlue">Speler</TableHead>
-        <TableHead className="text-vilvBlue">Status</TableHead>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-      {availabilitiesGame?.map((player) => (
-      <TableRow key={player.id}>
-        <TableCell>{player.player_name}</TableCell>
-        <TableCell>{player.status}</TableCell>
-      </TableRow>))}
-    </TableBody>
-    </Table>)}
-    <UnconfirmedTable players={unconfirmedPlayers} />
-    </>
-    ) : (
-    <div>
-    <h1>Invalid Game ID</h1>
-    <p>The provided game ID is not valid.</p>
-    </div>)}
+      {thisGame ? (<>
+        <GameHeader game={thisGame} />
+        <h2 className="text-vilvBlue text-lg font-semibold pb-4">Gegevens</h2>
+        <div className="grid grid-cols-[max-content_1fr] gap-2 pb-4">
+          <p className="font-semibold">Datum</p><p>{thisGame?.date}</p>
+          <p className="font-semibold">Uur</p><p>{thisGame?.time.slice(0, 5)}</p>
+          <p className="font-semibold">Thuisploeg</p><p>{thisGame?.home_team}</p>
+          <p className="font-semibold">Uitploeg</p><p>{thisGame?.away_team}</p>
+          <p className="font-semibold">Type wedstrijd</p><p>{thisGame?.type}</p>
+        </div>
+        <h2 className="text-vilvBlue text-lg font-semibold pb-4">Selectie</h2>
+        {availabilitiesGame.length === 0 ? (<p>Er zijn nog geen spelers ingeschreven voor deze wedstrijd</p>) : (
+          <Table className="mb-4">
+            <TableHeader>
+              <TableRow>
+                <TableHead className="text-vilvBlue">Speler</TableHead>
+                <TableHead className="text-vilvBlue">Status</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {availabilitiesGame?.map((player) => (
+                <TableRow key={player.id}>
+                  <TableCell>{player.player_name}</TableCell>
+                  <TableCell>{player.status}</TableCell>
+                </TableRow>))}
+            </TableBody>
+          </Table>)}
+        <UnconfirmedTable players={unconfirmedPlayers} />
+      </>
+      ) : (
+        <div>
+          <h1>Invalid Game ID</h1>
+          <p>The provided game ID is not valid.</p>
+        </div>)}
     </>
   );
 }

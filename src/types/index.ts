@@ -5,6 +5,7 @@ export interface Game {
   home_team: string;
   away_team: string;
   type: "Competitie" | "Beker" | "Vriendschappelijk";
+  season: string;
 }
 
 export interface MyGame {
