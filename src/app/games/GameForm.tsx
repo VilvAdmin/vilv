@@ -27,14 +27,15 @@ interface GameFormProps {
 }
 
 export default function GameForm({ game, onSuccess, method, game_id }: GameFormProps) {
+  const date = new Date();
   const form = useForm<GameForm>({
     defaultValues: {
-      date: game?.date ?? new Date(),
+      date: game?.date ?? date,
       time: game?.time ?? "",
       home_team: game?.home_team ?? "",
       away_team: game?.away_team ?? "",
       type: game?.type ?? "Competitie",
-      season: "2024-2025",
+      season: game?.season ?? date.getMonth() < 5 ? `${date.getFullYear() - 1}-${date.getFullYear()}` : `${date.getFullYear()}-${date.getFullYear() + 1}`, // start showing new season in June
     },
   })
 
