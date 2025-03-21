@@ -22,3 +22,4 @@
 - [ ] Refactor out Clerk (?)
 - [ ] Player details page (?)
 - [ ] Analytics (?)
+- [ ] Domain stuff (custom domain for Vercel, Neon?, Resend)

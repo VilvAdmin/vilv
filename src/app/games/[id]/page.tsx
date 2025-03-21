@@ -9,6 +9,7 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import UnconfirmedTable from "./UnconfirmedTable";
 import fetchTeam from "~/lib/fetchTeam";
+import { Resend } from "resend";
 
 interface GameProps {
   params: Promise<{ id: string }>;
@@ -17,6 +18,18 @@ interface GameProps {
 export default async function Games({ params }: GameProps) {
   const { id } = await params;
   const { userId } = await auth()
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error('Missing RESEND_API_KEY environment variable');
+  }
+
+  const reminderMail = resend.emails.send({
+    "from": "onboarding@resend.dev",
+    "to": "milo.wera.dev+vilv@gmail.com",
+    "subject": "Hello World",
+    "html": "<p>Congrats on sending your <strong>first email</strong>!</p>"
+  })
 
   if (!userId) {
     redirect('/');
