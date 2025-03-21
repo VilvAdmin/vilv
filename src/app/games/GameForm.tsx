@@ -16,6 +16,7 @@ export type GameForm = {
   home_team: string;
   away_team: string;
   type: 'Competitie' | 'Beker' | 'Vriendschappelijk';
+  season: string;
 };
 
 interface GameFormProps {
@@ -33,6 +34,7 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
       home_team: game?.home_team ?? "",
       away_team: game?.away_team ?? "",
       type: game?.type ?? "Competitie",
+      season: "2024-2025",
     },
   })
 
@@ -72,6 +74,20 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
     <div className="mx-auto max-w-md space-y-6 p-6 w-full">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <FormField
+            control={form.control}
+            name="season"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Seizoen</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <FormField
             control={form.control}
             name="date"

@@ -27,6 +27,7 @@ export const games = pgTable("games", {
   home_team: varchar("home_team", { length: 255 }).notNull(),
   away_team: varchar("away_team", { length: 255 }).notNull(),
   type: typeEnum("type").notNull().default("Competitie"),
+  season: varchar("season", { length: 9 }).notNull(),
 });
 
 export const statusEnum = pgEnum("status", ["Beschikbaar", "Niet beschikbaar", "Geblesseerd"]);

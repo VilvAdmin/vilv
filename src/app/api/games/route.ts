@@ -10,7 +10,8 @@ export const gameSchema = z.object({
   time: z.string(),
   home_team: z.string().min(1),
   away_team: z.string().min(1),
-  type: z.enum(['Competitie', 'Beker', 'Vriendschappelijk'])
+  type: z.enum(['Competitie', 'Beker', 'Vriendschappelijk']),
+  season: z.string().length(9),
 });
 
 const gamesSchema = z.array(gameSchema);
