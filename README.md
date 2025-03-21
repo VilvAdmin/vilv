@@ -13,7 +13,7 @@
 - [x] Player edit
 - [x] Show players without status in game details
 - [x] Player uniqueness validation
-- [ ] Seasonality
+- [x] Seasonality
 - [ ] Refresh data after dialogs close
 - [ ] Reminder mails (https://resend.com/ ?)
 - [ ] Player delete - needs to be thought out -> statistics etc
