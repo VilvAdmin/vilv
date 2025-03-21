@@ -32,7 +32,7 @@ export default function GamesTable({ games }: { games: MyGame[] }) {
 
   const handleExport = () => {
     try {
-      const icsContent = generateICS(games?.filter(game => game.games.season === selectedSeason));
+      const icsContent = generateICS(displayedGames);
       const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
 
       // For modern browsers
