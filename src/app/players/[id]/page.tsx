@@ -22,20 +22,6 @@ export default async function Player({ params }: PlayerProps) {
     redirect('/');
   }
 
-  // const userSchema = z.object({
-  //   firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
-  //   lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
-  //   emailAddress: z.string().email("Ongeldig emailadres"),
-  //   username: z.string().min(3, "Gebruikersnaam moet minstens 3 karakters bevatten"),
-  //   password: z.string().min(8, "Wachtwoord moet minstens 8 karakters bevatten"),
-  //   publicMetadata: z.object({
-  //     roles: z.array(z.string()).optional(),
-  //     active: z.boolean().optional().default(true),
-  //   }),
-  // });
-
-  // export type PlayerForm = z.infer<typeof userSchema>;
-
   try {
     const thisPlayer = await clerk.users.getUser(id);
 
@@ -46,9 +32,8 @@ export default async function Player({ params }: PlayerProps) {
           lastName: thisPlayer?.lastName ?? "",
           emailAddress: thisPlayer?.emailAddresses?.[0]?.emailAddress?.toString() ?? "",
           username: thisPlayer?.username ?? "",
-          password: "",
           publicMetadata: {
-            roles: Array.isArray(thisPlayer?.publicMetadata?.roles) ? thisPlayer.publicMetadata.roles as string[] : undefined,
+            roles: Array.isArray(thisPlayer?.publicMetadata?.roles) ? thisPlayer.publicMetadata.roles as string[] : [],
             active: typeof thisPlayer?.publicMetadata?.active === 'boolean' ? thisPlayer.publicMetadata.active : false,
           }
         }} />
@@ -57,7 +42,7 @@ export default async function Player({ params }: PlayerProps) {
           <p className="font-semibold">Naam</p><p>{thisPlayer?.fullName}</p>
           <p className="font-semibold">Username</p><p>{thisPlayer?.username}</p>
           <p className="font-semibold">Email</p><p>{thisPlayer?.emailAddresses ? thisPlayer.emailAddresses[0]?.emailAddress : "no email"}</p>
-          <p className="font-semibold">Rol</p><p>{thisPlayer?.publicMetadata?.roles as string ?? "Geen"}</p>
+          <p className="font-semibold">Rol</p><p>{Array.isArray(thisPlayer?.publicMetadata?.roles) ? thisPlayer.publicMetadata.roles.includes('admin') ? 'Admin' : 'Geen' : 'Geen'}</p>
           <p className="font-semibold">Actief</p><p><ActiveSelect active={!!thisPlayer?.publicMetadata?.active} user_id={thisPlayer.id} /></p>
         </div>
       </>

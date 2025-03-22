@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "~/components/ui/dialog";
-import PlayerFormModal, { PlayerForm } from "../PlayerForm";
+import PlayerFormModal, { UpdatePlayerForm } from "../PlayerForm";
 import { useRouter } from "next/navigation";
 
 
 interface PlayerHeaderProps {
-  player?: PlayerForm;
+  player?: UpdatePlayerForm;
   user_id: string;
 }
 
@@ -37,8 +37,6 @@ export default function PlayerHeader({ player, user_id }: PlayerHeaderProps) {
             player={player}
             user_id={user_id}
           />
-          {/* <GameForm game={{ ...game, date: new Date(game.date) }} onSuccess={() => {
-            setDialogOpen(false)}} method="PATCH" game_id={game.id}/> */}
         </DialogContent>
       </Dialog>
     </div>

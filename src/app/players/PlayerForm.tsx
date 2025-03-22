@@ -7,13 +7,13 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { ToastContainer, toast } from 'react-toastify';
 import { z } from "zod"
 import { Checkbox } from "~/components/ui/checkbox"
+import { useEffect } from "react"
 
 const userSchema = z.object({
   firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
   lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
   emailAddress: z.string().email("Ongeldig emailadres"),
   username: z.string().min(3, "Gebruikersnaam moet minstens 3 karakters bevatten"),
-  password: z.string().min(8, "Wachtwoord moet minstens 8 karakters bevatten"),
   publicMetadata: z.object({
     roles: z.array(z.string()).optional(),
     active: z.boolean().optional().default(true),
@@ -24,18 +24,21 @@ const createUserSchema = userSchema.extend({
   password: z.string().min(8, "Wachtwoord moet minstens 8 karakters bevatten")
 })
 
-export type PlayerForm = z.infer<typeof createUserSchema>;
+const updateUserSchema = userSchema;
+
+type CreatePlayerForm = z.infer<typeof createUserSchema>;
+export type UpdatePlayerForm = z.infer<typeof updateUserSchema>;
 
 interface PlayerFormProps {
-  player?: PlayerForm;
+  player?: CreatePlayerForm | UpdatePlayerForm;
   onSuccess: () => void;
   method: 'POST' | 'PATCH';
   user_id?: string;
 }
 
 export default function PlayerFormModal({ player, onSuccess, method, user_id }: PlayerFormProps) {
-  const form = useForm<PlayerForm>({
-    resolver: zodResolver(method === 'POST' ? createUserSchema : userSchema),
+  const form = useForm<CreatePlayerForm | UpdatePlayerForm>({
+    resolver: zodResolver(method === 'POST' ? createUserSchema : updateUserSchema),
     defaultValues: {
       firstName: player?.firstName ?? "",
       lastName: player?.lastName ?? "",
@@ -44,7 +47,7 @@ export default function PlayerFormModal({ player, onSuccess, method, user_id }: 
       ...(method === 'POST' ? { password: "" } : {}), //only included when creating a user
       publicMetadata: {
         active: player?.publicMetadata?.active ?? true,
-        roles: player?.publicMetadata?.roles ?? undefined
+        roles: player?.publicMetadata?.roles ?? []
       }
     }
   })
@@ -56,16 +59,19 @@ export default function PlayerFormModal({ player, onSuccess, method, user_id }: 
 
   interface ApiResponse {
     message: string;
-    player: PlayerForm;
+    player: CreatePlayerForm | UpdatePlayerForm;
   }
 
-  const onSubmit = async (data: PlayerForm) => {
+  const onSubmit = async (data: CreatePlayerForm | UpdatePlayerForm) => {
     const addPlayerError = (message: string) => toast("Error: " + message, { type: "error" });
+
     try {
+      const payload = method === 'PATCH' ? { ...data, userId: user_id } : data;
+
       const res = await fetch('/api/users', {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
 
       const responseData = await res.json() as ApiResponse | ApiError;
@@ -166,9 +172,8 @@ export default function PlayerFormModal({ player, onSuccess, method, user_id }: 
                   <Checkbox
                     checked={field.value?.includes('admin')}
                     onCheckedChange={(checked) => {
-                      return checked
-                        ? field.onChange(['admin'])
-                        : field.onChange();
+                      const roles = checked ? ['admin'] : [];
+                      field.onChange(roles)
                     }}
                   />
                 </FormControl>
@@ -177,8 +182,8 @@ export default function PlayerFormModal({ player, onSuccess, method, user_id }: 
             )}
           />
 
-          <Button type="submit" className="w-full bg-vilvGreen text-white p-2 rounded-md">
-            Opslaan
+          <Button type="submit" className="w-full bg-vilvGreen text-white p-2 rounded-md" disabled={form.formState.isSubmitting}>
+            {form.formState.isSubmitting ? 'Bezig ...' : method === 'POST' ? 'Toevoegen' : 'Opslaan'}
           </Button>
         </form>
       </Form>

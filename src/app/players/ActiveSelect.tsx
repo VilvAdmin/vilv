@@ -20,7 +20,9 @@ export default function ActiveSelect({ active, user_id }: { active: boolean, use
         },
         body: JSON.stringify({
           userId: user_id,
-          active: newActive,
+          publicMetadata: {
+            active: newActive
+          }
         }),
       });
     }

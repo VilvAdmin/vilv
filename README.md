@@ -1,5 +1,14 @@
 # Vilv
 
+## Design choices
+- Auth: Clerk (Free until 10.000 monthly active users)
+- Infra: Vercel (Free for expected amount of compute & network)
+- DB: Neon - Postgres (Free up to 0.5 GB storage & 190 compute hours)
+- Mail: Resend (Free up to 3.000 emails per month & up to 100 emails per day)
+- Components: Shadcn + Tailwind
+- ORM: Drizzle
+- Framework: Next.js
+
 ## TODO
 - [x] Reload for status change issue
 - [x] Edit game functionality

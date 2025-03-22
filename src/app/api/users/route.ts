@@ -2,8 +2,18 @@ import { auth, clerkClient } from "@clerk/nextjs/server"
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-// Define a schema for request validation
-const userSchema = z.object({
+// const userSchema = z.object({
+//     firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
+//     lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
+//     emailAddress: z.string().email("Ongeldig emailadres"),
+//     username: z.string().min(4, "Gebruikersnaam moet minstens 4 karakters bevatten").max(64, "Gebruikersnaam moet maximum 64 karakters bevatten"),
+//     publicMetadata: z.object({
+//         roles: z.array(z.string()).optional(),
+//         active: z.boolean().optional().default(true),
+//     }),
+// });
+
+const userCreateSchema = z.object({
     firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
     lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
     emailAddress: z.string().email("Ongeldig emailadres"),
@@ -13,9 +23,21 @@ const userSchema = z.object({
         roles: z.array(z.string()).optional(),
         active: z.boolean().optional().default(true),
     }),
-});
+})
 
-export type User = z.infer<typeof userSchema>;
+const userUpdateSchema = z.object({
+    firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten").optional(),
+    lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten").optional(),
+    emailAddress: z.string().email("Ongeldig emailadres").optional(),
+    username: z.string().min(4, "Gebruikersnaam moet minstens 4 karakters bevatten").max(64, "Gebruikersnaam moet maximum 64 karakters bevatten").optional(),
+    publicMetadata: z.object({
+        roles: z.array(z.string()).optional(),
+        active: z.boolean().optional(),
+    }),
+    userId: z.string(),
+})
+
+// export type User = z.infer<typeof userSchema>;
 
 export async function POST(req: Request) {
     const { userId } = await auth();
@@ -43,7 +65,7 @@ export async function POST(req: Request) {
 
     try {
         const body: unknown = await req.json();
-        const result = userSchema.safeParse(body);
+        const result = userCreateSchema.safeParse(body);
 
         if (!result.success) {
             const errorMessages = result.error.errors.map(err => err.message)
@@ -93,12 +115,6 @@ export async function POST(req: Request) {
     }
 }
 
-
-const userUpdateActiveSchema = z.object({
-    userId: z.string(),
-    active: z.boolean(),
-});
-
 export async function PATCH(req: Request) {
     const { userId } = await auth();
 
@@ -125,7 +141,7 @@ export async function PATCH(req: Request) {
 
     try {
         const body: unknown = await req.json();
-        const result = userUpdateActiveSchema.safeParse(body);
+        const result = userUpdateSchema.safeParse(body);
 
         if (!result.success) {
             return NextResponse.json(
@@ -134,11 +150,16 @@ export async function PATCH(req: Request) {
             );
         }
 
-        const user = clerk.users.updateUserMetadata(result.data.userId, {
-            publicMetadata: {
-                active: result.data.active,
-            }
-        })
+        const updatedUser = {
+            firstName: result.data.firstName,
+            lastName: result.data.lastName,
+            username: result.data.username,
+            emailAddress: result.data.emailAddress,
+            publicMetadata: result.data.publicMetadata,
+        }
+
+        const user = clerk.users.updateUser(result.data.userId, updatedUser)
+
 
         return Response.json({ message: 'User created', user })
     } catch (error) {
