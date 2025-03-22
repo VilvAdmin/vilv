@@ -3,6 +3,7 @@ import { Button } from "~/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "~/components/ui/form"
 import { Input } from "~/components/ui/input"
 import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { ToastContainer, toast } from 'react-toastify';
 import { z } from "zod"
 import { Checkbox } from "~/components/ui/checkbox"
@@ -19,19 +20,31 @@ const userSchema = z.object({
   }),
 });
 
-type PlayerForm = z.infer<typeof userSchema>;
+const createUserSchema = userSchema.extend({
+  password: z.string().min(8, "Wachtwoord moet minstens 8 karakters bevatten")
+})
 
-export default function PlayerForm({ onSuccess }: { onSuccess: () => void }) {
+export type PlayerForm = z.infer<typeof createUserSchema>;
+
+interface PlayerFormProps {
+  player?: PlayerForm;
+  onSuccess: () => void;
+  method: 'POST' | 'PATCH';
+  user_id?: string;
+}
+
+export default function PlayerFormModal({ player, onSuccess, method, user_id }: PlayerFormProps) {
   const form = useForm<PlayerForm>({
+    resolver: zodResolver(method === 'POST' ? createUserSchema : userSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      emailAddress: "",
-      username: "",
-      password: "",
+      firstName: player?.firstName ?? "",
+      lastName: player?.lastName ?? "",
+      emailAddress: player?.emailAddress ?? "",
+      username: player?.username ?? "",
+      ...(method === 'POST' ? { password: "" } : {}), //only included when creating a user
       publicMetadata: {
-        active: true,
-        roles: undefined
+        active: player?.publicMetadata?.active ?? true,
+        roles: player?.publicMetadata?.roles ?? undefined
       }
     }
   })
@@ -50,7 +63,7 @@ export default function PlayerForm({ onSuccess }: { onSuccess: () => void }) {
     const addPlayerError = (message: string) => toast("Error: " + message, { type: "error" });
     try {
       const res = await fetch('/api/users', {
-        method: 'POST',
+        method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
@@ -127,19 +140,21 @@ export default function PlayerForm({ onSuccess }: { onSuccess: () => void }) {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input type="password" placeholder="Password" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {method === 'POST' ?
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="Password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            /> : <></>
+          }
 
           <FormField
             control={form.control}

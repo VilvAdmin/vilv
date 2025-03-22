@@ -1,22 +1,23 @@
 "use client";
-import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "~/components/ui/dialog";
-import type { Player } from "~/types";
-// import { useRouter } from "next/navigation";
+import PlayerFormModal, { PlayerForm } from "../PlayerForm";
+import { useRouter } from "next/navigation";
 
 
 interface PlayerHeaderProps {
-  player?: Player;
+  player?: PlayerForm;
+  user_id: string;
 }
 
-export default function PlayerHeader({ player }: PlayerHeaderProps) {
+export default function PlayerHeader({ player, user_id }: PlayerHeaderProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const { user } = useUser();
-  //   const router = useRouter();
+  const router = useRouter();
 
-  const userRoles = user?.publicMetadata?.roles as string[] | undefined;
-  const isAdmin = userRoles?.includes("admin");
+  const handleSuccess = () => {
+    setDialogOpen(false);
+    router.refresh();
+  }
 
   return (
     <div className="flex justify-between items-center">
@@ -30,6 +31,12 @@ export default function PlayerHeader({ player }: PlayerHeaderProps) {
           <DialogHeader>
             <DialogTitle className="text-vilvBlue">Speler aanpassen</DialogTitle>
           </DialogHeader>
+          <PlayerFormModal
+            onSuccess={handleSuccess}
+            method="PATCH"
+            player={player}
+            user_id={user_id}
+          />
           {/* <GameForm game={{ ...game, date: new Date(game.date) }} onSuccess={() => {
             setDialogOpen(false)}} method="PATCH" game_id={game.id}/> */}
         </DialogContent>

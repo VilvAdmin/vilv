@@ -7,7 +7,7 @@ import {
   DialogTrigger,
 } from "~/components/ui/dialog"
 import { useUser } from "@clerk/nextjs";
-import PlayerForm from "./PlayerForm";
+import PlayerFormModal from "./PlayerForm";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -37,7 +37,7 @@ export default function PlayersHeader() {
             <DialogHeader>
               <DialogTitle className="text-vilvBlue">Speler toevoegen</DialogTitle>
             </DialogHeader>
-            <PlayerForm onSuccess={handleSuccess} />
+            <PlayerFormModal onSuccess={handleSuccess} method="POST" />
           </DialogContent>
         </Dialog>
       }
