@@ -5,6 +5,7 @@ import { Input } from "~/components/ui/input"
 import { useForm } from "react-hook-form"
 import { ToastContainer, toast } from 'react-toastify';
 import { z } from "zod"
+import { Checkbox } from "~/components/ui/checkbox"
 
 const userSchema = z.object({
   firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
@@ -23,13 +24,14 @@ type PlayerForm = z.infer<typeof userSchema>;
 export default function PlayerForm({ onSuccess }: { onSuccess: () => void }) {
   const form = useForm<PlayerForm>({
     defaultValues: {
-      firstName: "Nieuwe",
-      lastName: "Speler",
-      emailAddress: "nieuwe@speler.com",
-      username: "nspeler",
-      password: "nieuwespeler",
+      firstName: "",
+      lastName: "",
+      emailAddress: "",
+      username: "",
+      password: "",
       publicMetadata: {
         active: true,
+        roles: undefined
       }
     }
   })
@@ -133,6 +135,27 @@ export default function PlayerForm({ onSuccess }: { onSuccess: () => void }) {
                 <FormLabel>Password</FormLabel>
                 <FormControl>
                   <Input type="password" placeholder="Password" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="publicMetadata.roles"
+            render={({ field }) => (
+              <FormItem className="flex gap-4 items-center">
+                <FormLabel>Admin</FormLabel>
+                <FormControl>
+                  <Checkbox
+                    checked={field.value?.includes('admin')}
+                    onCheckedChange={(checked) => {
+                      return checked
+                        ? field.onChange(['admin'])
+                        : field.onChange();
+                    }}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

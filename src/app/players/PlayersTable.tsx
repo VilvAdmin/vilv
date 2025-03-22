@@ -2,9 +2,10 @@
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "~/components/ui/table";
 import type { Player } from "~/types";
 import ActiveSelect from "./ActiveSelect";
+import { useRouter } from "next/navigation";
 
 export default function PlayersTable({ players }: { players: Player[] }) {
-
+  const router = useRouter();
 
   return (
     <Table>
@@ -19,9 +20,9 @@ export default function PlayersTable({ players }: { players: Player[] }) {
       <TableBody>
         {players?.map((player) => (
           <TableRow key={player.id}>
-            <TableCell>{player.fullName}</TableCell>
-            <TableCell>{player.primaryEmailAddress}</TableCell>
-            <TableCell>{player.roles}</TableCell>
+            <TableCell onClick={() => router.push(`/players/${player.id}`)}>{player.fullName}</TableCell>
+            <TableCell onClick={() => router.push(`/players/${player.id}`)}>{player.primaryEmailAddress}</TableCell>
+            <TableCell onClick={() => router.push(`/players/${player.id}`)}>{player.roles}</TableCell>
             <TableCell><ActiveSelect active={player.active} user_id={player.id} /></TableCell>
           </TableRow>))}
       </TableBody>

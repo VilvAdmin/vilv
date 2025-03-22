@@ -17,7 +17,7 @@
 - [x] Refresh data after dialogs close
 - [x] Reminder mails (https://resend.com/ ?)
 - [ ] Player delete - needs to be thought out -> statistics etc
-- [ ] Edit API / mgmt for admin
+- [ ] Edit API / mgmt for admin -> see if needed
 - [ ] Optimize images
 - [ ] Refactor out Clerk (?)
 - [ ] Player details page (?)

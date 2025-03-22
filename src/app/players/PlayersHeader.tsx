@@ -9,13 +9,20 @@ import {
 import { useUser } from "@clerk/nextjs";
 import PlayerForm from "./PlayerForm";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function PlayersHeader() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const { user } = useUser();
+  const router = useRouter();
 
   const userRoles = user?.publicMetadata?.roles as string[] | undefined;
   const isAdmin = userRoles?.includes("admin");
+
+  const handleSuccess = () => {
+    setDialogOpen(false);
+    router.refresh();
+  }
 
   return (
     <div className="flex justify-between items-center pb-4">
@@ -30,9 +37,7 @@ export default function PlayersHeader() {
             <DialogHeader>
               <DialogTitle className="text-vilvBlue">Speler toevoegen</DialogTitle>
             </DialogHeader>
-            <PlayerForm onSuccess={() => {
-              setDialogOpen(false)
-            }} />
+            <PlayerForm onSuccess={handleSuccess} />
           </DialogContent>
         </Dialog>
       }

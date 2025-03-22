@@ -46,8 +46,9 @@ export async function POST(req: Request) {
         const result = userSchema.safeParse(body);
 
         if (!result.success) {
+            const errorMessages = result.error.errors.map(err => err.message)
             return NextResponse.json(
-                { error: 'Invalid input', details: result.error.errors },
+                { error: errorMessages, messages: errorMessages },
                 { status: 400 }
             );
         }
