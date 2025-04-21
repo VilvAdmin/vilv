@@ -76,7 +76,9 @@ export default function GamesImportForm({ data }: { data: GameImport[] }) {
     <>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="flex items-center justify-between pb-4">
-          <h1 className="pb-4 text-xl font-semibold text-vilvBlue">Inschrijven op wedstrijden</h1>
+          <h1 className="pb-4 text-xl font-semibold text-vilvBlue">
+            Wedstrijden importeren van Voetbal Vlaanderen
+          </h1>
 
           <Dialog>
             <DialogTrigger asChild>
