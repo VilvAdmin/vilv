@@ -2,7 +2,7 @@ import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
 import { clerkMiddleware } from '@clerk/nextjs/server';
 
 function proxyMiddleware(req: NextRequest) {
-  if (req.nextUrl.pathname.match('__clerk')) {
+  if (/__clerk/.exec(req.nextUrl.pathname)) {
     const proxyHeaders = new Headers(req.headers);
     proxyHeaders.set('Clerk-Proxy-Url', process.env.NEXT_PUBLIC_CLERK_PROXY_URL ?? '');
     proxyHeaders.set('Clerk-Secret-Key', process.env.CLERK_SECRET_KEY ?? '');
