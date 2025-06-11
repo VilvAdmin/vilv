@@ -1,14 +1,15 @@
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import Link from 'next/link';
 
 export function TopNav() {
   return (
     <nav className="flex w-full items-center justify-between border-b border-vilvBlue px-4 py-1 text-center text-xl font-semibold md:py-2 lg:px-16 lg:py-4">
-      <a href="/">
+      <Link href="/">
         <img src="/Vilv_no_bg.png" alt="Logo Vilv" className="hidden object-contain md:block" />
-      </a>
-      <a href="/">
+      </Link>
+      <Link href="/">
         <img src="/VilvLogo.png" alt="Logo Vilv" className="block object-contain md:hidden" />
-      </a>
+      </Link>
       <div id="stats-container">
         <iframe
           src="https://www.vvdwprojects.be/vilv/data/stats-external-global.php"
