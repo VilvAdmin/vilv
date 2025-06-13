@@ -10,7 +10,7 @@ export function TopNav() {
       <Link href="/">
         <img src="/VilvLogo.png" alt="Logo Vilv" className="block object-contain md:hidden" />
       </Link>
-      <div id="stats-container">
+      <div id="stats-container" className="flex flex-grow justify-center">
         <iframe
           src="https://www.vvdwprojects.be/vilv/data/stats-external-global.php"
           className="relative -left-4"
@@ -20,7 +20,7 @@ export function TopNav() {
           style={{ border: 'none' }}
         ></iframe>
       </div>
-      <div>
+      <div className="flex items-center justify-center">
         <SignedOut>
           <SignInButton>
             <button className="rounded-lg border-2 border-vilvBlue px-4 py-2 font-semibold text-vilvBlue">
