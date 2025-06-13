@@ -18,9 +18,14 @@ const gamesSchema = z.array(gameSchema);
 
 export async function GET() {
   const allGames = await db.select().from(games);
-  return NextResponse.json(allGames);
+  return new NextResponse(JSON.stringify(allGames), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'public, max-age=60, stale-while-revalidate=120',
+    },
+  });
 }
-
 
 export async function POST(req: Request) {
   const { userId } = await auth();
