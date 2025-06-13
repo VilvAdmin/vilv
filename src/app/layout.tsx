@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ClerkProvider proxyUrl="https://fcvilvheverlee.com/__clerk">
+    <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
         <body className="flex h-screen flex-col">
           <TopNav />
