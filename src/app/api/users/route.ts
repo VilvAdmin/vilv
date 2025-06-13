@@ -2,17 +2,6 @@ import { auth, clerkClient } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
-// const userSchema = z.object({
-//     firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
-//     lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
-//     emailAddress: z.string().email("Ongeldig emailadres"),
-//     username: z.string().min(4, "Gebruikersnaam moet minstens 4 karakters bevatten").max(64, "Gebruikersnaam moet maximum 64 karakters bevatten"),
-//     publicMetadata: z.object({
-//         roles: z.array(z.string()).optional(),
-//         active: z.boolean().optional().default(true),
-//     }),
-// });
-
 const userCreateSchema = z.object({
   firstName: z.string().min(2, 'Voornaam moet minstens 2 karakters bevatten'),
   lastName: z.string().min(2, 'Voornaam moet minstens 2 karakters bevatten'),
@@ -43,8 +32,6 @@ const userUpdateSchema = z.object({
   }),
   userId: z.string(),
 });
-
-// export type User = z.infer<typeof userSchema>;
 
 export async function POST(req: Request) {
   const { userId } = await auth();
