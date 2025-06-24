@@ -7,17 +7,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '~/components/ui/dialog';
-import GameForm from '../GameForm';
-import type { Game } from '~/types';
+import type { Training } from '~/types';
 import { useRouter } from 'next/navigation';
 import { DialogClose } from '@radix-ui/react-dialog';
 import { useState } from 'react';
+import TrainingForm from '../TrainingForm';
 
-interface GameHeaderProps {
-  game: Game;
+interface TrainingHeaderProps {
+  training: Training;
 }
 
-export default function GameHeader({ game }: GameHeaderProps) {
+export default function TrainingHeader({ training }: TrainingHeaderProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const { user } = useUser();
   const router = useRouter();
@@ -25,19 +25,19 @@ export default function GameHeader({ game }: GameHeaderProps) {
   const userRoles = user?.publicMetadata?.roles as string[] | undefined;
   const isAdmin = userRoles?.includes('admin');
 
-  const deleteGame = async () => {
+  const deleteTraining = async () => {
     try {
-      const res = await fetch(`/api/games/${game.id}`, {
+      const res = await fetch(`/api/trainings/${training.id}`, {
         method: 'DELETE',
       });
 
       if (res.ok) {
-        router.push('/games');
+        router.push('/trainings');
       } else {
-        console.error('Failed to delete game:', res.statusText);
+        console.error('Failed to delete training:', res.statusText);
       }
     } catch (error: unknown) {
-      console.error('Failed to delete game:', error);
+      console.error('Failed to delete training:', error);
     }
   };
 
@@ -58,14 +58,14 @@ export default function GameHeader({ game }: GameHeaderProps) {
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
-                <DialogTitle className="text-vilvBlue">Wedstrijd verwijderen</DialogTitle>
+                <DialogTitle className="text-vilvBlue">Training verwijderen</DialogTitle>
               </DialogHeader>
               <p>
-                Weet je zeker dat je deze wedstrijd wil verwijderen? We kunnen dit niet ongedaan
+                Weet je zeker dat je deze training wil verwijderen? We kunnen dit niet ongedaan
                 maken.
               </p>
               <div className="flex justify-end space-x-4">
-                <button className="rounded-md bg-vilvRed p-2 text-white" onClick={deleteGame}>
+                <button className="rounded-md bg-vilvRed p-2 text-white" onClick={deleteTraining}>
                   Verwijder
                 </button>
                 <DialogClose asChild>
@@ -80,13 +80,13 @@ export default function GameHeader({ game }: GameHeaderProps) {
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
-                <DialogTitle className="text-vilvBlue">Wedstrijd aanpassen</DialogTitle>
+                <DialogTitle className="text-vilvBlue">Training aanpassen</DialogTitle>
               </DialogHeader>
-              <GameForm
-                game={{ ...game, date: new Date(game.date) }}
+              <TrainingForm
+                training={{ ...training, date: new Date(training.date) }}
                 onSuccess={handleSuccess}
                 method="PATCH"
-                game_id={game.id}
+                training_id={training.id}
               />
             </DialogContent>
           </Dialog>

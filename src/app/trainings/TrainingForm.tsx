@@ -1,43 +1,60 @@
-"use client"
-import { CalendarIcon, Clock } from "lucide-react"
+'use client';
+import { CalendarIcon, Clock } from 'lucide-react';
 
-import { cn } from "~/lib/utils"
-import { Button } from "~/components/ui/button"
-import { Calendar } from "~/components/ui/calendar"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "~/components/ui/form"
-import { Input } from "~/components/ui/input"
-import { Popover, PopoverContent, PopoverTrigger } from "~/components/ui/popover"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select"
-import { useForm } from "react-hook-form"
-import { useState } from "react"
+import { cn } from '~/lib/utils';
+import { Button } from '~/components/ui/button';
+import { Calendar } from '~/components/ui/calendar';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '~/components/ui/form';
+import { Input } from '~/components/ui/input';
+import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '~/components/ui/select';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import type { Training } from '~/types';
 
-export type GameForm = {
+type TrainingForm = Omit<Training, 'date'> & {
   date: Date;
-  time: string;
-  pitch: 'Sportkot Piste' | 'Sportkot Alma 3' | 'Bouwdewijnstadion' | 'Jeugdvoetbalcentrum';
-  players: string;
-  season: string;
 };
 
-interface GameFormProps {
-  game?: GameForm;
+interface TrainingFormProps {
+  training?: TrainingForm;
   onSuccess: () => void;
   method: 'POST' | 'PATCH';
-  game_id?: string;
+  training_id?: string;
 }
 
-export default function GameForm({ game, onSuccess, method, game_id }: GameFormProps) {
+export default function TrainingForm({
+  training,
+  onSuccess,
+  method,
+  training_id,
+}: TrainingFormProps) {
   const [dateOpen, setDateOpen] = useState(false);
   const date = new Date();
-  const form = useForm<GameForm>({
+  const form = useForm<TrainingForm>({
     defaultValues: {
-      date: game?.date ?? date,
-      time: game?.time ?? "",
-      players: game?.players ?? "To be determined", // Function to count the available players still needs to be implemented
-      pitch: game?.pitch ?? "Sportkot Piste",
-      season: game?.season ?? date.getMonth() < 5 ? `${date.getFullYear() - 1}-${date.getFullYear()}` : `${date.getFullYear()}-${date.getFullYear() + 1}`, // start showing new season in June
+      date: training?.date ?? date,
+      time: training?.time ?? '',
+      pitch: training?.pitch ?? 'Sportkot Piste',
+      season:
+        (training?.season ?? date.getMonth() < 5)
+          ? `${date.getFullYear() - 1}-${date.getFullYear()}`
+          : `${date.getFullYear()}-${date.getFullYear() + 1}`, // start showing new season in June
     },
-  })
+  });
 
   interface ApiError {
     error: string;
@@ -46,13 +63,11 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
 
   interface ApiResponse {
     message: string;
-    game: GameForm;
+    training: TrainingForm;
   }
 
-  const onSubmit = async (data: GameForm) => {
-    const endpoint = method === 'POST'
-      ? '/api/games'
-      : `/api/games/${game_id}`;
+  const onSubmit = async (data: TrainingForm) => {
+    const endpoint = method === 'POST' ? '/api/trainings' : `/api/trainings/${training_id}`;
     try {
       const res = await fetch(endpoint, {
         method,
@@ -60,19 +75,20 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
         body: JSON.stringify([data]),
       });
 
-      const responseData = await res.json() as ApiResponse | ApiError;
+      const responseData = (await res.json()) as ApiResponse | ApiError;
 
-      if (!res.ok) throw new Error('error' in responseData ? responseData.error : 'Failed to add game');
+      if (!res.ok)
+        throw new Error('error' in responseData ? responseData.error : 'Failed to add training');
 
       onSuccess();
       form.reset();
     } catch (error: unknown) {
-      console.error('Failed to add game:', error);
+      console.error('Failed to add training:', error);
     }
-  }
+  };
 
   return (
-    <div className="mx-auto max-w-md space-y-6 p-6 w-full">
+    <div className="mx-auto w-full max-w-md space-y-6 p-6">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
@@ -99,8 +115,11 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
-                        variant={"outline"}
-                        className={cn("w-full pl-3 text-left font-normal", !field.value && "text-muted-foreground")}
+                        variant={'outline'}
+                        className={cn(
+                          'w-full pl-3 text-left font-normal',
+                          !field.value && 'text-muted-foreground'
+                        )}
                       >
                         {field.value ? field.value.toLocaleDateString() : <span>Pick a date</span>}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
@@ -111,8 +130,11 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
                     <Calendar
                       mode="single"
                       selected={field.value}
-                      onSelect={(date) => { field.onChange(date); setDateOpen(false) }}
-                      disabled={(date) => date < new Date("1900-01-01")}
+                      onSelect={(date) => {
+                        field.onChange(date);
+                        setDateOpen(false);
+                      }}
+                      disabled={(date) => date < new Date('1900-01-01')}
                       initialFocus
                     />
                   </PopoverContent>
@@ -163,12 +185,11 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
             )}
           />
 
-          <Button type="submit" className="w-full bg-vilvGreen text-white p-2 rounded-md">
+          <Button type="submit" className="w-full rounded-md bg-vilvGreen p-2 text-white">
             Opslaan
           </Button>
         </form>
       </Form>
     </div>
-  )
+  );
 }
-

@@ -1,12 +1,13 @@
-import { type Config } from "drizzle-kit";
+import { type Config } from 'drizzle-kit';
 
-import { env } from "~/env";
+import { env } from '~/env';
 
 export default {
-  schema: "./src/server/db/schema.ts",
-  dialect: "postgresql",
+  schema: './src/server/db/schema.ts',
+  out: './drizzle/migrations',
+  dialect: 'postgresql',
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ["vilv_*"],
+  tablesFilter: ['vilv_*'],
 } satisfies Config;

@@ -1,5 +1,5 @@
 {
-  "id": "f5978c65-6ee5-4ca8-a67a-7cf0339bff26",
+  "id": "a7351359-5cfe-406e-8233-1c0fec9d8222",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -88,6 +88,47 @@
           "primaryKey": false,
           "notNull": true,
           "default": "'Competitie'"
+        },
+        "season": {
+          "name": "season",
+          "type": "varchar(9)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.trainings": {
+      "name": "trainings",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "time": {
+          "name": "time",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pitch": {
+          "name": "pitch",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
         },
         "season": {
           "name": "season",

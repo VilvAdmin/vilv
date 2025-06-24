@@ -1,23 +1,25 @@
-import { db } from "~/server/db";
+import { db } from '~/server/db';
 import { asc, eq, and } from 'drizzle-orm';
-import { availabilities, games } from "~/server/db/schema";
-import { auth } from '@clerk/nextjs/server'
-import TrainingsTable from "./TrainingsTable"; // Import the table; table still needs to be created
-import { redirect } from "next/navigation";
-//import dummydata from 'data-input.json'
+import { availabilities, trainings } from '~/server/db/schema';
+import { auth } from '@clerk/nextjs/server';
+import TrainingsTable from './TrainingsTable';
+import { redirect } from 'next/navigation';
 
-
-
-export default async function Games() {
-  const { userId } = await auth()
+export default async function Trainings() {
+  const { userId } = await auth();
 
   if (!userId) {
     redirect('/');
   }
 
-  const allGames = await db.select({ games, status: availabilities.status }).from(games).leftJoin(availabilities, and(eq(games.id, availabilities.game_id), eq(availabilities.user_id, userId))).orderBy(asc(games.date));
+  const allTrainings = await db
+    .select({ trainings, status: availabilities.status })
+    .from(trainings)
+    .leftJoin(
+      availabilities,
+      and(eq(trainings.id, availabilities.game_id), eq(availabilities.user_id, userId))
+    )
+    .orderBy(asc(trainings.date));
 
-  return (
-    <TrainingsTable games={allGames} />
-  );
+  return <TrainingsTable trainings={allTrainings} />;
 }
