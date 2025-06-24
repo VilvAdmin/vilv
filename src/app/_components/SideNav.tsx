@@ -92,7 +92,8 @@ export function SideNavMobile() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Leden</NavigationMenuTrigger>
               <NavigationMenuContent className="flex flex-col space-y-4 p-2">
-                <Link href="/games">Inschrijven</Link>
+                <Link href="/games">Wedstrijden</Link>
+                <Link href="/trainings">Trainingen</Link>
               </NavigationMenuContent>
             </NavigationMenuItem>
           </>
