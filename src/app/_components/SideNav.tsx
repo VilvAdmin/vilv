@@ -35,7 +35,8 @@ export function SideNav() {
             Statistieken sinds 2002
           </Link>
           <p className="pt-4 font-semibold text-vilvBlue">Leden</p>
-          <Link href="/games">Inschrijven</Link>
+          <Link href="/games">Wedstrijden</Link>
+          <Link href="/trainings">Trainingen</Link>
         </>
       )}
       {isAdmin && (
