@@ -24,6 +24,7 @@ export interface Training {
 export interface MyTraining {
   trainings: Training;
   status: 'Beschikbaar' | 'Niet beschikbaar' | 'Geblesseerd' | null;
+  players: number;
 }
 
 export interface Availability {
