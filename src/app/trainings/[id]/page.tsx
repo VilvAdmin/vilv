@@ -62,7 +62,7 @@ export default async function Training({ params }: TrainingProps) {
           <h2 className="pb-4 text-lg font-semibold text-vilvBlue">Gegevens</h2>
           <div className="grid grid-cols-[max-content_1fr] gap-2 pb-4">
             <p className="font-semibold">Datum</p>
-            <p>{thisTraining?.date}</p>
+            <p>{thisTraining?.date.split('-').reverse().join('-')}</p>
             <p className="font-semibold">Uur</p>
             <p>{thisTraining?.time.slice(0, 5)}</p>
             <p className="font-semibold">Veld</p>

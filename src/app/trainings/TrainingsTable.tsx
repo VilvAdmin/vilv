@@ -12,7 +12,6 @@ import StatusSelect from './StatusSelect';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { SeasonSelector } from '../_components/SeasonSelector';
-import { generateICS } from '~/lib/utils';
 import { useUser } from '@clerk/nextjs';
 import {
   Dialog,
@@ -122,7 +121,7 @@ export default function TrainingsTable({ trainings }: { trainings: MyTraining[] 
           {displayedTrainings?.map((training) => (
             <TableRow key={training.trainings.id}>
               <TableCell onClick={() => router.push(`/trainings/${training.trainings.id}`)}>
-                {training.trainings.date}
+                {training.trainings.date.split('-').reverse().join('-')}
               </TableCell>
               <TableCell onClick={() => router.push(`/trainings/${training.trainings.id}`)}>
                 {training.trainings.time.slice(0, 5)}
