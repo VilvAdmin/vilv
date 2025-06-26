@@ -1,21 +1,34 @@
-"use client";
+'use client';
 
-import { useUser } from "@clerk/nextjs";
-import { useState } from "react";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select";
-import { statusEnum } from "~/server/db/schema";
+import { useUser } from '@clerk/nextjs';
+import { useState } from 'react';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '~/components/ui/select';
+import { statusEnum } from '~/server/db/schema';
 
-export default function StatusSelect({ game_id, status }: { game_id: string, status: (string | null) }) {
+export default function StatusSelect({
+  game_id,
+  status,
+}: {
+  game_id: string;
+  status: string | null;
+}) {
   const { user } = useUser();
   const statusValues = Object.values(statusEnum.enumValues);
-  const [selectedStatus, setSelectedStatus] = useState(status ?? "");
+  const [selectedStatus, setSelectedStatus] = useState(status ?? '');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleStatusChange = async (value: string) => {
     setIsLoading(true);
 
     try {
-      const method = selectedStatus === "" ? 'POST' : 'PATCH';
+      const method = selectedStatus === '' ? 'POST' : 'PATCH';
       const response = await fetch('/api/availabilities', {
         method,
         headers: {
@@ -24,29 +37,33 @@ export default function StatusSelect({ game_id, status }: { game_id: string, sta
         body: JSON.stringify({
           game_id,
           status: value,
-          player_name: user?.fullName ?? user?.username ?? user?.id
+          player_name: user?.fullName ?? user?.username ?? user?.id,
         }),
       });
-    }
-    catch (error) {
+    } catch (error) {
       console.error('Error updating availability:', error);
-      setSelectedStatus(status ?? "");
-    }
-    finally {
+      setSelectedStatus(status ?? '');
+    } finally {
       setSelectedStatus(value);
       setIsLoading(false);
     }
-  }
+  };
 
   return (
-    <Select value={selectedStatus} onValueChange={(value) => handleStatusChange(value)} disabled={isLoading}>
-      <SelectTrigger className="w-full min-w-40">
+    <Select
+      value={selectedStatus}
+      onValueChange={(value) => handleStatusChange(value)}
+      disabled={isLoading}
+    >
+      <SelectTrigger className="w-full min-w-40 border-gray-400">
         <SelectValue>{selectedStatus}</SelectValue>
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           {statusValues.map((statusValue) => (
-            <SelectItem key={statusValue} value={statusValue}>{statusValue}</SelectItem>
+            <SelectItem key={statusValue} value={statusValue}>
+              {statusValue}
+            </SelectItem>
           ))}
         </SelectGroup>
       </SelectContent>

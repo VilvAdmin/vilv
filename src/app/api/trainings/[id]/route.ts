@@ -99,6 +99,7 @@ export async function PATCH(req: Request) {
         { status: 400 }
       );
     }
+
     const updatedTraining = await db.update(trainings).set(result.data).where(eq(trainings.id, id));
 
     return NextResponse.json({ status: 204 });

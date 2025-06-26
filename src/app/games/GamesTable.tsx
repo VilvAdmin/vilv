@@ -122,7 +122,7 @@ export default function GamesTable({ games }: { games: MyGame[] }) {
             {displayedGames?.map((game) => (
               <TableRow key={game.games.id}>
                 <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>
-                  {game.games.date}
+                  {game.games.date.split('-').reverse().join('-')}
                 </TableCell>
                 <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>
                   {game.games.time.slice(0, 5)}

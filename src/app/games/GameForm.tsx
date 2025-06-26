@@ -69,11 +69,12 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
 
   const onSubmit = async (data: GameForm) => {
     const endpoint = method === 'POST' ? '/api/games' : `/api/games/${game_id}`;
+    const payload = { ...data, date: data.date.toDateString() };
     try {
       const res = await fetch(endpoint, {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify([data]),
+        body: JSON.stringify([payload]),
       });
 
       const responseData = (await res.json()) as ApiResponse | ApiError;

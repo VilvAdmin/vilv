@@ -50,9 +50,10 @@ export default function TrainingForm({
       time: training?.time ?? '',
       pitch: training?.pitch ?? 'Sportkot Piste',
       season:
-        (training?.season ?? date.getMonth() < 5)
+        training?.season ??
+        (date.getMonth() < 5
           ? `${date.getFullYear() - 1}-${date.getFullYear()}`
-          : `${date.getFullYear()}-${date.getFullYear() + 1}`, // start showing new season in June
+          : `${date.getFullYear()}-${date.getFullYear() + 1}`), // start showing new season in June
     },
   });
 
@@ -68,11 +69,14 @@ export default function TrainingForm({
 
   const onSubmit = async (data: TrainingForm) => {
     const endpoint = method === 'POST' ? '/api/trainings' : `/api/trainings/${training_id}`;
+    const payload = { ...data, date: data.date.toDateString() };
+
     try {
+      console.log('Submitting training data:', data);
       const res = await fetch(endpoint, {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify([data]),
+        body: JSON.stringify([payload]),
       });
 
       const responseData = (await res.json()) as ApiResponse | ApiError;
