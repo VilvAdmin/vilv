@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 import { db } from '~/server/db';
 import { availabilities, trainings } from '~/server/db/schema';
-import { trainingSchema } from '../route';
+import { trainingSchema } from '~/lib/schemas/trainingSchema';
 
 export async function DELETE(req: Request) {
   const { userId } = await auth();

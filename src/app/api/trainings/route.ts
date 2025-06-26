@@ -3,16 +3,7 @@ import { db } from '~/server/db';
 import { trainings } from '~/server/db/schema';
 import { z } from 'zod';
 import { auth, clerkClient } from '@clerk/nextjs/server';
-
-// Define a schema for request validation
-export const trainingSchema = z.object({
-  date: z.string(),
-  time: z.string(),
-  pitch: z.string().min(1),
-  season: z.string().length(9),
-});
-
-const trainingsSchema = z.array(trainingSchema);
+import { trainingsSchema } from '~/lib/schemas/trainingSchema';
 
 export async function GET() {
   const allTrainings = await db.select().from(trainings);
