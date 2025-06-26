@@ -3,7 +3,7 @@ import { db } from '~/server/db';
 import { availabilities } from '~/server/db/schema';
 import { z } from 'zod';
 import { and, eq } from 'drizzle-orm';
-import { auth } from '@clerk/nextjs/server';
+import { auth, clerkClient } from '@clerk/nextjs/server';
 
 // Define a schema for request validation
 const availabilitiesSchema = z.object({
@@ -11,6 +11,10 @@ const availabilitiesSchema = z.object({
   status: z.enum(['Beschikbaar', 'Niet beschikbaar', 'Geblesseerd']),
   player_name: z.string().min(1),
   guest_player: z.boolean().optional().default(false),
+});
+
+const idSchema = z.object({
+  availability_id: z.string(),
 });
 
 export async function POST(req: Request) {
@@ -80,6 +84,54 @@ export async function PATCH(req: Request) {
       .returning();
 
     return NextResponse.json({ status: 201 });
+  } catch (error) {
+    console.error('Error adding game:', error);
+    return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
+  }
+}
+
+export async function DELETE(req: Request) {
+  const { userId } = await auth();
+
+  // Check if user is authenticated
+  if (!userId) {
+    return NextResponse.json(
+      { error: 'Unauthorized', details: 'You must be logged in' },
+      { status: 401 }
+    );
+  }
+
+  // Get user's roles from Clerk
+  const client = await clerkClient();
+  const user = await client.users.getUser(userId);
+  const isAdmin = (user.publicMetadata as { roles: string[] }).roles.includes('admin');
+
+  // Check if user is admin
+  if (!isAdmin) {
+    return NextResponse.json(
+      { error: 'Forbidden', details: 'Admin access required' },
+      { status: 403 }
+    );
+  }
+
+  try {
+    const body: unknown = await req.json();
+    const result = idSchema.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json(
+        { error: 'Invalid input', details: result.error.errors },
+        { status: 400 }
+      );
+    }
+
+    const { availability_id } = result.data;
+
+    const deleteAvailability = await db
+      .delete(availabilities)
+      .where(eq(availabilities.id, availability_id));
+
+    return NextResponse.json({ status: 204 });
   } catch (error) {
     console.error('Error adding game:', error);
     return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });

@@ -95,7 +95,9 @@ export default function TrainingHeader({ training }: TrainingHeaderProps) {
           </Dialog>
           <Dialog open={guestDialogOpen} onOpenChange={setGuestDialogOpen}>
             <DialogTrigger asChild>
-              <button className="rounded-md bg-vilvGreen p-2 text-white">Gastspelers</button>
+              <button className="rounded-md bg-vilvGreen p-2 text-white">
+                Gastspeler toevoegen
+              </button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>

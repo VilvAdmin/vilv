@@ -1,12 +1,4 @@
 import { asc, eq } from 'drizzle-orm';
-import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from '~/components/ui/table';
 import { db } from '~/server/db';
 import { availabilities, trainings } from '~/server/db/schema';
 import TrainingHeader from './TrainingHeader';
@@ -16,10 +8,19 @@ import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import UnconfirmedTable from './UnconfirmedTable';
 import fetchTeam from '~/lib/fetchTeam';
+import TrainingTable from './TrainingTable';
 
 interface TrainingProps {
   params: Promise<{ id: string }>;
 }
+
+export type availabilitiesTrainingType = {
+  id: string;
+  status: 'Beschikbaar' | 'Niet beschikbaar' | 'Geblesseerd' | null;
+  game_id: string;
+  user_id: string;
+  player_name: string;
+};
 
 export default async function Training({ params }: TrainingProps) {
   const { id } = await params;
@@ -42,13 +43,7 @@ export default async function Training({ params }: TrainingProps) {
     where: eq(trainings.id, id),
   });
 
-  const availabilitiesTraining: {
-    id: string;
-    status: 'Beschikbaar' | 'Niet beschikbaar' | 'Geblesseerd' | null;
-    game_id: string;
-    user_id: string;
-    player_name: string;
-  }[] =
+  const availabilitiesTraining: availabilitiesTrainingType[] =
     (await db.query.availabilities.findMany({
       where: eq(availabilities.game_id, id),
       orderBy: asc(availabilities.status),
@@ -79,22 +74,7 @@ export default async function Training({ params }: TrainingProps) {
           {availabilitiesTraining.length === 0 ? (
             <p>Er zijn nog geen spelers ingeschreven voor deze training.</p>
           ) : (
-            <Table className="mb-4">
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="text-vilvBlue">Speler</TableHead>
-                  <TableHead className="text-vilvBlue">{`Status (${availabilitiesTraining.filter((a) => a.status === 'Beschikbaar').length})`}</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {availabilitiesTraining?.map((player, idx) => (
-                  <TableRow key={player.id}>
-                    <TableCell>{player.player_name}</TableCell>
-                    <TableCell>{player.status}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <TrainingTable availabilitiesTraining={availabilitiesTraining} />
           )}
           <UnconfirmedTable players={unconfirmedPlayers} />
         </>
