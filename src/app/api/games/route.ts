@@ -1,20 +1,8 @@
 import { NextResponse } from 'next/server';
 import { db } from '~/server/db';
 import { games } from '~/server/db/schema';
-import { z } from 'zod';
 import { auth, clerkClient } from '@clerk/nextjs/server';
-
-// Define a schema for request validation
-export const gameSchema = z.object({
-  date: z.string(),
-  time: z.string(),
-  home_team: z.string().min(1),
-  away_team: z.string().min(1),
-  type: z.enum(['Competitie', 'Beker', 'Vriendschappelijk']),
-  season: z.string().length(9),
-});
-
-const gamesSchema = z.array(gameSchema);
+import { gamesSchema } from '~/lib/schemas/gameSchema';
 
 export async function GET() {
   const allGames = await db.select().from(games);
