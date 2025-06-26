@@ -131,7 +131,7 @@ export default function TrainingsTable({ trainings }: { trainings: MyTraining[] 
                 {training.trainings.pitch}
               </TableCell>
               <TableCell onClick={() => router.push(`/trainings/${training.trainings.id}`)}>
-                {'Coming soon'}
+                {training.players ?? 0}
               </TableCell>
               <TableCell>
                 <StatusSelect status={training.status} game_id={training.trainings.id} />

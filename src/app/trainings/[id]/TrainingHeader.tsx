@@ -6,12 +6,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from '~/components/ui/dialog';
 import type { Training } from '~/types';
 import { useRouter } from 'next/navigation';
-import { DialogClose } from '@radix-ui/react-dialog';
 import { useState } from 'react';
 import TrainingForm from '../TrainingForm';
+import GuestPlayerForm from './GuestPlayerForm';
 
 interface TrainingHeaderProps {
   training: Training;
@@ -19,6 +20,7 @@ interface TrainingHeaderProps {
 
 export default function TrainingHeader({ training }: TrainingHeaderProps) {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [guestDialogOpen, setGuestDialogOpen] = useState(false);
   const { user } = useUser();
   const router = useRouter();
 
@@ -43,6 +45,7 @@ export default function TrainingHeader({ training }: TrainingHeaderProps) {
 
   const handleSuccess = () => {
     setDialogOpen(false);
+    setGuestDialogOpen(false);
     router.refresh();
   };
 
@@ -88,6 +91,19 @@ export default function TrainingHeader({ training }: TrainingHeaderProps) {
                 method="PATCH"
                 training_id={training.id}
               />
+            </DialogContent>
+          </Dialog>
+          <Dialog open={guestDialogOpen} onOpenChange={setGuestDialogOpen}>
+            <DialogTrigger asChild>
+              <button className="rounded-md bg-vilvGreen p-2 text-white">
+                Gastspeler toevoegen
+              </button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle className="text-vilvBlue">Gastspeler toevoegen</DialogTitle>
+              </DialogHeader>
+              <GuestPlayerForm training_id={training.id} onSuccess={handleSuccess} />
             </DialogContent>
           </Dialog>
         </div>

@@ -1,19 +1,25 @@
-"use client"
-import { Button } from "~/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "~/components/ui/form"
-import { Input } from "~/components/ui/input"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
+'use client';
+import { Button } from '~/components/ui/button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '~/components/ui/form';
+import { Input } from '~/components/ui/input';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { ToastContainer, toast } from 'react-toastify';
-import { z } from "zod"
-import { Checkbox } from "~/components/ui/checkbox"
-import { useEffect } from "react"
+import { z } from 'zod';
+import { Checkbox } from '~/components/ui/checkbox';
 
 const userSchema = z.object({
-  firstName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
-  lastName: z.string().min(2, "Voornaam moet minstens 2 karakters bevatten"),
-  emailAddress: z.string().email("Ongeldig emailadres"),
-  username: z.string().min(3, "Gebruikersnaam moet minstens 3 karakters bevatten"),
+  firstName: z.string().min(2, 'Voornaam moet minstens 2 karakters bevatten'),
+  lastName: z.string().min(2, 'Voornaam moet minstens 2 karakters bevatten'),
+  emailAddress: z.string().email('Ongeldig emailadres'),
+  username: z.string().min(3, 'Gebruikersnaam moet minstens 3 karakters bevatten'),
   publicMetadata: z.object({
     roles: z.array(z.string()).optional(),
     active: z.boolean().optional().default(true),
@@ -21,8 +27,8 @@ const userSchema = z.object({
 });
 
 const createUserSchema = userSchema.extend({
-  password: z.string().min(8, "Wachtwoord moet minstens 8 karakters bevatten")
-})
+  password: z.string().min(8, 'Wachtwoord moet minstens 8 karakters bevatten'),
+});
 
 const updateUserSchema = userSchema;
 
@@ -40,17 +46,17 @@ export default function PlayerFormModal({ player, onSuccess, method, user_id }: 
   const form = useForm<CreatePlayerForm | UpdatePlayerForm>({
     resolver: zodResolver(method === 'POST' ? createUserSchema : updateUserSchema),
     defaultValues: {
-      firstName: player?.firstName ?? "",
-      lastName: player?.lastName ?? "",
-      emailAddress: player?.emailAddress ?? "",
-      username: player?.username ?? "",
-      ...(method === 'POST' ? { password: "" } : {}), //only included when creating a user
+      firstName: player?.firstName ?? '',
+      lastName: player?.lastName ?? '',
+      emailAddress: player?.emailAddress ?? '',
+      username: player?.username ?? '',
+      ...(method === 'POST' ? { password: '' } : {}), //only included when creating a user
       publicMetadata: {
         active: player?.publicMetadata?.active ?? true,
-        roles: player?.publicMetadata?.roles ?? []
-      }
-    }
-  })
+        roles: player?.publicMetadata?.roles ?? [],
+      },
+    },
+  });
 
   interface ApiError {
     error: string;
@@ -63,7 +69,7 @@ export default function PlayerFormModal({ player, onSuccess, method, user_id }: 
   }
 
   const onSubmit = async (data: CreatePlayerForm | UpdatePlayerForm) => {
-    const addPlayerError = (message: string) => toast("Error: " + message, { type: "error" });
+    const addPlayerError = (message: string) => toast('Error: ' + message, { type: 'error' });
 
     try {
       const payload = method === 'PATCH' ? { ...data, userId: user_id } : data;
@@ -74,20 +80,21 @@ export default function PlayerFormModal({ player, onSuccess, method, user_id }: 
         body: JSON.stringify(payload),
       });
 
-      const responseData = await res.json() as ApiResponse | ApiError;
+      const responseData = (await res.json()) as ApiResponse | ApiError;
 
-      if (!res.ok) throw new Error('error' in responseData ? responseData.error : 'Failed to add player');
+      if (!res.ok)
+        throw new Error('error' in responseData ? responseData.error : 'Failed to add player');
 
       onSuccess();
       form.reset();
     } catch (error: unknown) {
-      addPlayerError(error instanceof Error ? error.message : "Failed to add player");
+      addPlayerError(error instanceof Error ? error.message : 'Failed to add player');
       console.error('Failed to add player:', error);
     }
-  }
+  };
 
   return (
-    <div className="mx-auto max-w-md space-y-6 p-6 w-full">
+    <div className="mx-auto w-full max-w-md space-y-6 p-6">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
@@ -146,7 +153,7 @@ export default function PlayerFormModal({ player, onSuccess, method, user_id }: 
             )}
           />
 
-          {method === 'POST' ?
+          {method === 'POST' ? (
             <FormField
               control={form.control}
               name="password"
@@ -159,21 +166,23 @@ export default function PlayerFormModal({ player, onSuccess, method, user_id }: 
                   <FormMessage />
                 </FormItem>
               )}
-            /> : <></>
-          }
+            />
+          ) : (
+            <></>
+          )}
 
           <FormField
             control={form.control}
             name="publicMetadata.roles"
             render={({ field }) => (
-              <FormItem className="flex gap-4 items-center">
+              <FormItem className="flex items-center gap-4">
                 <FormLabel>Admin</FormLabel>
                 <FormControl>
                   <Checkbox
                     checked={field.value?.includes('admin')}
                     onCheckedChange={(checked) => {
                       const roles = checked ? ['admin'] : [];
-                      field.onChange(roles)
+                      field.onChange(roles);
                     }}
                   />
                 </FormControl>
@@ -182,12 +191,20 @@ export default function PlayerFormModal({ player, onSuccess, method, user_id }: 
             )}
           />
 
-          <Button type="submit" className="w-full bg-vilvGreen text-white p-2 rounded-md" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting ? 'Bezig ...' : method === 'POST' ? 'Toevoegen' : 'Opslaan'}
+          <Button
+            type="submit"
+            className="w-full rounded-md bg-vilvGreen p-2 text-white"
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting
+              ? 'Bezig ...'
+              : method === 'POST'
+                ? 'Toevoegen'
+                : 'Opslaan'}
           </Button>
         </form>
       </Form>
       <ToastContainer />
     </div>
-  )
+  );
 }
