@@ -73,7 +73,7 @@ export default async function Training({ params }: TrainingProps) {
             <p className="font-semibold">Veld</p>
             <p>{thisTraining?.pitch}</p>
             <p className="font-semibold">Aantal spelers</p>
-            <p>{'Coming soon'}</p>
+            <p>{availabilitiesTraining.length}</p>
           </div>
           <h2 className="pb-4 text-lg font-semibold text-vilvBlue">Selectie</h2>
           {availabilitiesTraining.length === 0 ? (
