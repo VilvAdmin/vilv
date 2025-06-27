@@ -1,9 +1,9 @@
 import { auth, clerkClient } from '@clerk/nextjs/server';
 import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
-import { gameSchema } from '~/lib/schemas/gameSchema';
 import { db } from '~/server/db';
-import { availabilities, games } from '~/server/db/schema';
+import { availabilities, trainings } from '~/server/db/schema';
+import { trainingSchema } from '~/lib/schemas/trainingSchema';
 
 export async function DELETE(req: Request) {
   const { userId } = await auth();
@@ -42,11 +42,11 @@ export async function DELETE(req: Request) {
     const deleteAvailabilities = await db
       .delete(availabilities)
       .where(eq(availabilities.game_id, id));
-    const deleteGame = await db.delete(games).where(eq(games.id, id));
+    const deleteTraining = await db.delete(trainings).where(eq(trainings.id, id));
 
     return NextResponse.json({ status: 204 });
   } catch (error) {
-    console.error('Error adding game:', error);
+    console.error('Error adding training:', error);
     return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
   }
 }
@@ -91,7 +91,7 @@ export async function PATCH(req: Request) {
         { status: 400 }
       );
     }
-    const result = gameSchema.safeParse(body[0]);
+    const result = trainingSchema.safeParse(body[0]);
 
     if (!result.success) {
       return NextResponse.json(
@@ -99,11 +99,12 @@ export async function PATCH(req: Request) {
         { status: 400 }
       );
     }
-    const updatedGame = await db.update(games).set(result.data).where(eq(games.id, id));
+
+    const updatedTraining = await db.update(trainings).set(result.data).where(eq(trainings.id, id));
 
     return NextResponse.json({ status: 204 });
   } catch (error) {
-    console.error('Error adding game:', error);
+    console.error('Error adding training:', error);
     return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
   }
 }

@@ -35,7 +35,8 @@ export function SideNav() {
             Statistieken sinds 2002
           </Link>
           <p className="pt-4 font-semibold text-vilvBlue">Leden</p>
-          <Link href="/games">Inschrijven</Link>
+          <Link href="/games">Wedstrijden</Link>
+          <Link href="/trainings">Trainingen</Link>
         </>
       )}
       {isAdmin && (
@@ -91,7 +92,8 @@ export function SideNavMobile() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Leden</NavigationMenuTrigger>
               <NavigationMenuContent className="flex flex-col space-y-4 p-2">
-                <Link href="/games">Inschrijven</Link>
+                <Link href="/games">Wedstrijden</Link>
+                <Link href="/trainings">Trainingen</Link>
               </NavigationMenuContent>
             </NavigationMenuItem>
           </>

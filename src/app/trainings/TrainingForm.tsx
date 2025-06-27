@@ -23,37 +23,37 @@ import {
 } from '~/components/ui/select';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import type { Training } from '~/types';
 
-export type GameForm = {
+type TrainingForm = Omit<Training, 'date'> & {
   date: Date;
-  time: string;
-  home_team: string;
-  away_team: string;
-  type: 'Competitie' | 'Beker' | 'Vriendschappelijk';
-  season: string;
 };
 
-interface GameFormProps {
-  game?: GameForm;
+interface TrainingFormProps {
+  training?: TrainingForm;
   onSuccess: () => void;
   method: 'POST' | 'PATCH';
-  game_id?: string;
+  training_id?: string;
 }
 
-export default function GameForm({ game, onSuccess, method, game_id }: GameFormProps) {
+export default function TrainingForm({
+  training,
+  onSuccess,
+  method,
+  training_id,
+}: TrainingFormProps) {
   const [dateOpen, setDateOpen] = useState(false);
   const date = new Date();
-  const form = useForm<GameForm>({
+  const form = useForm<TrainingForm>({
     defaultValues: {
-      date: game?.date ?? date,
-      time: game?.time ?? '',
-      home_team: game?.home_team ?? '',
-      away_team: game?.away_team ?? '',
-      type: game?.type ?? 'Competitie',
+      date: training?.date ?? date,
+      time: training?.time ?? '',
+      pitch: training?.pitch ?? 'Sportkot Piste',
       season:
-        (game?.season ?? date.getMonth() < 5)
+        training?.season ??
+        (date.getMonth() < 5
           ? `${date.getFullYear() - 1}-${date.getFullYear()}`
-          : `${date.getFullYear()}-${date.getFullYear() + 1}`, // start showing new season in June
+          : `${date.getFullYear()}-${date.getFullYear() + 1}`), // start showing new season in June
     },
   });
 
@@ -64,13 +64,15 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
 
   interface ApiResponse {
     message: string;
-    game: GameForm;
+    training: TrainingForm;
   }
 
-  const onSubmit = async (data: GameForm) => {
-    const endpoint = method === 'POST' ? '/api/games' : `/api/games/${game_id}`;
+  const onSubmit = async (data: TrainingForm) => {
+    const endpoint = method === 'POST' ? '/api/trainings' : `/api/trainings/${training_id}`;
     const payload = { ...data, date: data.date.toDateString() };
+
     try {
+      console.log('Submitting training data:', data);
       const res = await fetch(endpoint, {
         method,
         headers: { 'Content-Type': 'application/json' },
@@ -80,12 +82,12 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
       const responseData = (await res.json()) as ApiResponse | ApiError;
 
       if (!res.ok)
-        throw new Error('error' in responseData ? responseData.error : 'Failed to add game');
+        throw new Error('error' in responseData ? responseData.error : 'Failed to add training');
 
       onSuccess();
       form.reset();
     } catch (error: unknown) {
-      console.error('Failed to add game:', error);
+      console.error('Failed to add training:', error);
     }
   };
 
@@ -165,48 +167,21 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
 
           <FormField
             control={form.control}
-            name="home_team"
+            name="pitch"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Thuisploeg</FormLabel>
-                <FormControl>
-                  <Input placeholder="Vul thuisploeg in" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="away_team"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Uitploeg</FormLabel>
-                <FormControl>
-                  <Input type="away_team" placeholder="Vul uitploeg in" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="type"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Type wedstrijd</FormLabel>
+                <FormLabel>Veld</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Type wedstrijd" />
+                      <SelectValue placeholder="Veld" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="Competitie">Competitie</SelectItem>
-                    <SelectItem value="Beker">Beker</SelectItem>
-                    <SelectItem value="Vriendschappelijk">Vriendschappelijk</SelectItem>
+                    <SelectItem value="Sportkot Piste">Sportkot Piste</SelectItem>
+                    <SelectItem value="Sportkot Alma 3">Sportkot Alma 3</SelectItem>
+                    <SelectItem value="Bouwdewijnstadion">Bouwdewijnstadion</SelectItem>
+                    <SelectItem value="Jeugdvoetbalcentrum">Jeugdvoetbalcentrum</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />

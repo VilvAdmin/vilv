@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server';
 import { db } from '~/server/db';
-import { games } from '~/server/db/schema';
+import { trainings } from '~/server/db/schema';
+import { z } from 'zod';
 import { auth, clerkClient } from '@clerk/nextjs/server';
-import { gamesSchema } from '~/lib/schemas/gameSchema';
+import { trainingsSchema } from '~/lib/schemas/trainingSchema';
 
 export async function GET() {
-  const allGames = await db.select().from(games);
-  return new NextResponse(JSON.stringify(allGames), {
+  const allTrainings = await db.select().from(trainings);
+  return new NextResponse(JSON.stringify(allTrainings), {
     status: 200,
     headers: {
       'Content-Type': 'application/json',
@@ -40,7 +41,7 @@ export async function POST(req: Request) {
   }
   try {
     const body: unknown = await req.json();
-    const result = gamesSchema.safeParse(body);
+    const result = trainingsSchema.safeParse(body);
 
     if (!result.success) {
       return NextResponse.json(
@@ -49,11 +50,11 @@ export async function POST(req: Request) {
       );
     }
 
-    const newGame = await db.insert(games).values(result.data).returning();
+    const newTraining = await db.insert(trainings).values(result.data).returning();
 
-    return NextResponse.json(newGame[0], { status: 201 });
+    return NextResponse.json(newTraining[0], { status: 201 });
   } catch (error) {
-    console.error('Error adding game:', error);
+    console.error('Error adding training:', error);
     return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
   }
 }
