@@ -1,6 +1,7 @@
 # Vilv
 
 ## Design choices
+
 - Auth: Clerk (Free until 10.000 monthly active users)
 - Infra: Vercel (Free for expected amount of compute & network)
 - DB: Neon - Postgres (Free up to 0.5 GB storage & 190 compute hours)
@@ -10,6 +11,7 @@
 - Framework: Next.js
 
 ## TODO
+
 - [x] Reload for status change issue
 - [x] Edit game functionality
 - [x] Sidenav reloads when opening game details
@@ -25,6 +27,7 @@
 - [x] Seasonality
 - [x] Refresh data after dialogs close
 - [x] Reminder mails (https://resend.com/ ?)
+- [ ] Date picker -> start on Monday + allow typing + dd/mm/yyyy
 - [ ] Player delete - needs to be thought out -> statistics etc
 - [ ] Edit API / mgmt for admin -> see if needed
 - [ ] Optimize images
