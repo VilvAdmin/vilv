@@ -28,6 +28,7 @@
 - [x] Refresh data after dialogs close
 - [x] Reminder mails (https://resend.com/ ?)
 - [ ] Date picker -> start on Monday + allow typing + dd/mm/yyyy
+- [ ] Match day selection
 - [ ] Player delete - needs to be thought out -> statistics etc
 - [ ] Edit API / mgmt for admin -> see if needed
 - [ ] Optimize images
