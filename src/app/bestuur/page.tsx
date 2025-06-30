@@ -4,7 +4,7 @@ const mgmt: { function: string; name: string }[] = [
   { function: 'Voorzitter', name: 'Michiel Vanpachtenbeke' },
   { function: 'Ondervoorzitter', name: 'Wouter Van De Walle' },
   { function: 'Penningmeester', name: 'Dries Verduyckt' },
-  { function: 'Secretaris', name: 'Laurent Vérheyden' },
+  { function: 'Sécretaris', name: 'Laurent Vérheyden' },
   { function: 'Bestuurslid', name: 'Lucas Discart' },
 ];
 
