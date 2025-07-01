@@ -28,6 +28,8 @@
 - [x] Refresh data after dialogs close
 - [x] Reminder mails (https://resend.com/ ?)
 - [ ] Under Admin > Leden the list stops at 10 rows, making the older users not visible (can be governed via Clerk for the time being)
+- [ ] Games get deleted when changing competition or team names (I think we had the same problem before when changing time)
+- [ ] Aantal spelers counter under trainings shows the amount of reactions and not the amount of available players (maybe that was intentional, but might be a bit confusing)
 - [ ] Date picker -> start on Monday + allow typing + dd/mm/yyyy
 - [ ] Match day selection
 - [ ] Player delete - needs to be thought out -> statistics etc
