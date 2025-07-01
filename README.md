@@ -27,10 +27,12 @@
 - [x] Seasonality
 - [x] Refresh data after dialogs close
 - [x] Reminder mails (https://resend.com/ ?)
-- [ ] Under Admin > Leden the list stops at 10 rows, making the older users not visible (can be governed via Clerk for the time being)
-- [ ] Games get deleted when changing competition or team names (I think we had the same problem before when changing time)
-- [ ] Training details screen still shows WEDSTRIJDDETAILS at the top and I think here the list length is also limited to a certain amount, because not all players seem listed
-- [ ] Aantal spelers counter under trainings shows the amount of reactions and not the amount of available players (maybe that was intentional, but might be a bit confusing)
+- [x] Under Admin > Leden the list stops at 10 rows, making the older users not visible (can be governed via Clerk for the time being)
+- [ ] Games get deleted when changing competition or team names (I think we had the same problem before when changing the time or date)
+- [ ] When changing a player status from inactive to active, it looses its admin rights
+- [x] Training details screen still shows WEDSTRIJDDETAILS at the top
+- [x] There is something wrong with the list length under page 'Trainingsdetails': it do'esnt show all of the active players; it looks like only the last 10 new players and all that already filled it in show up on the combined lists
+- [x] Aantal spelers counter under trainings shows the amount of reactions and not the amount of available players (maybe that was intentional, but might be a bit confusing)
 - [ ] Date picker -> start on Monday + allow typing + dd/mm/yyyy
 - [ ] Match day selection
 - [ ] Player delete - needs to be thought out -> statistics etc
