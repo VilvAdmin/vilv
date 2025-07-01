@@ -21,20 +21,32 @@ export default async function Players() {
   }
 
   try {
-    const { data } = await clerk.users.getUserList({ limit: 1000 });
+    // Fetch all users with pagination
+    const allUsers: Player[] = [];
 
-    const players: Player[] = data.map(user => ({
-      id: user.id,
-      fullName: user.fullName ?? "N/A",
-      primaryEmailAddress: user.primaryEmailAddress?.emailAddress ?? "N/A",
-      roles: user.publicMetadata.roles as string,
-      active: !!user.publicMetadata.active
-    }));
+    for (let page = 1; ; page++) {
+      const { data } = await clerk.users.getUserList({
+        limit: 100, // max allowed
+        page,
+      });
+
+      allUsers.push(
+        ...data.map(user => ({
+          id: user.id,
+          fullName: user.fullName ?? "N/A",
+          primaryEmailAddress: user.primaryEmailAddress?.emailAddress ?? "N/A",
+          roles: user.publicMetadata.roles as string,
+          active: !!user.publicMetadata.active
+        }))
+      );
+
+      if (data.length < 100) break; // no more pages
+    }
 
     return (
       <>
         <PlayersHeader />
-        <PlayersTable players={players} />
+        <PlayersTable players={allUsers} />
       </>
     );
   } catch (error) {
