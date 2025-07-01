@@ -27,7 +27,6 @@ export default async function Players() {
     for (let page = 1; ; page++) {
       const { data } = await clerk.users.getUserList({
         limit: 100, // max allowed
-        page,
       });
 
       allUsers.push(
