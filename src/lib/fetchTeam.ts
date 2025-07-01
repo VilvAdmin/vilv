@@ -17,7 +17,7 @@ export default async function fetchTeam(options?: { onlyActive: boolean }) {
     // Fetch all users with pagination
     const players: Player[] = []; 
     for (let page = 1; ; page++) {
-      const { data } = await clerk.users.getUserList({ limit: 100, page });
+      const { data } = await clerk.users.getUserList({ limit: 100 });
       players.push(
         ...data.map(user => ({
           id: user.id,
