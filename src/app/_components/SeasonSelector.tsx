@@ -10,9 +10,11 @@ import {
 export function SeasonSelector({
   selectedSeason,
   setSelectedSeason,
+  allSeasons = ['2025-2026', '2024-2025'],
 }: {
   selectedSeason: string;
   setSelectedSeason: (value: string) => void;
+  allSeasons?: string[];
 }) {
   return (
     <Select value={selectedSeason} onValueChange={setSelectedSeason}>
@@ -21,8 +23,13 @@ export function SeasonSelector({
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectItem value="2025-2026">2025-2026</SelectItem>
-          <SelectItem value="2024-2025">2024-2025</SelectItem>
+          {allSeasons
+            .sort((a, b) => b.localeCompare(a))
+            .map((season) => (
+              <SelectItem key={season} value={season}>
+                {season}
+              </SelectItem>
+            ))}
         </SelectGroup>
       </SelectContent>
     </Select>
