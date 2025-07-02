@@ -51,7 +51,7 @@ export default function TrainingHeader({ training }: TrainingHeaderProps) {
 
   return (
     <div className="flex items-center justify-between">
-      <h1 className="pb-4 text-xl font-semibold text-vilvBlue">Wedstrijddetails</h1>
+      <h1 className="pb-4 text-xl font-semibold text-vilvBlue">Trainingsdetails</h1>
 
       {isAdmin && (
         <div className="flex space-x-4">
