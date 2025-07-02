@@ -67,8 +67,10 @@ export default async function Training({ params }: TrainingProps) {
             <p>{thisTraining?.time.slice(0, 5)}</p>
             <p className="font-semibold">Veld</p>
             <p>{thisTraining?.pitch}</p>
-            <p className="font-semibold">Aantal spelers</p>
+            <p className="font-semibold">Aantal ingevulde spelers</p>
             <p>{availabilitiesTraining.length}</p>
+            <p className="font-semibold">Aantal beschikbare spelers</p>
+            <p>{availabilitiesTraining.filter((a) => a.status === 'Beschikbaar').length}</p>
           </div>
           <h2 className="pb-4 text-lg font-semibold text-vilvBlue">Selectie</h2>
           {availabilitiesTraining.length === 0 ? (
