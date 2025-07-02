@@ -83,7 +83,7 @@ export default function GameHeader({ game }: GameHeaderProps) {
                 <DialogTitle className="text-vilvBlue">Wedstrijd aanpassen</DialogTitle>
               </DialogHeader>
               <GameForm
-                game={{ ...game, date: new Date(game.date) }}
+                game={{ ...game, date: new Date(game.date).toLocaleDateString('nl-BE') }}
                 onSuccess={handleSuccess}
                 method="PATCH"
                 game_id={game.id}

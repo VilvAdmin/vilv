@@ -23,9 +23,10 @@ import {
 } from '~/components/ui/select';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { DatePickerWithInput } from '~/components/ui/datepickerWithInput';
 
 export type GameForm = {
-  date: Date;
+  date: string;
   time: string;
   home_team: string;
   away_team: string;
@@ -45,7 +46,7 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
   const date = new Date();
   const form = useForm<GameForm>({
     defaultValues: {
-      date: game?.date ?? date,
+      date: game?.date ? game.date : date.toLocaleDateString(),
       time: game?.time ?? '',
       home_team: game?.home_team ?? '',
       away_team: game?.away_team ?? '',
@@ -70,7 +71,7 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
 
   const onSubmit = async (data: GameForm) => {
     const endpoint = method === 'POST' ? '/api/games' : `/api/games/${game_id}`;
-    const payload = { ...data, date: data.date.toDateString() };
+    const payload = { ...data, date: data.date };
     try {
       const res = await fetch(endpoint, {
         method,
@@ -114,34 +115,13 @@ export default function GameForm({ game, onSuccess, method, game_id }: GameFormP
             render={({ field }) => (
               <FormItem className="flex flex-col">
                 <FormLabel>Datum</FormLabel>
-                <Popover open={dateOpen} onOpenChange={setDateOpen}>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={'outline'}
-                        className={cn(
-                          'w-full pl-3 text-left font-normal',
-                          !field.value && 'text-muted-foreground'
-                        )}
-                      >
-                        {field.value ? field.value.toLocaleDateString() : <span>Pick a date</span>}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={field.value}
-                      onSelect={(date) => {
-                        field.onChange(date);
-                        setDateOpen(false);
-                      }}
-                      disabled={(date) => date < new Date('1900-01-01')}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
+                <FormControl>
+                  <DatePickerWithInput
+                    value={field.value}
+                    onChange={field.onChange}
+                    min="01-01-1900"
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
