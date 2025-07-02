@@ -28,6 +28,9 @@ export default function TrainingsTable({ trainings }: { trainings: MyTraining[] 
   const [displayedTrainings, setDisplayedTrainings] = useState(
     trainings?.filter((training) => training.trainings.season === selectedSeason)
   );
+  const allSeasons: string[] = Array.from(
+    new Set(trainings.map((training) => training.trainings.season))
+  );
   const [dialogOpen, setDialogOpen] = useState(false);
   const { user } = useUser();
 
@@ -45,44 +48,16 @@ export default function TrainingsTable({ trainings }: { trainings: MyTraining[] 
     );
   }, [selectedSeason, trainings]);
 
-  // const handleExport = () => {
-  //   try {
-  //     const icsContent = generateICS(displayedTrainings);
-  //     const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-
-  //     // For modern browsers
-  //     const url = window.URL.createObjectURL(blob);
-  //     const link = document.createElement('a');
-
-  //     // Set up link properties
-  //     link.href = url;
-  //     link.download = 'vilv-trainings.ics';
-  //     link.style.display = 'none';
-
-  //     // For iOS Safari
-  //     if (/(iPad|iPhone|iPod)/g.test(navigator.userAgent)) {
-  //       link.target = '_blank';
-  //       link.rel = 'noopener noreferrer';
-  //     }
-  //     document.body.appendChild(link);
-
-  //     // Trigger click and cleanup
-  //     setTimeout(() => {
-  //       link.click();
-  //       document.body.removeChild(link);
-  //       window.URL.revokeObjectURL(url);
-  //     }, 0);
-  //   } catch (error) {
-  //     console.error('Error exporting calendar:', error);
-  //   }
-  // };
-
   return (
     <>
       <div className="flex items-center justify-between pb-4">
         <div className="flex gap-4">
           <h1 className="pb-4 text-xl font-semibold text-vilvBlue">Inschrijven op trainingen</h1>
-          <SeasonSelector selectedSeason={selectedSeason} setSelectedSeason={setSelectedSeason} />
+          <SeasonSelector
+            selectedSeason={selectedSeason}
+            setSelectedSeason={setSelectedSeason}
+            allSeasons={allSeasons}
+          />
         </div>
 
         <div className="flex space-x-4">
