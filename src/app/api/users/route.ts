@@ -134,12 +134,17 @@ export async function PATCH(req: Request) {
       );
     }
 
+    const existingUser = await clerk.users.getUser(result.data.userId);
+
     const updatedUser = {
       firstName: result.data.firstName,
       lastName: result.data.lastName,
       username: result.data.username,
       emailAddress: result.data.emailAddress,
-      publicMetadata: result.data.publicMetadata,
+      publicMetadata: {
+        ...existingUser.publicMetadata,
+        ...result.data.publicMetadata,
+      },
     };
 
     const user = clerk.users.updateUser(result.data.userId, updatedUser);
