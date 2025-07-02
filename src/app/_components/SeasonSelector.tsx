@@ -23,11 +23,13 @@ export function SeasonSelector({
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          {allSeasons.map((season) => (
-            <SelectItem key={season} value={season}>
-              {season}
-            </SelectItem>
-          ))}
+          {allSeasons
+            .sort((a, b) => b.localeCompare(a))
+            .map((season) => (
+              <SelectItem key={season} value={season}>
+                {season}
+              </SelectItem>
+            ))}
         </SelectGroup>
       </SelectContent>
     </Select>

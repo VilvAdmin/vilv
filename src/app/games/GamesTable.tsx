@@ -23,9 +23,17 @@ import {
 } from '~/components/ui/dialog';
 import GameForm from './GameForm';
 
+const today = new Date();
+const thisYear = today.getFullYear();
+const nextYear = thisYear + 1;
+const lastYear = thisYear - 1;
+
+// If today is July (6) or later, use thisYear-nextYear, else lastYear-thisYear
+const defaultSeason = today.getMonth() >= 6 ? `${thisYear}-${nextYear}` : `${lastYear}-${thisYear}`;
+
 export default function GamesTable({ games }: { games: MyGame[] }) {
   const router = useRouter();
-  const [selectedSeason, setSelectedSeason] = useState('2025-2026');
+  const [selectedSeason, setSelectedSeason] = useState(defaultSeason);
   const [displayedGames, setDisplayedGames] = useState(
     games?.filter((game) => game.games.season === selectedSeason)
   );
