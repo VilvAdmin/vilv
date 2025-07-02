@@ -27,7 +27,7 @@
 - [x] Seasonality
 - [x] Refresh data after dialogs close
 - [x] Reminder mails (https://resend.com/ ?)
-- [ ] Games get deleted when changing competition or team names (I think we had the same problem before when changing the time or date)
+- [x] Games get deleted when changing competition or team names (I think we had the same problem before when changing the time or date)
 - [x] When changing a player status from inactive to active, it looses its admin rights
 - [x] Training details screen still shows WEDSTRIJDDETAILS at the top
 - [x] There is something wrong with the list length under page 'Trainingsdetails': it do'esnt show all of the active players; it looks like only the last 10 new players and all that already filled it in show up on the combined lists
