@@ -39,9 +39,9 @@ export default function GamesImportForm({ data }: { data: GameImport[] }) {
     time: game.startTime.slice(11, 16),
     home_team: game.homeTeam.name,
     away_team: game.awayTeam.name,
-    type: game.series.name.includes('Beker')
+    type: game.eventType.includes('cup')
       ? 'Beker'
-      : game.series.name === 'Recrea'
+      : game.eventType === 'championship'
         ? 'Vriendschappelijk'
         : 'Competitie',
     season:
