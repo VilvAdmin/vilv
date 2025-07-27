@@ -79,6 +79,7 @@ export type GameImport = {
     name: string;
     __typename: string;
   };
+  eventType: string;
   officials: [
     {
       lastName: string | null;
