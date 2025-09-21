@@ -140,6 +140,7 @@ export default function TrainingForm({
                       }}
                       disabled={(date) => date < new Date('1900-01-01')}
                       initialFocus
+                      weekStartsOn={1} // This line should start the calendar view on Monday
                     />
                   </PopoverContent>
                 </Popover>
