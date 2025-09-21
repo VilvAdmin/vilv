@@ -125,7 +125,8 @@ export default function TrainingForm({
                           !field.value && 'text-muted-foreground'
                         )}
                       >
-                        {field.value ? field.value.toLocaleDateString() : <span>Pick a date</span>}
+                        {/* This will change the date format to dd/mm/yyyy */}
+                        {field.value ? `${field.value.getDate().toString().padStart(2,'0')}/${(field.value.getMonth() + 1).toString().padStart(2, '0')}/${field.value.getFullYear()}` : <span>Pick a date</span>}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
                     </FormControl>
