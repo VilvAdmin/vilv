@@ -11,6 +11,7 @@ export interface Game {
 export interface MyGame {
   games: Game;
   status: 'Beschikbaar' | 'Niet beschikbaar' | 'Geblesseerd' | null;
+  players: number;
 }
 
 export interface Training {

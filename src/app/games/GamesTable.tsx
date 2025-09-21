@@ -128,6 +128,7 @@ export default function GamesTable({ games }: { games: MyGame[] }) {
               <TableHead className="text-vilvBlue">Thuisploeg</TableHead>
               <TableHead className="text-vilvBlue">Uitploeg</TableHead>
               <TableHead className="hidden text-vilvBlue md:table-cell">Type wedstrijd</TableHead>
+              <TableHead className="text-vilvBlue">Aantal spelers</TableHead>
               <TableHead className="text-vilvBlue">Status</TableHead>
             </TableRow>
           </TableHeader>
@@ -151,6 +152,9 @@ export default function GamesTable({ games }: { games: MyGame[] }) {
                   onClick={() => router.push(`/games/${game.games.id}`)}
                 >
                   {game.games.type}
+                </TableCell>
+                <TableCell onClick={() => router.push(`/games/${game.games.id}`)}>
+                  {game.players ?? 0}
                 </TableCell>
                 <TableCell>
                   <StatusSelect status={game.status} game_id={game.games.id} />

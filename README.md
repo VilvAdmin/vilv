@@ -32,8 +32,9 @@
 - [x] Training details screen still shows WEDSTRIJDDETAILS at the top
 - [x] There is something wrong with the list length under page 'Trainingsdetails': it does'nt show all of the active players; it looks like only the last 10 new players and all that already filled it in show up on the combined lists
 - [x] Aantal spelers counter under trainings shows the amount of reactions and not the amount of available players (maybe that was intentional, but might be a bit confusing)
-- [ ] Date picker -> start on Monday + allow typing + dd/mm/yyyy
-- [ ] Match day selection
+- [x] Date picker -> start on Monday + dd/mm/yyyy
+- [ ] Date picker -> allow typing
+- [ ] Match day selection (let coach register players so that they know who has been picked)
 - [ ] Player delete - needs to be thought out -> statistics etc
 - [ ] Edit API / mgmt for admin -> see if needed
 - [ ] Optimize images
@@ -41,8 +42,7 @@
 - [ ] Player details page (?)
 - [ ] Analytics (?)
 - [ ] Domain stuff (custom domain for Vercel, Neon?, Resend)
-- [ ] Add registration for games
 - [ ] Show amount of player reactions/availabilities/unanswered in game overview 
-- [ ] Don't allow for duplicates in player reactions (the problem seems to originate when a user goes back in the browser and then changes his status again; also when he changes the value of the status)
+- [ ] Don't allow for duplicates in player reactions (the problem seems to originate when a user goes back in the browser and then changes his status again; also when he changes the value of the status; not a problem in my Edge browser on pc, but it has been a problem on mobile browser)
 - [x] Make calendar export export a full length game time (now end time = start time)
 - [ ] When importing games from 'Wedstrijden importeren' don't change game type (now they all become 'vriendschappelijk')
