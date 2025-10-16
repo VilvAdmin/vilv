@@ -43,6 +43,6 @@ export const fetchTeamCalendar = async (vilvId: string) => {
     return data.data.clubMatchesAssignations;
   } catch (error) {
     console.error('Error fetching team calendar:', error);
-    throw error;
+    return [];
   }
 };
