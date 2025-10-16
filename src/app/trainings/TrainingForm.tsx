@@ -126,7 +126,11 @@ export default function TrainingForm({
                         )}
                       >
                         {/* This will change the date format to dd/mm/yyyy */}
-                        {field.value ? `${field.value.getDate().toString().padStart(2,'0')}/${(field.value.getMonth() + 1).toString().padStart(2, '0')}/${field.value.getFullYear()}` : <span>Pick a date</span>}
+                        {field.value ? (
+                          `${field.value.getDate().toString().padStart(2, '0')}/${(field.value.getMonth() + 1).toString().padStart(2, '0')}/${field.value.getFullYear()}`
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
                     </FormControl>
@@ -141,7 +145,6 @@ export default function TrainingForm({
                       }}
                       disabled={(date) => date < new Date('1900-01-01')}
                       initialFocus
-                      weekStartsOn={1} // This line should start the calendar view on Monday
                     />
                   </PopoverContent>
                 </Popover>
