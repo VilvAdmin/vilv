@@ -8,13 +8,6 @@
       "when": 1750796825870,
       "tag": "0000_normal_rage",
       "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1760639366180,
-      "tag": "0001_ordinary_jack_power",
-      "breakpoints": true
     }
   ]
 }
