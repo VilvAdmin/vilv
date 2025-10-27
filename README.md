@@ -41,7 +41,7 @@
 - [ ] Player details page (?)
 - [ ] Analytics (?)
 - [ ] Domain stuff (custom domain for Vercel, Neon?, Resend)
-- [ ] Add registration for games
+- [x] Add registration for games
 - [ ] Show amount of player reactions/availabilities/unanswered in game overview
 - [ ] Don't allow for duplicates in player reactions (the problem seems to originate when a user goes back in the browser and then changes his status again; also when he changes the value of the status)
 - [x] Make calendar export export a full length game time (now end time = start time)
