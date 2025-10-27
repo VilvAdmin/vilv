@@ -2,7 +2,7 @@
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
 import { relations } from 'drizzle-orm';
-import { boolean, date, pgEnum, pgTable, time, uuid, varchar } from 'drizzle-orm/pg-core';
+import { date, pgEnum, pgTable, time, uuid, varchar } from 'drizzle-orm/pg-core';
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -31,7 +31,6 @@ export const availabilities = pgTable('availabilities', {
   user_id: varchar('user_id', { length: 255 }).notNull(),
   status: statusEnum('status'),
   player_name: varchar('player_name', { length: 255 }).notNull(),
-  selected: boolean('selected').notNull().default(false),
 });
 
 export const gamesRelations = relations(games, ({ many }) => ({

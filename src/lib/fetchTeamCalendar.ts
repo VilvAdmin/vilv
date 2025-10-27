@@ -35,7 +35,6 @@ export const fetchTeamCalendar = async (vilvId: string) => {
     }
 
     const data = (await response.json()) as { data: { clubMatchesAssignations: GameImport[] } };
-    console.log(data.data.clubMatchesAssignations);
 
     if (!data?.data?.clubMatchesAssignations) {
       throw new Error('No calendar data found');
@@ -44,6 +43,6 @@ export const fetchTeamCalendar = async (vilvId: string) => {
     return data.data.clubMatchesAssignations;
   } catch (error) {
     console.error('Error fetching team calendar:', error);
-    return [];
+    throw error;
   }
 };

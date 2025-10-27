@@ -1,1 +1,0 @@
-ALTER TABLE "availabilities" ADD COLUMN "selected" boolean DEFAULT false NOT NULL;
