@@ -1,21 +1,14 @@
-import { asc, eq, sql } from 'drizzle-orm';
-import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from '~/components/ui/table';
+import { asc, eq } from 'drizzle-orm';
 import { db } from '~/server/db';
 import { availabilities, games } from '~/server/db/schema';
 import GameHeader from './GameHeader';
 import type { Game } from '~/types';
 import { validate as isUuid } from 'uuid';
-import { auth } from '@clerk/nextjs/server';
+import { auth, clerkClient } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import UnconfirmedTable from './UnconfirmedTable';
 import fetchTeam from '~/lib/fetchTeam';
+import SelectionTable from './SelectionTable';
 
 interface GameProps {
   params: Promise<{ id: string }>;
@@ -28,6 +21,11 @@ export default async function Games({ params }: GameProps) {
   if (!userId) {
     redirect('/');
   }
+
+  // Get user's admin status from Clerk
+  const client = await clerkClient();
+  const user = await client.users.getUser(userId);
+  const isAdmin = (user.publicMetadata as { roles?: string[] }).roles?.includes('admin') ?? false;
 
   if (!isUuid(id)) {
     return (
@@ -48,6 +46,7 @@ export default async function Games({ params }: GameProps) {
     game_id: string;
     user_id: string;
     player_name: string;
+    selected: boolean;
   }[] =
     (await db.query.availabilities.findMany({
       where: eq(availabilities.game_id, id),
@@ -81,22 +80,7 @@ export default async function Games({ params }: GameProps) {
           {availabilitiesGame.length === 0 ? (
             <p>Er zijn nog geen spelers ingeschreven voor deze wedstrijd</p>
           ) : (
-            <Table className="mb-4">
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="text-vilvBlue">Speler</TableHead>
-                  <TableHead className="text-vilvBlue">{`Status (${availabilitiesGame.filter((a) => a.status === 'Beschikbaar').length})`}</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {availabilitiesGame?.map((player, idx) => (
-                  <TableRow key={player.id}>
-                    <TableCell>{player.player_name}</TableCell>
-                    <TableCell>{player.status}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <SelectionTable availabilities={availabilitiesGame} isAdmin={isAdmin} />
           )}
           <UnconfirmedTable players={unconfirmedPlayers} />
         </>
