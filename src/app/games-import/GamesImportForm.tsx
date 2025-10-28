@@ -42,8 +42,8 @@ export default function GamesImportForm({ data }: { data: GameImport[] }) {
     type: game.eventType.includes('cup')
       ? 'Beker'
       : game.eventType === 'championship'
-        ? 'Vriendschappelijk'
-        : 'Competitie',
+        ? 'Competitie'
+        : 'Vriendschappelijk',
     season:
       new Date(game.startTime).getMonth() < 7
         ? `${new Date(game.startTime).getFullYear() - 1}-${new Date(game.startTime).getFullYear()}`
