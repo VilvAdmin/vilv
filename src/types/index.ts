@@ -32,6 +32,7 @@ export interface Availability {
   game_id: string;
   user_id: string;
   status: 'Beschikbaar' | 'Niet beschikbaar' | 'Geblesseerd' | null;
+  selected: boolean;
 }
 
 export type PageProps<T = Record<string, string>> = {
